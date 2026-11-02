@@ -1,0 +1,1286 @@
+<!-- DeliveryBridge Partners website. Paste this whole file into ONE Custom Code / HTML element on a blank, full-width page.
+     To fill in your phone, email, booking link, webhook and founder details, search for "EDIT THESE" in the script near the bottom. -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* Everything is scoped to #dbp so the Automate2Scale page builder's own styles can't collide with it. */
+#dbp{
+  --eg:#173F36; --jade:#2F8069; --cu:#C47B52; --iv:#F7F3EA; --ch:#222B28;
+  --paper:#FFFDF8; --mist:#ECF1EC; --eg2:#1E4D42;
+  --ink2:#47524E; --ink3:#5F6A66; --cu-ink:#9A5734;
+  --line:rgba(23,63,54,.14); --line2:rgba(23,63,54,.24);
+  --fh:'Manrope',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+  --fb:'Source Sans 3','Source Sans Pro',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+  --r-lg:18px; --r-md:12px; --r-sm:8px;
+  background:var(--iv); color:var(--ch);
+  font-family:var(--fb); font-size:18px; line-height:1.6;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  text-align:left; overflow-x:clip;
+}
+#dbp *,#dbp *::before,#dbp *::after{box-sizing:border-box}
+#dbp h1,#dbp h2,#dbp h3,#dbp h4,#dbp p,#dbp ul,#dbp ol,#dbp figure,#dbp blockquote{margin:0;padding:0}
+#dbp ul,#dbp ol{list-style:none}
+#dbp img,#dbp svg{max-width:100%;display:block}
+#dbp a{color:var(--eg);text-decoration-color:rgba(23,63,54,.35);text-underline-offset:3px}
+#dbp a:hover{text-decoration-color:var(--cu)}
+#dbp button,#dbp input,#dbp textarea,#dbp select{font:inherit;color:inherit;letter-spacing:normal;text-transform:none}
+#dbp button{cursor:pointer;background:none;border:0;padding:0;margin:0}
+#dbp :focus-visible{outline:3px solid var(--cu);outline-offset:3px;border-radius:6px}
+#dbp .db-hidden{display:none!important}
+#dbp .db-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* type */
+#dbp h1,#dbp h2,#dbp h3,#dbp h4{font-family:var(--fh);font-weight:600;color:var(--eg);letter-spacing:-.015em}
+#dbp h1{font-size:clamp(40px,5.6vw,72px);line-height:1.04;letter-spacing:-.025em}
+#dbp h2{font-size:clamp(28px,3.2vw,40px);line-height:1.12}
+#dbp h3{font-size:22px;line-height:1.25}
+#dbp h4{font-size:18px;line-height:1.3}
+#dbp .db-lead{font-size:clamp(19px,1.6vw,21px);line-height:1.55;color:var(--ink2);max-width:60ch}
+#dbp .db-muted{color:var(--ink2)}
+#dbp .db-small{font-size:15.5px;color:var(--ink3)}
+#dbp p+p{margin-top:.9em}
+
+/* layout */
+#dbp .db-wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+#dbp .db-sec{padding:88px 0}
+#dbp .db-sec.tight{padding:64px 0}
+#dbp .db-sec.mist{background:var(--mist)}
+#dbp .db-sec.paper{background:var(--paper)}
+#dbp .db-head{max-width:720px;margin-bottom:40px}
+#dbp .db-head p{margin-top:14px}
+#dbp .db-grid2{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+
+/* buttons */
+#dbp .db-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:999px;font-family:var(--fh);font-weight:600;font-size:16px;line-height:1.2;text-decoration:none;white-space:normal;text-align:center;transition:background-color .15s,border-color .15s,color .15s}
+#dbp .db-btn-p{background:var(--eg);color:var(--iv)}
+#dbp .db-btn-p:hover{background:var(--eg2);color:#fff}
+#dbp .db-btn-s{border:1.5px solid var(--line2);color:var(--eg);background:transparent}
+#dbp .db-btn-s:hover{border-color:var(--eg)}
+#dbp .db-btn-iv{background:var(--iv);color:var(--eg)}
+#dbp .db-btn-iv:hover{background:#fff}
+#dbp .db-btn-ghost{border:1.5px solid rgba(247,243,234,.4);color:var(--iv)}
+#dbp .db-btn-ghost:hover{border-color:var(--iv)}
+#dbp .db-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+#dbp .db-link{font-family:var(--fh);font-weight:600;font-size:16px;color:var(--eg);text-decoration:underline;text-decoration-color:var(--cu);text-decoration-thickness:2px;text-underline-offset:5px}
+
+/* draft flags: set CONFIG.showDraftFlags to false to hide them */
+#dbp .db-flag{display:inline-block;vertical-align:middle;margin-left:8px;padding:1px 9px;border:1.5px dashed var(--cu);border-radius:999px;font-family:var(--fb);font-size:13px;font-weight:600;line-height:1.5;color:var(--cu-ink);background:rgba(196,123,82,.07);letter-spacing:0;white-space:nowrap}
+#dbp .db-missing{text-decoration:underline dashed var(--cu);text-decoration-thickness:1.5px;text-underline-offset:4px;color:var(--cu-ink)}
+#dbp.no-flags .db-flag{display:none}
+
+/* header */
+#dbp .db-header{position:sticky;top:0;z-index:50;background:rgba(247,243,234,.94);backdrop-filter:saturate(1.2) blur(10px);-webkit-backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--line)}
+#dbp .db-bar{display:flex;align-items:center;gap:20px;height:76px}
+#dbp .db-logo{display:block;flex:none;line-height:0}
+#dbp .db-logo svg{height:40px;width:auto}
+#dbp .db-nav{display:flex;align-items:center;gap:4px;margin-left:auto}
+#dbp .db-nav>.db-ni{text-decoration:none;font-family:var(--fh);font-weight:600;font-size:15.5px;color:var(--ch);padding:10px 14px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
+#dbp .db-nav>.db-ni:hover{background:rgba(23,63,54,.06)}
+#dbp .db-nav>.db-ni[aria-current="page"]{color:var(--eg);box-shadow:inset 0 -2px 0 var(--cu);border-radius:0}
+#dbp .db-nav .db-caret{width:10px;height:10px;transition:transform .15s}
+#dbp .db-nav>.db-ni[aria-expanded="true"] .db-caret{transform:rotate(180deg)}
+#dbp .db-hphone{font-family:var(--fh);font-weight:600;font-size:15.5px;text-decoration:none;color:var(--eg);white-space:nowrap;padding:0 6px}
+#dbp .db-bar .db-btn{min-height:44px;padding:10px 20px;font-size:15px;flex:none}
+#dbp .db-menu-t{display:none;width:44px;height:44px;border-radius:12px;align-items:center;justify-content:center;margin-left:auto}
+#dbp .db-menu-t:hover{background:rgba(23,63,54,.06)}
+
+/* mega panels */
+#dbp .db-mega{position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 24px 40px -24px rgba(23,63,54,.28)}
+#dbp .db-mega-in{display:grid;grid-template-columns:1fr 1fr 320px;gap:8px 32px;padding:28px 24px 32px;max-width:1180px;margin:0 auto}
+#dbp .db-mega-in.three{grid-template-columns:repeat(3,minmax(0,1fr)) 300px}
+#dbp .db-mlink{display:block;text-decoration:none;text-align:left;padding:12px 14px;border-radius:var(--r-md);width:100%}
+#dbp .db-mlink:hover{background:var(--mist)}
+#dbp .db-mlink b{display:block;font-family:var(--fh);font-weight:600;font-size:16px;color:var(--eg)}
+#dbp .db-mlink span{display:block;font-size:15.5px;color:var(--ink3);line-height:1.4;margin-top:2px}
+#dbp .db-mgroup h4{font-size:14px;font-weight:600;color:var(--ink3);padding:0 14px;margin-bottom:4px;letter-spacing:0}
+#dbp .db-mfeat{background:var(--eg);color:var(--iv);border-radius:var(--r-lg);padding:24px;display:flex;flex-direction:column;gap:12px;align-self:stretch}
+#dbp .db-mfeat h4{color:var(--iv);font-size:20px}
+#dbp .db-mfeat p{color:rgba(247,243,234,.82);font-size:16px;line-height:1.5}
+#dbp .db-mfeat .db-btn{margin-top:auto;align-self:flex-start}
+
+/* mobile nav */
+#dbp .db-mnav{border-top:1px solid var(--line);background:var(--paper);max-height:calc(100vh - 76px);overflow:auto}
+#dbp .db-mnav .db-wrap{padding-top:12px;padding-bottom:24px}
+#dbp .db-mnav details{border-bottom:1px solid var(--line)}
+#dbp .db-mnav summary{list-style:none;cursor:pointer;font-family:var(--fh);font-weight:600;font-size:18px;color:var(--eg);padding:16px 4px;display:flex;justify-content:space-between;align-items:center}
+#dbp .db-mnav summary::-webkit-details-marker{display:none}
+#dbp .db-mnav details[open] summary .db-caret{transform:rotate(180deg)}
+#dbp .db-mnav .db-mlink{padding:10px 8px}
+#dbp .db-mnav .db-mtop{display:block;width:100%;text-align:left;font-family:var(--fh);font-weight:600;font-size:18px;color:var(--eg);padding:16px 4px;border-bottom:1px solid var(--line)}
+#dbp .db-mnav .db-btn{width:100%;margin-top:20px}
+
+/* hero */
+#dbp .db-hero{padding:72px 0 24px}
+#dbp .db-hero h1 span{display:block}
+#dbp .db-hero .db-lead{margin-top:24px}
+#dbp .db-hero-call{margin-top:16px;font-size:16px;color:var(--ink3)}
+
+/* the bridge plan: the one memorable element */
+#dbp .db-bridge{margin-top:48px}
+#dbp .db-bridge-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+#dbp .db-bridge-top b{font-family:var(--fh);font-weight:600;font-size:18px;color:var(--eg)}
+#dbp .db-bridge-top span{font-size:15.5px;color:var(--ink3)}
+#dbp .db-bsvg{width:100%;height:auto;overflow:visible}
+#dbp .db-bsvg .deck{stroke:var(--line2);stroke-width:1.5}
+#dbp .db-bsvg .tick{font-family:var(--fb);font-size:14px;fill:var(--ink3)}
+#dbp .db-bsvg .span{fill:none;stroke:rgba(23,63,54,.12);stroke-width:12;stroke-linecap:round}
+#dbp .db-bsvg .ph{fill:none;stroke:var(--cu);stroke-width:12;stroke-linecap:round}
+#dbp .db-bsvg .ph.long{stroke:var(--jade)}
+#dbp .db-bsvg .pier{stroke:var(--line2);stroke-width:1.5;stroke-dasharray:3 4}
+#dbp .db-bsvg .dot{fill:var(--eg);stroke:var(--iv);stroke-width:3}
+#dbp .db-bsvg .dot.ph-dot{fill:var(--paper);stroke:var(--cu);stroke-width:2.5}
+#dbp .db-bsvg .dot.ph-dot.long{stroke:var(--jade)}
+#dbp .db-bsvg .num{font-family:var(--fh);font-weight:700;font-size:13px;fill:var(--iv);text-anchor:middle;dominant-baseline:central}
+#dbp .db-bsvg .num.ph-num{fill:var(--eg)}
+#dbp .db-bsvg .end{font-family:var(--fh);font-weight:600;font-size:15px;fill:var(--eg)}
+#dbp .db-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 28px;margin-top:20px}
+#dbp .db-steps li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start}
+#dbp .db-steps .n{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-family:var(--fh);font-weight:700;font-size:13px;background:var(--eg);color:var(--iv);margin-top:1px}
+#dbp .db-steps .n.ph{background:var(--paper);color:var(--eg);box-shadow:inset 0 0 0 2.5px var(--cu)}
+#dbp .db-steps .n.ph.long{box-shadow:inset 0 0 0 2.5px var(--jade)}
+#dbp .db-steps b{display:block;font-family:var(--fh);font-weight:600;font-size:16px;color:var(--eg);line-height:1.35}
+#dbp .db-steps small{display:block;font-size:15px;color:var(--ink3);line-height:1.4}
+#dbp .db-steps em{font-style:normal;color:var(--cu-ink);font-weight:600}
+#dbp .db-bfoot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;margin-top:20px;padding-top:14px;border-top:1px solid var(--line);font-size:15px;color:var(--ink3)}
+#dbp .db-key{display:inline-flex;align-items:center;gap:8px;margin-right:16px}
+#dbp .db-key i{display:inline-block;width:22px;height:8px;border-radius:8px;background:var(--cu)}
+#dbp .db-key i.long{background:var(--jade)}
+#dbp .db-key i.ms{width:12px;height:12px;border-radius:50%;background:var(--eg)}
+@media (prefers-reduced-motion:no-preference){
+  #dbp .db-bridge.play .span{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:dbDraw 1.1s cubic-bezier(.3,.6,.2,1) forwards}
+  #dbp .db-bridge.play .ph,#dbp .db-bridge.play .mk{opacity:0;animation:dbIn .4s ease-out forwards}
+  @keyframes dbDraw{to{stroke-dashoffset:0}}
+  @keyframes dbIn{to{opacity:1}}
+}
+
+/* paths on home */
+#dbp .db-paths{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg)}
+#dbp .db-path{display:grid;grid-template-columns:220px minmax(0,1fr) 300px;gap:12px 40px;align-items:center;padding:28px 32px}
+#dbp .db-path .db-btn{justify-self:end}
+#dbp .db-path+.db-path{border-top:1px solid var(--line)}
+#dbp .db-path p{color:var(--ink2);font-size:17px;max-width:56ch}
+
+/* evergreen band */
+#dbp .db-band{background:var(--eg);color:rgba(247,243,234,.86)}
+#dbp .db-band h2,#dbp .db-band h3{color:var(--iv)}
+#dbp .db-band .db-lead{color:rgba(247,243,234,.86)}
+#dbp .db-band a:not(.db-btn){color:var(--iv)}
+#dbp .db-quote{border-left:3px solid var(--cu);padding:4px 0 4px 24px;font-family:var(--fh);font-weight:500;font-size:clamp(20px,2vw,24px);line-height:1.45;color:var(--iv)}
+#dbp .db-quote cite{display:block;margin-top:14px;font-family:var(--fb);font-style:normal;font-size:15.5px;color:rgba(247,243,234,.7)}
+
+/* steps (how it works) */
+#dbp .db-how{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;counter-reset:how;position:relative}
+#dbp .db-how li{position:relative;padding-top:56px}
+#dbp .db-how li::before{counter-increment:how;content:counter(how);position:absolute;top:0;left:0;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--iv);border:2px solid var(--cu);font-family:var(--fh);font-weight:700;color:var(--eg);font-size:16px;z-index:1}
+#dbp .db-how li::after{content:"";position:absolute;top:20px;left:48px;right:-24px;height:2px;background:var(--line2)}
+#dbp .db-how li:last-child::after{display:none}
+#dbp .db-how h3{font-size:19px;margin-bottom:6px}
+#dbp .db-how p{font-size:16.5px;color:var(--ink2)}
+
+/* pillars */
+#dbp .db-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--eg)}
+#dbp .db-pillars li{padding:24px 24px 8px 0}
+#dbp .db-pillars li+li{padding-left:24px;border-left:1px solid var(--line)}
+#dbp .db-pillars h3{font-size:20px}
+#dbp .db-pillars p{margin-top:6px;color:var(--ink2);font-size:17px}
+
+/* stories */
+#dbp .db-stories{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+#dbp .db-story{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;display:flex;flex-direction:column;gap:14px}
+#dbp .db-story .tag{font-size:15px;font-weight:600;color:var(--jade)}
+#dbp .db-story dl{margin:0}
+#dbp .db-story dt{margin-top:12px;font-family:var(--fh);font-weight:600;font-size:15px;color:var(--eg)}
+#dbp .db-story dd{margin:2px 0 0;font-size:16px;color:var(--ink3)}
+
+/* person */
+#dbp .db-person{display:grid;grid-template-columns:120px 1fr;gap:28px;align-items:start}
+#dbp .db-avatar{width:120px;height:120px;border-radius:50%;background:var(--mist);display:grid;place-items:center;overflow:hidden;border:2px solid var(--paper);box-shadow:0 0 0 1px var(--line)}
+#dbp .db-avatar svg{width:70%;height:auto}
+#dbp .db-headshot{background:var(--mist) url(data:image/jpeg;base64,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) center/cover no-repeat}
+#dbp .db-person .role{font-size:16px;color:var(--ink3);margin-top:2px}
+#dbp .db-person p.bio{margin-top:12px;color:var(--ink2)}
+
+/* page headers */
+#dbp .db-phead{padding:72px 0 48px;border-bottom:1px solid var(--line)}
+#dbp .db-phead .db-crumb{display:block;font-size:15.5px;color:var(--ink3);margin-bottom:14px}
+#dbp .db-phead .db-crumb a{color:var(--ink3);text-decoration:underline;text-underline-offset:3px}
+#dbp .db-phead h1{font-size:clamp(36px,4.6vw,58px);max-width:18ch}
+#dbp .db-phead .db-lead{margin-top:20px}
+
+/* services */
+#dbp .db-svc{display:grid;grid-template-columns:1.5fr 1fr;gap:28px 64px;padding:56px 0;border-top:1px solid var(--line);scroll-margin-top:96px}
+#dbp .db-svc:first-of-type{border-top:0}
+#dbp .db-svc h2{font-size:clamp(26px,2.6vw,34px)}
+#dbp .db-svc .db-get{margin-top:18px;padding:16px 20px;background:var(--mist);border-radius:var(--r-md);color:var(--eg);font-size:17px}
+#dbp .db-svc .db-get b{font-family:var(--fh);font-weight:600}
+#dbp .db-svc aside h4{font-size:16px;color:var(--ink3);margin-bottom:10px;font-weight:600}
+#dbp .db-ticks li{position:relative;padding-left:26px;margin-top:8px;font-size:17px}
+#dbp .db-ticks li::before{content:"";position:absolute;left:2px;top:.55em;width:12px;height:7px;border-left:2.5px solid var(--jade);border-bottom:2.5px solid var(--jade);transform:rotate(-45deg)}
+#dbp .db-svc aside .db-btn{margin-top:24px}
+#dbp .db-group{padding-top:24px}
+#dbp .db-group-h{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding:28px 0 4px}
+#dbp .db-group-h h2{font-size:clamp(30px,3vw,38px)}
+#dbp .db-group-h p{color:var(--ink3);font-size:17px}
+#dbp .db-models{width:100%;border-collapse:collapse;font-size:17px;min-width:560px}
+#dbp .db-models th,#dbp .db-models td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+#dbp .db-models th{font-family:var(--fh);font-weight:600;color:var(--eg);font-size:16px}
+#dbp .db-models td:first-child{font-family:var(--fh);font-weight:600;color:var(--eg);white-space:nowrap}
+#dbp .db-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* industries */
+#dbp .db-inds{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+#dbp .db-ind{padding:32px 28px 32px 0;border-bottom:1px solid var(--line)}
+#dbp .db-ind:not(:nth-child(4n+1)){padding-left:28px;border-left:1px solid var(--line)}
+#dbp .db-ind p{margin-top:8px;color:var(--ink2);font-size:17px}
+#dbp .db-ind .db-link{display:inline-block;margin-top:16px}
+
+/* company */
+#dbp .db-wide{margin-top:44px;border-radius:var(--r-lg);overflow:hidden;background:var(--mist);line-height:0}
+#dbp .db-wide img{width:100%;height:auto;aspect-ratio:664/131;object-fit:cover;object-position:62% 50%}
+@media (max-width:820px){#dbp .db-wide{margin-top:32px}#dbp .db-wide img{height:180px;aspect-ratio:auto}}
+#dbp .db-photo{border-radius:var(--r-lg);overflow:hidden;background:var(--mist)}
+#dbp .db-photo img{width:100%;height:auto}
+#dbp .db-photo figcaption{font-size:14.5px;color:var(--ink3);padding:10px 14px}
+#dbp .db-why li{padding:20px 0;border-top:1px solid var(--line)}
+#dbp .db-why li:first-child{border-top:0;padding-top:0}
+#dbp .db-why b{display:block;font-family:var(--fh);font-weight:600;color:var(--eg);font-size:19px}
+#dbp .db-why span{display:block;color:var(--ink2);margin-top:4px}
+
+/* planner */
+#dbp .db-plan{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px;align-items:start}
+#dbp .db-q{padding:28px 0;border-top:1px solid var(--line)}
+#dbp .db-q:first-child{border-top:0;padding-top:0}
+#dbp .db-q h3{font-size:20px;display:flex;align-items:center;gap:12px;margin-bottom:16px}
+#dbp .db-q h3 em{font-style:normal;width:30px;height:30px;flex:none;border-radius:50%;display:grid;place-items:center;font-size:14px;background:var(--eg);color:var(--iv)}
+#dbp .db-q p.note{color:var(--ink2);font-size:17px}
+#dbp .db-opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+#dbp .db-opt{display:block;text-align:left;padding:14px 16px;border:1.5px solid var(--line2);border-radius:var(--r-md);background:var(--paper);transition:border-color .12s,background-color .12s}
+#dbp .db-opt:hover{border-color:var(--jade)}
+#dbp .db-opt b{display:block;font-family:var(--fh);font-weight:600;font-size:16px;color:var(--eg);line-height:1.3}
+#dbp .db-opt span{display:block;font-size:15px;color:var(--ink3);line-height:1.35;margin-top:3px}
+#dbp .db-opt[aria-pressed="true"]{border-color:var(--eg);background:var(--eg)}
+#dbp .db-opt[aria-pressed="true"] b{color:var(--iv)}
+#dbp .db-opt[aria-pressed="true"] span{color:rgba(247,243,234,.8)}
+#dbp .db-planside{position:sticky;top:96px;display:grid;gap:24px}
+#dbp .db-planbox{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px}
+#dbp .db-planbox .db-bridge{margin-top:0}
+#dbp .db-planbox .db-steps{grid-template-columns:1fr 1fr}
+#dbp .db-planbox h3{font-size:22px}
+
+/* forms */
+#dbp .db-form{display:grid;gap:16px;margin-top:20px}
+#dbp .db-row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+#dbp .db-fld{display:block;font-family:var(--fh);font-weight:600;font-size:15px;color:var(--eg)}
+#dbp .db-fld input,#dbp .db-fld textarea,#dbp .db-fld select{display:block;margin-top:6px;width:100%;min-height:48px;padding:11px 14px;border:1.5px solid var(--line2);border-radius:var(--r-sm);background:#fff;font-family:var(--fb);font-weight:400;font-size:17px;color:var(--ch)}
+#dbp .db-fld textarea{min-height:110px;resize:vertical}
+#dbp .db-fld select{-webkit-appearance:none;-moz-appearance:none;appearance:none;padding-right:48px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1.5 1.5 7 7l5.5-5.5' fill='none' stroke='%23173F36' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center;background-size:14px 9px}
+#dbp .db-fld select::-ms-expand{display:none}
+#dbp .db-fld input:focus,#dbp .db-fld textarea:focus,#dbp .db-fld select:focus{outline:none;border-color:var(--eg);box-shadow:0 0 0 3px rgba(196,123,82,.35)}
+#dbp .db-fld .opt{font-weight:400;color:var(--ink3)}
+#dbp .db-form .db-btn{justify-self:start}
+#dbp .db-formnote{font-size:15px;color:var(--ink3)}
+
+/* contact */
+#dbp .db-contact{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start}
+#dbp .db-cards{display:grid;gap:14px}
+#dbp .db-ccard{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:18px 22px}
+#dbp .db-ccard h4{font-size:15px;color:var(--ink3);font-weight:600;margin-bottom:4px}
+#dbp .db-ccard a,#dbp .db-ccard p{font-family:var(--fh);font-weight:600;font-size:18px;color:var(--eg)}
+#dbp .db-ccard.feat{background:var(--eg);border-color:var(--eg)}
+#dbp .db-ccard.feat h3{color:var(--iv);font-size:22px}
+#dbp .db-ccard.feat p{font-family:var(--fb);font-weight:400;font-size:17px;color:rgba(247,243,234,.84);margin-top:8px}
+#dbp .db-ccard.feat .db-btn{margin-top:18px}
+
+/* cta band */
+#dbp .db-cta{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:center}
+#dbp .db-cta .db-actions{margin-top:0;justify-content:flex-end}
+
+/* footer */
+#dbp .db-foot{background:var(--ch);color:rgba(247,243,234,.78);padding:64px 0 32px;font-size:16px;--lg1:#F7F3EA;--lg2:#9FD3BF;--lg3:#C47B52}
+#dbp .db-foot-g{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+#dbp .db-foot .db-logo svg{height:44px}
+#dbp .db-foot h4{color:var(--iv);font-size:15px;margin-bottom:12px}
+#dbp .db-foot li{margin-top:8px}
+#dbp .db-foot button,#dbp .db-foot a{color:rgba(247,243,234,.84);text-decoration:none;text-align:left}
+#dbp .db-foot button:hover,#dbp .db-foot a:hover{color:#fff;text-decoration:underline;text-decoration-color:var(--cu)}
+#dbp .db-foot .tagline{margin-top:16px;color:rgba(247,243,234,.84);max-width:30ch}
+#dbp .db-foot .db-missing{color:#E9B999;text-decoration-color:#E9B999}
+#dbp .db-foot .db-flag{color:#F2CDB5;border-color:#E9B999;background:transparent}
+#dbp .db-legal{margin-top:48px;padding-top:20px;border-top:1px solid rgba(247,243,234,.16);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:14.5px;color:rgba(247,243,234,.64)}
+
+/* modal */
+#dbp .db-overlay{position:fixed;inset:0;z-index:100;background:rgba(23,43,40,.55);display:grid;place-items:center;padding:20px}
+#dbp .db-modal{background:var(--paper);border-radius:var(--r-lg);padding:32px;max-width:520px;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.4)}
+#dbp .db-modal h3{font-size:24px;margin-bottom:10px}
+#dbp .db-modal p{color:var(--ink2)}
+#dbp .db-modal .db-actions{margin-top:24px}
+
+/* responsive */
+@media (max-width:1240px){#dbp .db-hphone{display:none}}
+@media (max-width:1060px){
+  #dbp .db-nav,#dbp .db-bar>.db-btn{display:none}
+  #dbp .db-menu-t{display:inline-flex}
+  #dbp .db-plan{grid-template-columns:1fr}
+  #dbp .db-planside{position:static}
+  #dbp .db-path{grid-template-columns:1fr auto}
+  #dbp .db-path p{grid-column:1/-1;grid-row:2}
+  #dbp .db-path .db-btn{grid-column:2;grid-row:1}
+  #dbp .db-how{grid-template-columns:1fr 1fr;gap:40px 32px}
+  #dbp .db-how li:nth-child(2)::after{display:none}
+  #dbp .db-pillars{grid-template-columns:1fr 1fr}
+  #dbp .db-pillars li:nth-child(3){padding-left:0;border-left:0}
+  #dbp .db-pillars li:nth-child(n+3){border-top:1px solid var(--line)}
+  #dbp .db-stories{grid-template-columns:1fr}
+  #dbp .db-foot-g{grid-template-columns:1fr 1fr}
+  #dbp .db-inds{grid-template-columns:1fr 1fr}
+  #dbp .db-ind:not(:nth-child(4n+1)){padding-left:0;border-left:0}
+  #dbp .db-ind:nth-child(2n){padding-left:32px;border-left:1px solid var(--line)}
+}
+@media (max-width:820px){
+  #dbp{font-size:17px}
+  #dbp .db-sec{padding:64px 0}
+  #dbp .db-grid2,#dbp .db-contact,#dbp .db-cta,#dbp .db-svc{grid-template-columns:1fr;gap:28px}
+  #dbp .db-cta .db-actions{justify-content:flex-start}
+  #dbp .db-steps{grid-template-columns:1fr 1fr}
+  #dbp .db-path{grid-template-columns:1fr;padding:24px}
+  #dbp .db-path p{grid-row:auto}
+  #dbp .db-path .db-btn{grid-column:auto;grid-row:auto}
+  #dbp .db-path .db-btn{justify-self:start}
+}
+@media (max-width:600px){
+  #dbp .db-wrap{padding:0 20px}
+  #dbp .db-bar{height:68px}
+  #dbp .db-logo svg{height:34px}
+  #dbp .db-hero{padding-top:48px}
+  #dbp .db-steps,#dbp .db-planbox .db-steps{grid-template-columns:1fr}
+  #dbp .db-how,#dbp .db-pillars,#dbp .db-inds{grid-template-columns:1fr}
+  #dbp .db-how li::after{display:none}
+  #dbp .db-pillars li,#dbp .db-pillars li+li{padding:20px 0 4px;border-left:0}
+  #dbp .db-pillars li+li{border-top:1px solid var(--line)}
+  #dbp .db-ind,#dbp .db-ind:nth-child(2n){padding:24px 0;border-left:0}
+  #dbp .db-row2{grid-template-columns:1fr}
+  #dbp .db-person{grid-template-columns:1fr}
+  #dbp .db-foot-g{grid-template-columns:1fr}
+  #dbp .db-planbox{padding:20px}
+  #dbp .db-opts{grid-template-columns:1fr 1fr}
+}
+@media (max-width:380px){#dbp .db-opts{grid-template-columns:1fr}}
+</style>
+<div id="dbp">
+<svg class="db-sr" aria-hidden="true" focusable="false"><defs>
+<symbol id="dbp-logo" viewBox="0 0 976 166"><path style="fill:var(--lg1,#173F36)" fill-rule="evenodd" d="M9,5 L90,5 L90,6 L96,6 L96,7 L101,7 L101,8 L108,9 L108,10 L110,10 L110,11 L112,11 L112,12 L115,12 L115,13 L119,14 L120,16 L122,16 L122,17 L125,18 L126,20 L128,20 L131,24 L133,24 L133,25 L134,25 L134,26 L135,26 L135,27 L141,32 L141,34 L146,38 L146,40 L147,40 L148,43 L150,44 L150,46 L151,46 L151,48 L152,48 L152,50 L153,50 L153,52 L154,52 L154,54 L155,54 L155,56 L156,56 L158,66 L149,67 L149,68 L145,68 L145,69 L141,69 L141,70 L133,71 L133,72 L130,72 L130,73 L125,73 L125,70 L124,70 L123,64 L122,64 L121,60 L119,59 L119,57 L117,56 L117,54 L116,54 L116,53 L115,53 L115,52 L114,52 L109,46 L107,46 L106,44 L104,44 L104,43 L102,43 L102,42 L100,42 L100,41 L98,41 L98,40 L91,39 L91,38 L56,38 L56,37 L43,38 L43,37 L42,37 L42,115 L41,115 L38,119 L36,119 L31,125 L29,125 L29,126 L28,126 L28,127 L27,127 L27,128 L26,128 L26,129 L25,129 L25,130 L24,130 L24,131 L23,131 L23,132 L22,132 L22,133 L21,133 L21,134 L15,139 L15,141 L9,146 Z M128,6 L130,6 L130,7 L133,7 L133,6 L135,6 L135,7 L136,7 L136,6 L206,6 L206,7 L213,7 L213,8 L220,9 L220,10 L222,10 L222,11 L228,13 L230,16 L232,16 L232,17 L237,21 L237,23 L239,24 L239,26 L241,27 L241,29 L242,29 L242,31 L243,31 L243,33 L244,33 L245,42 L246,42 L246,49 L245,49 L245,55 L244,55 L243,61 L242,61 L242,63 L240,64 L240,66 L238,67 L238,69 L235,69 L235,68 L232,68 L232,67 L228,67 L228,66 L224,66 L224,65 L214,64 L214,63 L207,63 L206,61 L210,58 L210,55 L211,55 L211,46 L210,46 L209,42 L208,42 L206,39 L204,39 L204,38 L202,38 L202,37 L197,37 L197,36 L156,36 L156,34 L155,34 L155,32 L153,31 L153,29 L152,29 L152,28 L151,28 L151,27 L150,27 L150,26 L149,26 L149,25 L148,25 L148,24 L147,24 L147,23 L146,23 L146,22 L145,22 L145,21 L144,21 L144,20 L143,20 L138,14 L136,14 L134,11 L132,11 L131,9 L129,9 Z M475,26 L483,26 L483,27 L486,28 L486,30 L487,30 L487,32 L488,32 L488,37 L487,37 L487,39 L486,39 L484,42 L477,43 L477,42 L474,42 L474,41 L471,39 L471,37 L470,37 L470,32 L471,32 L472,28 L475,27 Z M447,28 L463,28 L463,99 L448,99 L448,98 L447,98 Z M326,30 L361,30 L361,31 L365,31 L365,32 L368,32 L368,33 L373,34 L374,36 L376,36 L376,37 L382,42 L382,44 L384,45 L384,47 L385,47 L385,49 L386,49 L386,52 L387,52 L387,57 L388,57 L388,70 L387,70 L387,75 L386,75 L386,78 L385,78 L383,84 L381,85 L381,87 L380,87 L377,91 L375,91 L375,92 L372,93 L371,95 L368,95 L368,96 L365,96 L365,97 L362,97 L362,98 L354,98 L354,99 L326,99 Z M342,44 L342,84 L356,84 L356,83 L360,83 L360,82 L364,81 L364,80 L367,78 L367,76 L368,76 L368,74 L369,74 L369,71 L370,71 L370,65 L371,65 L371,63 L370,63 L370,56 L369,56 L369,53 L368,53 L367,50 L366,50 L363,46 L361,46 L361,45 L358,45 L358,44 Z M414,46 L425,47 L425,48 L428,48 L428,49 L432,50 L432,51 L433,51 L433,52 L439,57 L439,59 L440,59 L440,61 L441,61 L441,63 L442,63 L442,67 L443,67 L443,77 L442,77 L442,78 L441,78 L441,77 L438,77 L438,78 L406,78 L407,81 L408,81 L408,83 L409,83 L411,86 L414,86 L414,87 L421,87 L421,86 L425,85 L425,83 L426,83 L427,81 L428,81 L428,82 L441,82 L441,83 L442,83 L442,85 L441,85 L439,91 L438,91 L435,95 L433,95 L432,97 L429,97 L429,98 L427,98 L427,99 L423,99 L423,100 L412,100 L412,99 L408,99 L408,98 L405,98 L405,97 L401,96 L401,95 L400,95 L399,93 L397,93 L396,90 L394,89 L394,87 L393,87 L393,85 L392,85 L392,83 L391,83 L391,79 L390,79 L390,68 L391,68 L391,64 L392,64 L392,61 L393,61 L393,59 L395,58 L395,56 L396,56 L400,51 L402,51 L402,50 L404,50 L404,49 L406,49 L406,48 L409,48 L409,47 L414,47 Z M568,46 L579,47 L579,48 L584,49 L585,51 L587,51 L587,52 L592,56 L592,58 L594,59 L595,64 L596,64 L596,69 L597,69 L597,77 L596,77 L596,78 L560,78 L561,81 L562,81 L562,83 L563,83 L565,86 L568,86 L568,87 L575,87 L575,86 L577,86 L580,82 L596,82 L596,85 L595,85 L594,89 L591,91 L590,94 L588,94 L587,96 L585,96 L585,97 L583,97 L583,98 L581,98 L581,99 L576,99 L576,100 L566,100 L566,99 L561,99 L561,98 L555,96 L555,95 L552,94 L552,93 L550,92 L550,90 L547,88 L546,83 L545,83 L545,80 L544,80 L544,67 L545,67 L546,61 L547,61 L547,59 L549,58 L549,56 L550,56 L554,51 L556,51 L556,50 L558,50 L558,49 L560,49 L560,48 L562,48 L562,47 L568,47 Z M471,47 L486,47 L486,48 L487,48 L487,99 L471,99 Z M490,47 L507,47 L507,48 L508,48 L508,50 L509,50 L509,54 L510,54 L510,56 L511,56 L511,59 L512,59 L512,62 L513,62 L513,65 L514,65 L514,68 L515,68 L515,71 L516,71 L516,74 L517,74 L517,76 L518,76 L518,79 L519,79 L519,76 L520,76 L520,74 L521,74 L521,71 L522,71 L522,68 L523,68 L523,65 L524,65 L525,59 L526,59 L526,57 L527,57 L527,54 L528,54 L529,48 L530,48 L530,47 L547,47 L546,53 L545,53 L545,55 L544,55 L544,58 L543,58 L543,60 L542,60 L542,63 L541,63 L541,65 L540,65 L540,68 L539,68 L538,73 L537,73 L537,75 L536,75 L536,77 L535,77 L535,80 L534,80 L534,82 L533,82 L533,85 L532,85 L532,87 L531,87 L531,90 L530,90 L530,92 L529,92 L529,95 L528,95 L528,98 L527,98 L527,99 L510,99 L510,98 L509,98 L508,93 L507,93 L506,88 L505,88 L505,85 L504,85 L504,83 L503,83 L503,80 L502,80 L501,75 L500,75 L500,73 L499,73 L499,70 L498,70 L498,68 L497,68 L497,65 L496,65 L495,59 L494,59 L493,54 L492,54 L492,52 L491,52 L491,50 L490,50 Z M601,47 L616,47 L616,55 L617,55 L617,53 L618,53 L620,50 L622,50 L622,49 L624,49 L624,48 L626,48 L626,47 L634,47 L634,48 L635,48 L635,51 L634,51 L634,52 L635,52 L635,53 L634,53 L634,63 L624,63 L624,64 L620,65 L619,68 L618,68 L618,70 L617,70 L617,93 L616,93 L616,99 L601,99 L601,83 L600,83 L600,78 L601,78 L601,60 L600,60 Z M636,47 L654,47 L654,48 L655,48 L655,51 L656,51 L656,54 L657,54 L658,60 L659,60 L659,62 L660,62 L660,65 L661,65 L661,68 L662,68 L662,71 L663,71 L663,74 L664,74 L665,79 L666,79 L666,76 L667,76 L667,73 L668,73 L668,70 L669,70 L669,67 L670,67 L670,64 L671,64 L671,61 L672,61 L672,58 L673,58 L673,55 L674,55 L674,52 L675,52 L676,47 L692,47 L692,54 L691,54 L691,57 L690,57 L690,59 L689,59 L689,62 L688,62 L688,64 L687,64 L687,67 L686,67 L686,69 L685,69 L685,72 L684,72 L684,74 L683,74 L683,77 L682,77 L682,79 L681,79 L680,85 L679,85 L679,87 L678,87 L678,89 L677,89 L677,92 L676,92 L676,94 L675,94 L675,97 L674,97 L674,100 L673,100 L673,102 L672,102 L672,104 L671,104 L671,107 L670,107 L669,110 L668,110 L664,115 L662,115 L662,116 L659,116 L659,117 L645,117 L645,115 L646,115 L647,105 L648,105 L648,104 L654,104 L654,103 L656,102 L657,97 L656,97 L656,95 L655,95 L655,93 L654,93 L654,90 L653,90 L653,88 L652,88 L652,85 L651,85 L651,83 L650,83 L650,80 L649,80 L648,75 L647,75 L647,73 L646,73 L646,71 L645,71 L644,65 L643,65 L643,63 L642,63 L642,60 L641,60 L641,58 L640,58 L640,56 L639,56 L639,53 L638,53 Z M413,59 L413,60 L411,60 L411,61 L408,63 L407,67 L427,67 L424,61 L422,61 L422,60 L420,60 L420,59 Z M567,59 L567,60 L565,60 L565,61 L561,64 L561,67 L580,67 L580,64 L579,64 L579,62 L578,62 L577,60 L574,60 L574,59 Z M187,66 L198,66 L198,67 L187,67 Z M211,73 L214,73 L214,74 L211,74 Z M215,76 L238,76 L238,77 L242,78 L244,81 L246,81 L246,82 L247,82 L247,83 L248,83 L248,84 L254,89 L254,91 L256,92 L256,94 L257,94 L257,96 L258,96 L258,99 L259,99 L259,102 L260,102 L260,106 L261,106 L261,119 L260,119 L260,124 L259,124 L258,130 L257,130 L257,132 L256,132 L254,138 L251,140 L251,142 L250,142 L250,143 L249,143 L244,149 L242,149 L240,152 L238,152 L238,153 L236,153 L236,154 L234,154 L234,155 L232,155 L232,156 L230,156 L230,157 L227,157 L227,158 L224,158 L224,159 L219,159 L219,160 L128,160 L128,158 L134,156 L136,153 L138,153 L140,150 L142,150 L142,149 L143,149 L143,148 L144,148 L144,147 L145,147 L145,146 L146,146 L146,145 L147,145 L147,144 L148,144 L148,143 L154,138 L154,136 L157,134 L158,131 L205,131 L205,130 L211,130 L211,129 L214,129 L214,128 L218,127 L218,126 L219,126 L219,125 L225,120 L226,115 L227,115 L227,104 L226,104 L224,98 L223,98 L218,92 L216,92 L216,91 L214,91 L214,90 L212,90 L212,89 L209,89 L209,88 L207,88 L207,87 L203,87 L203,86 L199,86 L199,85 L194,85 L194,84 L189,84 L189,83 L188,83 L188,82 L191,82 L191,81 L194,81 L194,80 L199,80 L199,79 L209,78 L209,77 L215,77 Z M159,92 L161,92 L161,98 L160,98 L160,104 L159,104 L159,108 L158,108 L157,114 L156,114 L156,116 L155,116 L155,118 L154,118 L154,120 L153,120 L151,126 L149,127 L149,129 L145,132 L145,134 L144,134 L144,135 L143,135 L143,136 L142,136 L142,137 L141,137 L141,138 L140,138 L140,139 L139,139 L139,140 L138,140 L138,141 L137,141 L132,147 L130,147 L130,148 L127,149 L126,151 L124,151 L124,152 L122,152 L122,153 L120,153 L120,154 L118,154 L118,155 L116,155 L116,156 L114,156 L114,157 L108,158 L108,159 L103,159 L103,160 L68,160 L68,158 L69,158 L69,157 L75,152 L75,150 L76,150 L76,149 L77,149 L77,148 L78,148 L78,147 L79,147 L79,146 L80,146 L80,145 L81,145 L81,144 L82,144 L82,143 L83,143 L83,142 L84,142 L84,141 L85,141 L90,135 L92,135 L97,129 L99,129 L102,125 L104,125 L104,124 L107,123 L109,120 L111,120 L112,118 L114,118 L114,117 L115,117 L116,115 L118,115 L119,113 L125,111 L125,110 L128,109 L129,107 L131,107 L131,106 L137,104 L138,102 L140,102 L140,101 L142,101 L142,100 L144,100 L144,99 L146,99 L146,98 L148,98 L148,97 L150,97 L150,96 L152,96 L152,95 L155,95 L155,94 L157,94 L157,93 L159,93 Z M869,110 L911,110 L911,111 L908,112 L907,114 L901,116 L901,117 L897,117 L897,118 L883,118 L883,117 L879,117 L879,116 L876,116 L876,115 L872,114 Z M328,119 L341,119 L341,120 L344,120 L344,121 L347,123 L347,125 L348,125 L348,131 L347,131 L347,133 L346,133 L345,135 L343,135 L343,136 L341,136 L341,137 L333,137 L333,145 L332,145 L332,146 L328,146 Z M390,120 L396,120 L396,122 L397,122 L397,124 L398,124 L398,127 L399,127 L399,129 L400,129 L400,131 L401,131 L401,134 L402,134 L402,136 L403,136 L403,139 L404,139 L404,141 L405,141 L405,143 L406,143 L406,146 L401,146 L399,140 L387,140 L385,146 L380,146 L380,143 L381,143 L382,138 L383,138 L383,136 L384,136 L384,134 L385,134 L385,131 L386,131 L386,129 L387,129 L387,127 L388,127 L388,125 L389,125 Z M443,120 L459,120 L459,121 L461,121 L461,122 L463,123 L463,125 L464,125 L464,131 L463,131 L463,133 L459,136 L459,138 L460,138 L460,140 L462,141 L462,143 L464,144 L464,146 L458,146 L457,142 L455,141 L455,139 L454,139 L453,137 L448,137 L448,146 L443,146 Z M498,120 L519,120 L519,124 L518,124 L518,125 L516,125 L516,124 L511,124 L511,146 L506,146 L506,125 L505,125 L505,124 L504,124 L504,125 L499,125 L499,124 L498,124 Z M553,120 L558,120 L558,121 L560,122 L560,124 L564,127 L564,129 L566,130 L566,132 L569,134 L569,136 L571,136 L571,135 L570,135 L570,134 L571,134 L571,120 L576,120 L576,146 L571,146 L571,145 L568,143 L568,141 L566,140 L566,138 L563,136 L563,134 L560,132 L559,129 L558,129 L558,146 L553,146 Z M615,120 L633,120 L633,125 L619,125 L619,131 L631,131 L631,136 L619,136 L619,142 L633,142 L633,147 L614,147 L614,121 L615,121 Z M672,121 L687,121 L687,122 L689,122 L689,123 L692,125 L692,127 L693,127 L693,132 L692,132 L692,134 L691,134 L689,137 L687,137 L687,138 L689,139 L689,141 L691,142 L691,144 L693,145 L693,147 L687,147 L687,145 L685,144 L685,142 L683,141 L682,138 L677,138 L677,146 L676,146 L676,147 L672,147 Z M734,122 L744,122 L744,123 L746,123 L746,124 L748,125 L746,128 L741,127 L741,126 L736,126 L736,127 L735,127 L735,130 L736,130 L736,131 L741,132 L741,133 L744,133 L744,134 L747,135 L748,138 L749,138 L749,142 L748,142 L748,144 L747,144 L745,147 L743,147 L743,148 L735,148 L735,147 L732,147 L731,145 L729,145 L729,142 L730,142 L730,141 L733,141 L733,142 L735,142 L735,143 L742,143 L742,142 L743,142 L743,139 L742,139 L742,138 L732,135 L732,134 L730,133 L730,131 L729,131 L729,127 L730,127 L730,125 L731,125 L732,123 L734,123 Z M45,123 L46,123 L46,124 L44,125 Z M333,124 L333,132 L341,132 L341,131 L342,131 L343,126 L342,126 L341,124 Z M448,124 L448,132 L457,132 L457,131 L459,130 L458,125 L456,125 L456,124 Z M677,125 L677,133 L682,134 L682,133 L686,133 L686,132 L687,132 L687,127 L686,127 L686,126 L683,126 L683,125 Z M88,125 L89,125 L89,126 L87,127 Z M392,127 L392,130 L391,130 L390,135 L397,135 L396,132 L395,132 L395,130 L394,130 L394,127 Z M38,129 L39,129 L39,130 L37,131 Z M79,133 L80,133 L80,134 L78,135 Z M71,141 L72,141 L72,142 L68,145 Z"/><path style="fill:var(--lg2,#2F8069)" fill-rule="evenodd" d="M796,26 L801,26 L801,27 L805,28 L806,31 L807,31 L807,38 L806,38 L805,41 L803,41 L803,42 L801,42 L801,43 L796,43 L796,42 L794,42 L794,41 L791,39 L791,37 L790,37 L790,31 L791,31 L794,27 L796,27 Z M696,28 L735,28 L735,29 L739,29 L739,30 L743,31 L743,32 L749,37 L749,39 L750,39 L750,43 L751,43 L751,50 L750,50 L750,53 L749,53 L748,57 L747,57 L745,60 L741,61 L741,62 L747,64 L747,65 L751,68 L751,70 L752,70 L752,72 L753,72 L753,76 L754,76 L754,82 L753,82 L752,88 L750,89 L750,91 L749,91 L747,94 L745,94 L745,95 L742,96 L742,97 L734,98 L734,99 L696,99 Z M846,28 L861,28 L861,99 L847,99 L847,98 L846,98 L846,95 L843,96 L843,97 L840,98 L840,99 L837,99 L837,100 L828,100 L828,99 L824,99 L824,98 L820,97 L818,94 L816,94 L816,93 L814,92 L814,90 L812,89 L811,85 L810,85 L810,81 L809,81 L809,65 L810,65 L810,62 L811,62 L813,56 L814,56 L819,50 L821,50 L821,49 L823,49 L823,48 L825,48 L825,47 L831,47 L831,46 L832,46 L832,47 L838,47 L838,48 L843,49 L843,50 L846,52 Z M712,41 L712,42 L711,42 L711,52 L712,52 L712,57 L728,57 L728,56 L731,56 L731,55 L734,53 L734,45 L733,45 L731,42 L727,42 L727,41 Z M886,46 L896,48 L896,49 L899,50 L900,52 L901,52 L901,47 L915,47 L915,48 L916,48 L916,99 L915,99 L915,104 L914,104 L914,106 L913,106 L913,108 L912,108 L911,110 L868,110 L868,108 L867,108 L867,106 L866,106 L866,104 L865,104 L865,101 L881,101 L881,103 L882,103 L883,105 L886,105 L886,106 L894,106 L894,105 L896,105 L896,104 L899,102 L899,100 L900,100 L900,93 L899,93 L898,95 L894,96 L894,97 L889,97 L889,98 L880,97 L880,96 L877,96 L877,95 L873,94 L873,93 L868,89 L868,87 L866,86 L865,81 L864,81 L864,65 L865,65 L865,61 L866,61 L867,57 L868,57 L868,56 L870,55 L870,53 L873,52 L875,49 L880,48 L880,47 L886,47 Z M692,47 L694,47 L693,52 L692,52 Z M756,47 L770,47 L770,48 L771,48 L771,53 L772,53 L772,51 L775,50 L776,48 L779,48 L779,47 L788,47 L788,61 L779,61 L779,62 L775,63 L775,64 L773,65 L772,69 L771,69 L771,99 L756,99 Z M791,47 L806,47 L806,99 L791,99 Z M936,47 L951,47 L951,48 L955,48 L955,49 L957,49 L958,51 L960,51 L960,52 L965,56 L965,58 L967,59 L967,62 L968,62 L968,65 L969,65 L969,75 L970,75 L969,78 L949,78 L949,77 L934,78 L935,83 L936,83 L938,86 L940,86 L940,87 L949,87 L949,86 L951,86 L955,81 L956,81 L956,82 L968,82 L969,85 L968,85 L967,89 L965,90 L965,92 L964,92 L962,95 L960,95 L959,97 L957,97 L957,98 L950,99 L950,100 L940,100 L940,99 L932,98 L931,96 L927,95 L927,94 L922,90 L922,88 L921,88 L921,86 L920,86 L920,84 L919,84 L919,81 L918,81 L918,75 L917,75 L919,62 L920,62 L921,58 L922,58 L922,57 L923,57 L923,56 L924,56 L929,50 L931,50 L931,49 L933,49 L933,48 L936,48 Z M889,59 L889,60 L885,60 L885,61 L881,64 L881,66 L880,66 L880,70 L879,70 L879,74 L880,74 L880,78 L881,78 L881,80 L882,80 L884,83 L886,83 L886,84 L894,84 L894,83 L896,83 L896,82 L899,80 L901,71 L900,71 L900,66 L899,66 L899,64 L898,64 L895,60 L891,60 L891,59 Z M940,59 L940,60 L938,60 L938,61 L935,63 L935,66 L934,66 L934,67 L954,67 L953,64 L952,64 L952,62 L951,62 L950,60 L948,60 L948,59 Z M831,60 L831,61 L829,61 L829,62 L826,64 L826,66 L825,66 L825,71 L824,71 L825,80 L826,80 L826,82 L827,82 L830,86 L838,87 L838,86 L842,85 L842,84 L845,82 L845,80 L846,80 L846,75 L847,75 L846,67 L845,67 L844,63 L841,62 L841,61 L839,61 L839,60 Z M712,69 L712,70 L711,70 L711,85 L712,85 L712,86 L713,86 L713,85 L715,85 L715,86 L729,86 L729,85 L733,85 L733,84 L736,82 L736,80 L737,80 L736,73 L735,73 L734,71 L732,71 L732,70 Z"/><path style="fill:var(--lg3,#C47B52)" fill-rule="evenodd" d="M175,67 L207,67 L207,68 L215,68 L215,69 L221,69 L221,70 L224,70 L224,71 L229,71 L229,73 L211,73 L211,74 L202,74 L202,75 L196,75 L196,76 L186,77 L186,78 L182,78 L182,79 L174,80 L174,81 L171,81 L171,82 L168,82 L168,83 L165,83 L165,84 L162,84 L162,85 L159,85 L159,86 L153,87 L153,88 L148,89 L148,90 L146,90 L146,91 L144,91 L144,92 L142,92 L142,93 L140,93 L140,94 L138,94 L138,95 L136,95 L136,96 L134,96 L134,97 L131,97 L130,99 L128,99 L128,100 L126,100 L126,101 L124,101 L124,102 L118,104 L118,105 L115,106 L114,108 L110,109 L109,111 L107,111 L106,113 L104,113 L103,115 L101,115 L99,118 L97,118 L97,119 L96,119 L94,122 L92,122 L90,125 L88,125 L88,126 L87,126 L87,127 L86,127 L81,133 L79,133 L79,134 L78,134 L78,135 L77,135 L77,136 L76,136 L76,137 L75,137 L75,138 L74,138 L74,139 L68,144 L68,146 L67,146 L67,147 L66,147 L66,148 L60,153 L60,155 L59,155 L56,159 L12,159 L13,155 L19,150 L19,148 L20,148 L20,147 L21,147 L21,146 L22,146 L22,145 L23,145 L23,144 L24,144 L24,143 L25,143 L25,142 L26,142 L26,141 L27,141 L27,140 L28,140 L28,139 L29,139 L29,138 L30,138 L30,137 L31,137 L36,131 L38,131 L43,125 L45,125 L45,124 L46,124 L49,120 L51,120 L53,117 L55,117 L55,116 L58,115 L60,112 L62,112 L62,111 L65,110 L66,108 L70,107 L70,106 L73,105 L74,103 L78,102 L79,100 L81,100 L81,99 L83,99 L83,98 L89,96 L90,94 L92,94 L92,93 L94,93 L94,92 L96,92 L96,91 L98,91 L98,90 L100,90 L100,89 L103,89 L103,88 L105,88 L105,87 L107,87 L107,86 L109,86 L109,85 L112,85 L112,84 L117,83 L117,82 L119,82 L119,81 L122,81 L122,80 L124,80 L124,79 L131,78 L131,77 L134,77 L134,76 L137,76 L137,75 L140,75 L140,74 L144,74 L144,73 L148,73 L148,72 L152,72 L152,71 L157,71 L157,70 L162,70 L162,69 L168,69 L168,68 L175,68 Z"/></symbol>
+<symbol id="dbp-mono" viewBox="0 0 221 143"><path style="fill:var(--lg1,#173F36)" fill-rule="evenodd" d="M7,5 L70,5 L70,6 L79,6 L79,7 L84,7 L84,8 L90,9 L90,10 L92,10 L92,11 L98,13 L98,14 L101,15 L102,17 L104,17 L106,20 L108,20 L108,21 L109,21 L109,22 L110,22 L110,23 L116,28 L116,30 L120,33 L120,35 L122,36 L122,38 L124,39 L124,41 L125,41 L125,43 L126,43 L126,45 L127,45 L127,47 L128,47 L128,50 L129,50 L129,53 L130,53 L130,57 L126,57 L126,58 L122,58 L122,59 L114,60 L114,61 L111,61 L111,62 L108,62 L108,63 L104,63 L104,62 L103,62 L103,59 L102,59 L102,56 L101,56 L100,52 L98,51 L98,49 L96,48 L96,46 L95,46 L91,41 L89,41 L87,38 L85,38 L85,37 L83,37 L83,36 L81,36 L81,35 L73,34 L73,33 L35,33 L35,99 L34,99 L33,101 L31,101 L27,106 L25,106 L25,107 L24,107 L24,108 L23,108 L23,109 L22,109 L22,110 L21,110 L21,111 L20,111 L20,112 L19,112 L19,113 L18,113 L18,114 L17,114 L17,115 L16,115 L16,116 L15,116 L15,117 L14,117 L14,118 L8,123 L8,125 L6,125 L6,6 L7,6 Z M103,6 L172,6 L172,7 L177,7 L177,8 L183,9 L183,10 L185,10 L186,12 L188,12 L189,14 L191,14 L191,15 L195,18 L195,20 L197,21 L197,23 L199,24 L199,26 L200,26 L200,28 L201,28 L203,41 L202,41 L202,48 L201,48 L200,54 L198,55 L198,57 L197,57 L196,59 L193,59 L193,58 L190,58 L190,57 L187,57 L187,56 L183,56 L183,55 L170,54 L170,52 L171,52 L172,49 L173,49 L174,42 L173,42 L172,37 L171,37 L169,34 L167,34 L167,33 L165,33 L165,32 L127,32 L126,29 L123,27 L123,25 L122,25 L122,24 L121,24 L121,23 L120,23 L120,22 L119,22 L119,21 L118,21 L118,20 L117,20 L117,19 L116,19 L116,18 L115,18 L110,12 L108,12 L105,8 L103,8 Z M176,62 L179,62 L179,63 L176,63 Z M187,62 L190,62 L190,63 L187,63 Z M185,64 L195,64 L195,65 L201,67 L202,69 L204,69 L204,70 L209,74 L209,76 L211,77 L211,79 L213,80 L213,83 L214,83 L214,85 L215,85 L215,89 L216,89 L216,105 L215,105 L215,109 L214,109 L213,114 L211,115 L210,119 L208,120 L208,122 L207,122 L202,128 L200,128 L199,130 L197,130 L196,132 L194,132 L194,133 L192,133 L192,134 L189,134 L189,135 L186,135 L186,136 L180,136 L180,137 L107,137 L108,134 L110,134 L111,132 L113,132 L114,130 L116,130 L116,129 L117,129 L117,128 L118,128 L118,127 L119,127 L119,126 L120,126 L120,125 L126,120 L126,118 L129,116 L130,112 L172,112 L172,111 L176,111 L176,110 L180,109 L181,107 L183,107 L184,104 L185,104 L186,101 L187,101 L187,98 L188,98 L188,90 L187,90 L187,87 L185,86 L185,84 L184,84 L180,79 L178,79 L177,77 L174,77 L174,76 L171,76 L171,75 L168,75 L168,74 L164,74 L164,73 L155,72 L155,70 L158,70 L158,69 L161,69 L161,68 L165,68 L165,67 L176,66 L176,65 L185,65 Z M132,79 L134,79 L134,86 L133,86 L133,92 L132,92 L132,95 L131,95 L130,101 L129,101 L129,103 L128,103 L126,109 L124,110 L124,112 L121,114 L121,116 L120,116 L120,117 L119,117 L119,118 L118,118 L118,119 L117,119 L117,120 L116,120 L111,126 L109,126 L107,129 L105,129 L105,130 L102,131 L102,132 L99,132 L99,133 L97,133 L97,134 L94,134 L94,135 L91,135 L91,136 L87,136 L87,137 L58,137 L58,136 L57,136 L57,135 L58,135 L58,134 L59,134 L59,133 L65,128 L65,126 L66,126 L66,125 L67,125 L67,124 L68,124 L68,123 L69,123 L74,117 L76,117 L76,116 L77,116 L82,110 L84,110 L86,107 L88,107 L88,106 L89,106 L90,104 L92,104 L94,101 L96,101 L97,99 L99,99 L100,97 L102,97 L102,96 L105,95 L106,93 L110,92 L110,91 L113,90 L114,88 L116,88 L116,87 L122,85 L123,83 L125,83 L125,82 L127,82 L127,81 L129,81 L129,80 L132,80 Z M34,108 L35,108 L35,109 L33,110 Z M55,126 L56,126 L56,127 L53,129 Z M12,130 L13,130 L13,131 L11,132 Z M10,136 L22,136 L22,137 L10,137 Z M24,136 L28,136 L28,137 L24,137 Z M31,136 L44,136 L44,137 L31,137 Z"/><path style="fill:var(--lg2,#2F8069)" fill-rule="evenodd" d=""/><path style="fill:var(--lg3,#C47B52)" fill-rule="evenodd" d="M148,57 L172,57 L172,58 L180,58 L180,59 L188,60 L188,61 L190,61 L190,62 L176,62 L176,63 L169,63 L169,64 L164,64 L164,65 L158,65 L158,66 L150,67 L150,68 L147,68 L147,69 L144,69 L144,70 L141,70 L141,71 L135,72 L135,73 L133,73 L133,74 L130,74 L130,75 L128,75 L128,76 L126,76 L126,77 L124,77 L124,78 L121,78 L121,79 L119,79 L119,80 L117,80 L117,81 L115,81 L115,82 L113,82 L113,83 L111,83 L111,84 L105,86 L104,88 L100,89 L99,91 L95,92 L95,93 L92,94 L90,97 L88,97 L87,99 L85,99 L85,100 L84,100 L83,102 L81,102 L79,105 L77,105 L72,111 L70,111 L70,112 L69,112 L69,113 L68,113 L68,114 L67,114 L67,115 L66,115 L66,116 L65,116 L65,117 L64,117 L64,118 L63,118 L63,119 L62,119 L62,120 L61,120 L61,121 L60,121 L60,122 L59,122 L59,123 L53,128 L53,130 L49,133 L49,135 L48,135 L47,137 L44,137 L44,136 L31,136 L31,137 L28,137 L28,136 L24,136 L24,137 L22,137 L22,136 L10,136 L10,137 L9,137 L9,136 L8,136 L8,135 L13,131 L13,129 L14,129 L14,128 L15,128 L15,127 L16,127 L16,126 L17,126 L17,125 L18,125 L18,124 L19,124 L19,123 L20,123 L20,122 L21,122 L21,121 L22,121 L22,120 L23,120 L23,119 L24,119 L24,118 L25,118 L25,117 L26,117 L26,116 L27,116 L32,110 L34,110 L38,105 L40,105 L43,101 L45,101 L47,98 L49,98 L50,96 L52,96 L54,93 L56,93 L57,91 L61,90 L61,89 L64,88 L65,86 L71,84 L72,82 L74,82 L74,81 L76,81 L76,80 L78,80 L78,79 L80,79 L80,78 L82,78 L82,77 L84,77 L84,76 L86,76 L86,75 L88,75 L88,74 L90,74 L90,73 L93,73 L93,72 L95,72 L95,71 L98,71 L98,70 L100,70 L100,69 L102,69 L102,68 L105,68 L105,67 L108,67 L108,66 L111,66 L111,65 L114,65 L114,64 L118,64 L118,63 L121,63 L121,62 L125,62 L125,61 L129,61 L129,60 L134,60 L134,59 L148,58 Z"/></symbol>
+</defs></svg>
+
+<!-- ============ HEADER ============ -->
+<header class="db-header">
+  <div class="db-wrap db-bar">
+    <a class="db-logo" href="#home" data-go="home" aria-label="DeliveryBridge Partners home"><svg viewBox="0 0 976 166" role="img" aria-hidden="true"><use href="#dbp-logo"/></svg></a>
+    <nav class="db-nav" aria-label="Main">
+      <button class="db-ni" type="button" data-mm="services" aria-expanded="false" aria-controls="db-mm-services" data-view="services">Services <svg class="db-caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.2 5 7l4-3.8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      <a class="db-ni" href="#industries" data-go="industries" data-view="industries">Industries</a>
+      <button class="db-ni" type="button" data-mm="company" aria-expanded="false" aria-controls="db-mm-company" data-view="company talent">Company <svg class="db-caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.2 5 7l4-3.8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      <a class="db-ni" href="#contact" data-go="contact" data-view="contact">Contact</a>
+    </nav>
+    <a class="db-hphone" data-cfg="phone" data-type="tel" data-optional></a>
+    <a class="db-btn db-btn-p" href="#plan" data-go="plan">Plan my project</a>
+    <button class="db-menu-t" type="button" data-act="menu" aria-expanded="false" aria-controls="db-mnav" aria-label="Open menu"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+
+  <div class="db-mega" id="db-mm-services" hidden>
+    <div class="db-mega-in three">
+      <div class="db-mgroup">
+        <h4>Project talent</h4>
+        <a class="db-mlink" href="#services/svc-pm" data-go="services" data-anchor="svc-pm"><b>Project and program managers</b><span>A delivery lead who owns the outcome</span></a>
+        <a class="db-mlink" href="#services/svc-ba" data-go="services" data-anchor="svc-ba"><b>Business analysts and change specialists</b><span>Requirements, testing and adoption</span></a>
+      </div>
+      <div class="db-mgroup">
+        <h4>PMO expertise</h4>
+        <a class="db-mlink" href="#services/svc-pmo" data-go="services" data-anchor="svc-pmo"><b>PMO setup</b><span>Governance, intake and reporting from day one</span></a>
+        <a class="db-mlink" href="#services/svc-pmoi" data-go="services" data-anchor="svc-pmoi"><b>PMO Improvement Sprint</b><span>Measure, then sharpen how you deliver</span></a>
+      </div>
+      <div class="db-mgroup">
+        <h4>Better delivery</h4>
+        <a class="db-mlink" href="#services/svc-health" data-go="services" data-anchor="svc-health"><b>Project health checks</b><span>Know where a project really stands</span></a>
+        <a class="db-mlink" href="#services/svc-recovery" data-go="services" data-anchor="svc-recovery"><b>Project recovery</b><span>Get a struggling project back on track</span></a>
+      </div>
+      <div class="db-mfeat">
+        <h4>Not sure which you need?</h4>
+        <p>Answer four questions and see the delivery plan for your project.</p>
+        <a class="db-btn db-btn-iv" href="#plan" data-go="plan">Plan my project</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="db-mega" id="db-mm-company" hidden>
+    <div class="db-mega-in">
+      <div class="db-mgroup">
+        <h4>About us</h4>
+        <a class="db-mlink" href="#company" data-go="company"><b>About DeliveryBridge</b><span>Who we are and how we work</span></a>
+        <a class="db-mlink" href="#industries" data-go="industries"><b>Industries</b><span>The sectors we deliver in</span></a>
+      </div>
+      <div class="db-mgroup">
+        <h4>For consultants</h4>
+        <a class="db-mlink" href="#talent" data-go="talent"><b>Join our talent network</b><span>For project, BA and PMO professionals</span></a>
+        <a class="db-mlink" href="#contact" data-go="contact"><b>Contact</b><span>Call, write or book a time</span></a>
+      </div>
+      <div class="db-mfeat">
+        <h4>Project already in trouble?</h4>
+        <p>A recovery lead resets the plan and steers it back on track. Not sure yet? Start with a health check.</p>
+        <a class="db-btn db-btn-iv" href="#plan" data-go="plan" data-need="recover">Plan a recovery</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="db-mnav db-hidden" id="db-mnav">
+    <div class="db-wrap">
+      <details>
+        <summary>Services <svg class="db-caret" width="12" height="12" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.2 5 7l4-3.8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></summary>
+        <a class="db-mlink" href="#services/svc-pm" data-go="services" data-anchor="svc-pm"><b>Project and program managers</b></a>
+        <a class="db-mlink" href="#services/svc-ba" data-go="services" data-anchor="svc-ba"><b>Business analysts and change specialists</b></a>
+        <a class="db-mlink" href="#services/svc-pmo" data-go="services" data-anchor="svc-pmo"><b>PMO setup</b></a>
+        <a class="db-mlink" href="#services/svc-pmoi" data-go="services" data-anchor="svc-pmoi"><b>PMO Improvement Sprint</b></a>
+        <a class="db-mlink" href="#services/svc-health" data-go="services" data-anchor="svc-health"><b>Project health checks</b></a>
+        <a class="db-mlink" href="#services/svc-recovery" data-go="services" data-anchor="svc-recovery"><b>Project recovery</b></a>
+      </details>
+      <a class="db-mtop" href="#industries" data-go="industries" style="display:block;text-decoration:none">Industries</a>
+      <details>
+        <summary>Company <svg class="db-caret" width="12" height="12" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.2 5 7l4-3.8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></summary>
+        <a class="db-mlink" href="#company" data-go="company"><b>About DeliveryBridge</b></a>
+        <a class="db-mlink" href="#talent" data-go="talent"><b>Join our talent network</b></a>
+      </details>
+      <a class="db-mtop" href="#contact" data-go="contact" style="display:block;text-decoration:none">Contact</a>
+      <a class="db-btn db-btn-p" href="#plan" data-go="plan">Plan my project</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ============ HOME ============ -->
+<section id="db-v-home" data-title="Project talent and PMO expertise">
+  <div class="db-hero">
+    <div class="db-wrap">
+      <h1><span>Project talent.</span><span>PMO expertise.</span><span>Better delivery, together.</span></h1>
+      <p class="db-lead">We connect top project talent with organizations delivering in complex, high-stakes environments. With deep PMO expertise and a partnership mindset, we help turn critical initiatives into measurable results.</p>
+      <div class="db-actions">
+        <a class="db-btn db-btn-p" href="#plan" data-go="plan">Plan my project</a>
+        <a class="db-btn db-btn-s" href="#contact" data-go="contact" data-consult>Free consultation</a>
+      </div>
+      <p class="db-hero-call" data-cfg-wrap>Rather talk it through? Call <a data-cfg="phone" data-type="tel" data-ph="(phone to supply)"></a>.</p>
+      <div class="db-bridge" id="db-heroBridge" data-title="How a typical staffing engagement runs"></div>
+      <p style="margin-top:18px"><a class="db-link" href="#plan" data-go="plan">Build the plan for your project</a></p>
+    </div>
+  </div>
+
+  <div class="db-sec tight">
+    <div class="db-wrap">
+      <div class="db-head">
+        <h2>What do you need delivered?</h2>
+        <p class="db-lead">Pick the closest fit. Each one shows you exactly what happens next.</p>
+      </div>
+      <div class="db-paths">
+        <div class="db-path"><h3>Staff a project</h3><p>An experienced project manager, program manager, business analyst or change specialist, on contract, contract-to-hire or as a direct hire.</p><a class="db-btn db-btn-s" href="#plan" data-go="plan" data-need="pm">Plan a staffing engagement</a></div>
+        <div class="db-path"><h3>Build or improve a PMO</h3><p>Set up a PMO from scratch, or run a PMO Improvement Sprint to see how your projects really perform and where delivery needs to tighten.</p><a class="db-btn db-btn-s" href="#plan" data-go="plan" data-need="pmo">Plan a PMO engagement</a></div>
+        <div class="db-path"><h3>Check a project’s health</h3><p>An independent view of where a project really stands, before a phase gate, a funding decision or a small problem becomes a big one.</p><a class="db-btn db-btn-s" href="#plan" data-go="plan" data-need="health">Request a health check</a></div>
+        <div class="db-path"><h3>Recover a project</h3><p>Behind schedule, over budget or losing sponsor confidence. An experienced recovery lead to reset the plan and get it back on track.</p><a class="db-btn db-btn-s" href="#plan" data-go="plan" data-need="recover">Plan a recovery</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="db-sec db-band">
+    <div class="db-wrap db-grid2">
+      <div>
+        <h2>Strategy isn’t the hard part. Delivery is.</h2>
+      </div>
+      <div>
+        <p class="db-lead">Most organizations are staffed to run the business, not to change it. When a system replacement, a reorganization or a regulatory deadline lands, the people who know how to lead it are already busy, or were never on the payroll.</p>
+        <p class="db-lead">DeliveryBridge closes that gap two ways: with project talent who are productive from the first week, and with PMO structure that keeps every project visible, governed and moving.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="db-sec">
+    <div class="db-wrap">
+      <div class="db-head">
+        <h2>How an engagement works <span class="db-flag">Sample timings</span></h2>
+        <p class="db-lead">Four steps from the first call to the right person on your project.</p>
+      </div>
+      <ol class="db-how">
+        <li><h3>Scoping call</h3><p>A focused conversation about the project, its risks and the role or structure you need.</p></li>
+        <li><h3>Matched shortlist</h3><p>Vetted candidates matched for skills, delivery experience and fit with your culture, within days.</p></li>
+        <li><h3>You choose</h3><p>Interview the shortlist and pick the person you want on your project.</p></li>
+        <li><h3>On your project</h3><p>Your consultant starts. Our first check-in is 30 days after your scoping call, then regularly through project close.</p></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="db-sec paper">
+    <div class="db-wrap">
+      <div class="db-head"><h2>What every engagement brings</h2></div>
+      <ul class="db-pillars">
+        <li><h3>Project talent</h3><p>Exceptional people. Real impact.</p></li>
+        <li><h3>PMO expertise</h3><p>Structure that delivers.</p></li>
+        <li><h3>Better delivery</h3><p>From strategy to success.</p></li>
+        <li><h3>Together</h3><p>Stronger results through partnership.</p></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="db-sec" data-stories>
+    <div class="db-wrap">
+      <div class="db-head">
+        <h2>Delivery stories <span class="db-flag">To supply</span></h2>
+        <p class="db-lead">Short stories from recent engagements: what was at risk, who we brought in, and what changed.</p>
+      </div>
+      <div class="db-stories">
+        <article class="db-story"><span class="tag">Sector to supply</span><h3>Story to be supplied</h3><dl><dt>The problem</dt><dd>What was at risk, and for whom.</dd><dt>What we did</dt><dd>Role placed or PMO work delivered, and for how long.</dd><dt>The result</dt><dd>A date, a number or a sponsor quote.</dd></dl></article>
+        <article class="db-story"><span class="tag">Sector to supply</span><h3>Story to be supplied</h3><dl><dt>The problem</dt><dd>What was at risk, and for whom.</dd><dt>What we did</dt><dd>Role placed or PMO work delivered, and for how long.</dd><dt>The result</dt><dd>A date, a number or a sponsor quote.</dd></dl></article>
+        <article class="db-story"><span class="tag">Sector to supply</span><h3>Story to be supplied</h3><dl><dt>The problem</dt><dd>What was at risk, and for whom.</dd><dt>What we did</dt><dd>Role placed or PMO work delivered, and for how long.</dd><dt>The result</dt><dd>A date, a number or a sponsor quote.</dd></dl></article>
+      </div>
+    </div>
+  </div>
+
+  <div class="db-sec mist">
+    <div class="db-wrap db-grid2">
+      <div>
+        <h2>Every engagement starts with a conversation</h2>
+        <p class="db-lead" style="margin-top:16px">You talk to someone who understands delivery, not a recruiter reading a job description. We scope the work with you before we suggest anyone.</p>
+      </div>
+      <div class="db-person" data-person>
+        <div class="db-avatar db-headshot" data-cfg-photo role="img" aria-label="Alex Atkinson, PMP"></div>
+        <div>
+          <h3 data-cfg="founderName" data-type="text" data-ph="Founder name to supply"></h3>
+          <p class="role" data-cfg="founderTitle" data-type="text" data-ph="Title to supply"></p>
+          <p class="bio" data-cfg="founderBio" data-type="text" data-ph="Short bio pending your approval"></p>
+          <p style="margin-top:12px" data-cfg-wrap><a data-cfg="founderLinkedin" data-type="url" data-label="LinkedIn profile" data-ph="LinkedIn link to supply"></a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="db-sec db-band">
+    <div class="db-wrap db-cta">
+      <div>
+        <h2>Have something important to deliver?</h2>
+        <p class="db-lead" style="margin-top:12px">Answer four questions and see your delivery plan before anyone calls you.</p>
+      </div>
+      <div class="db-actions">
+        <a class="db-btn db-btn-iv" href="#plan" data-go="plan">Plan my project</a>
+        <a class="db-btn db-btn-ghost" href="#contact" data-go="contact" data-consult>Free 30-minute consultation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLAN ============ -->
+<section id="db-v-plan" class="db-hidden" data-title="Plan my project">
+  <div class="db-phead"><div class="db-wrap">
+    <span class="db-crumb"><a href="#home" data-go="home">Home</a> / Plan my project</span>
+    <h1>See your delivery plan in four answers</h1>
+    <p class="db-lead">Tell us what you need. The plan updates as you choose, and your answers come with your request, so the first call starts with the details.</p>
+  </div></div>
+  <div class="db-sec tight"><div class="db-wrap db-plan">
+    <div id="db-qs"></div>
+    <div class="db-planside">
+      <div class="db-planbox"><div class="db-bridge" id="db-planBridge"></div></div>
+      <div class="db-planbox" id="db-planGet"></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="db-v-services" class="db-hidden" data-title="Services">
+  <div class="db-phead"><div class="db-wrap">
+    <span class="db-crumb"><a href="#home" data-go="home">Home</a> / Services</span>
+    <h1>Six ways we help you deliver</h1>
+    <p class="db-lead">Project talent for the work in front of you, and PMO expertise for how all of it gets delivered.</p>
+  </div></div>
+  <div class="db-wrap">
+    <div class="db-group">
+      <div class="db-group-h"><h2>Project talent</h2><p>Exceptional people. Real impact.</p></div>
+      <div class="db-svc" id="svc-pm">
+        <div><h2>Project and program managers</h2>
+          <p class="db-muted" style="margin-top:14px">Experienced project and program managers who initiate, plan, run and close your work, accountable for scope, schedule, budget and quality. Available part-time, full-time, contract-to-hire or as a direct hire.</p>
+          <p class="db-get"><b>You get</b> a delivery lead who is productive in the first week and owns the outcome.</p></div>
+        <aside><h4>Best for</h4><ul class="db-ticks"><li>A project without a qualified lead</li><li>A project manager leaving mid-project</li><li>Several projects starting at once</li></ul><a class="db-btn db-btn-p" href="#plan" data-go="plan" data-need="pm">Plan a PM engagement</a></aside>
+      </div>
+      <div class="db-svc" id="svc-ba">
+        <div><h2>Business analysts and change specialists</h2>
+          <p class="db-muted" style="margin-top:14px">Business analysts who turn intent into clear requirements, backlogs and test plans, and change specialists who prepare your people to adopt what you deliver, from communications to go-live readiness.</p>
+          <p class="db-get"><b>You get</b> scope everyone agreed to up front, and people ready to use what you deliver.</p></div>
+        <aside><h4>Best for</h4><ul class="db-ticks"><li>Vendor selection or RFP preparation</li><li>Unclear or shifting scope</li><li>Adoption and go-live readiness</li></ul><a class="db-btn db-btn-p" href="#plan" data-go="plan" data-need="ba">Plan a BA or change engagement</a></aside>
+      </div>
+    </div>
+    <div class="db-group">
+      <div class="db-group-h"><h2>PMO expertise</h2><p>Structure that delivers.</p></div>
+      <div class="db-svc" id="svc-pmo">
+        <div><h2>PMO setup</h2>
+          <p class="db-muted" style="margin-top:14px">We design and stand up your PMO: intake and prioritization, governance, delivery standards, reporting and tooling, sized to how your organization actually works.</p>
+          <p class="db-get"><b>You get</b> one view of every project from the start, and decisions made on facts rather than status meetings.</p></div>
+        <aside><h4>Best for</h4><ul class="db-ticks"><li>No PMO yet, or one that exists only on paper</li><li>Several major initiatives starting at once</li><li>Leadership that can’t see across projects</li></ul><a class="db-btn db-btn-p" href="#plan" data-go="plan" data-need="pmo" data-pmo="new">Plan a PMO setup</a></aside>
+      </div>
+      <div class="db-svc" id="svc-pmoi">
+        <div><h2>PMO Improvement Sprint</h2>
+          <p class="db-muted" style="margin-top:14px">A focused four-to-six-week sprint, usually about a month. We measure how stakeholders rate your completed projects using PMI’s Net Project Success Score, compare estimated against actual schedule and budget, review open change orders, and assess whether your team has the capacity, roles and skills to deliver the portfolio you’ve approved.</p>
+          <p class="db-muted">PMI’s research found that projects with a measurement system in place averaged a Net Project Success Score of 45, against 6 for projects without one.</p>
+          <p class="db-get"><b>You get</b> an NPSS Baseline, a PMO Intelligence Dashboard and a Delivery Improvement Plan, so leadership can make intake, prioritization and resourcing decisions with confidence.</p></div>
+        <aside><h4>Best for</h4><ul class="db-ticks"><li>Projects that finish on paper but disappoint stakeholders</li><li>Estimates that keep drifting from approved schedules and budgets</li><li>Project managers stretched across too many projects or roles</li></ul><a class="db-btn db-btn-p" href="#plan" data-go="plan" data-need="pmo" data-pmo="improve">Plan a PMO Improvement Sprint</a></aside>
+      </div>
+    </div>
+    <div class="db-group">
+      <div class="db-group-h"><h2>Better delivery</h2><p>From strategy to success.</p></div>
+      <div class="db-svc" id="svc-health">
+        <div><h2>Project health checks</h2>
+          <p class="db-muted" style="margin-top:14px">An independent review of leadership, sponsorship, the plan, the team, risk and financials, with a candid view of the most likely outcome and clear recommendations for what to do next.</p>
+          <p class="db-get"><b>You get</b> an honest picture of where the project stands, before the decisions that depend on it.</p></div>
+        <aside><h4>Best for</h4><ul class="db-ticks"><li>A phase gate or funding decision coming up</li><li>A board or leadership team asking questions</li><li>Early warning signs, like slipping milestones or rising costs</li></ul><a class="db-btn db-btn-p" href="#plan" data-go="plan" data-need="health">Request a health check</a></aside>
+      </div>
+      <div class="db-svc" id="svc-recovery">
+        <div><h2>Project recovery</h2>
+          <p class="db-muted" style="margin-top:14px">When a project is already in trouble, we put an experienced recovery lead in place to find out what can be saved, reset the plan with your sponsor, and steer the work to a realistic delivery date.</p>
+          <p class="db-get"><b>You get</b> a credible recovery plan, and the leadership to carry it through.</p></div>
+        <aside><h4>Best for</h4><ul class="db-ticks"><li>Missed milestones and a slipping go-live</li><li>Costs that keep climbing</li><li>A sponsor losing confidence</li></ul><a class="db-btn db-btn-p" href="#plan" data-go="plan" data-need="recover">Plan a recovery</a></aside>
+      </div>
+    </div>
+  </div>
+  <div class="db-sec mist" id="engage">
+    <div class="db-wrap">
+      <div class="db-head"><h2>Ways to engage</h2><p class="db-lead">Pick the arrangement that fits the work, not the other way around.</p></div>
+      <div class="db-scroll"><table class="db-models">
+        <thead><tr><th>Model</th><th>How it works</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td>Contract</td><td>A professional on your project for its duration, full-time or part-time.</td><td>Defined projects with a clear end date</td></tr>
+          <tr><td>Contract-to-hire</td><td>Start on contract, then join your staff once both sides are sure.</td><td>Roles you expect to keep</td></tr>
+          <tr><td>Direct hire</td><td>We find, vet and present candidates for a permanent role.</td><td>Permanent PM, BA or PMO roles</td></tr>
+          <tr><td>Fixed scope</td><td>A defined deliverable, such as a health check or a PMO Improvement Sprint.</td><td>Clear questions that need clear answers</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INDUSTRIES ============ -->
+<section id="db-v-industries" class="db-hidden" data-title="Industries">
+  <div class="db-phead"><div class="db-wrap">
+    <span class="db-crumb"><a href="#home" data-go="home">Home</a> / Industries</span>
+    <h1>Delivery expertise where it counts</h1>
+    <p class="db-lead">We match every engagement with professionals who know your sector, so they understand the systems, rules and pressures your projects run under from the first day.</p>
+  </div></div>
+  <div class="db-sec tight"><div class="db-wrap">
+    <div class="db-inds">
+      <div class="db-ind"><h3>Information technology</h3><p>Platform launches, migrations, integrations and product delivery where speed matters and scope moves.</p><a class="db-link" href="#plan" data-go="plan" data-ind="Information technology">Plan a project</a></div>
+      <div class="db-ind"><h3>Energy and utilities</h3><p>Customer, billing, asset and field systems where downtime and regulatory deadlines aren’t options.</p><a class="db-link" href="#plan" data-go="plan" data-ind="Energy and utilities">Plan a project</a></div>
+      <div class="db-ind"><h3>Hospitality</h3><p>Resort, casino and venue programs, from guest-facing technology to openings and renovations, delivered without disrupting guests or revenue.</p><a class="db-link" href="#plan" data-go="plan" data-ind="Hospitality">Plan a project</a></div>
+      <div class="db-ind"><h3>Construction</h3><p>Capital programs and the project controls, reporting and technology behind them, kept on schedule and on budget.</p><a class="db-link" href="#plan" data-go="plan" data-ind="Construction">Plan a project</a></div>
+      <div class="db-ind"><h3>Financial services</h3><p>Regulatory change, core system upgrades and reporting programs with no room for error.</p><a class="db-link" href="#plan" data-go="plan" data-ind="Financial services">Plan a project</a></div>
+      <div class="db-ind"><h3>Healthcare</h3><p>Clinical and administrative system changes delivered without interrupting patient care.</p><a class="db-link" href="#plan" data-go="plan" data-ind="Healthcare">Plan a project</a></div>
+      <div class="db-ind"><h3>Public sector</h3><p>Programs shaped by procurement rules, public accountability and fixed budgets.</p><a class="db-link" href="#plan" data-go="plan" data-ind="Public sector">Plan a project</a></div>
+      <div class="db-ind"><h3>Private industry</h3><p>ERP, reporting and process-change projects for businesses that need a delivery lead for the project, not forever.</p><a class="db-link" href="#plan" data-go="plan" data-ind="Private industry">Plan a project</a></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ============ COMPANY ============ -->
+<section id="db-v-company" class="db-hidden" data-title="About">
+  <div class="db-phead"><div class="db-wrap">
+    <span class="db-crumb"><a href="#home" data-go="home">Home</a> / About</span>
+    <h1>A stronger path to what’s next</h1>
+    <p class="db-lead">We connect top project talent with organizations delivering in complex, high-stakes environments. With deep PMO expertise and a partnership mindset, we help turn critical initiatives into measurable results.</p>
+    <figure class="db-wide"><img alt="A road bridge curving through forested hills at sunrise" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wgARCACDApgDASIAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAAAgMAAQQFBgf/xAAYAQADAQEAAAAAAAAAAAAAAAAAAQIDBP/aAAwDAQACEAMQAAAB9ar5wGVfUZ8u7w/bX4zML3t+XVR66/F6EeuvxnOa+g386IPpE+bdFV7ieN3o9JOQ+K6FhEzmbM10551VL1E8ztT7U52qW60cdrvj4zDc+y53nbqelkz2ySQZ6sJTXoOr4y4r6FfhOlFepnK6Et0qCKAsNE5iw7Ey6BHFkJlhdSYygg0E0dVFUqqHdXQ5UgSqtkqUKSWFSqAqqMkGB8VWs9+bREqDQSmquqObOn1Q5h1PV1cM2doeJsqehOdqb0XnW5ZaRa0RAB0S5kDqFyLDpLwCjUCymjtdJ6bx2zYzBSfYvjaB9CJendykyJUTbaLmtN5hl9EMNhurCQ9kzlF6NGK89Ozu4erG+9o4nTWezPeTXNWcs87lSb0h9ZVaRpbzl1PRxICp0hnCp1DkTS6RcZdT2y4K2vQc3BKhszS481bUZNgDQ9mrC3O2TI5oejyXBtDLJeo0boeLU8VQhkLWOjfN1aS+JfU1DsS4YjjlyaimxNcKComQFRqxnYWnZw1Q6ssT2zAwNk5wB05yqT69ctqroXhbFajzSa1twnGm9+IsNuvs42jHTp405wPJWbfIFMT0Ys0c1euPbvg1cegDgva6S8lNaV0dSsW5GnBjtrVXMtrdMMJ5qimcUqpTcKzBz8pwhjlNi1dDc3ISerfyn56HvxNy3arn62lt5uvSNoYHp6mYzDqN5Cg7ChMLLOFxqHJKnWvPTNdZbB1Z4NkTYNtRAcG1RwYmZJanZrqXptBTe1iqy10Oyui9Gnl640fMbEJCZ9sbEU6Z6QyW04ucdxorGDl6gzNbV5KqWnjJpy6UJ4klq4MpCamTmMJQHdQVS7HbiuSJ0oVQHUAa8xl7lAvHZrmZpvK3dbXGmzLrCtmLpuclbsae+kZM9NoUbVvRdw8crmioZSO5bBhsBceaea9lp45tbNc4unSrnV0IniZsCaTCXLeQ5pvU7G6aEs9OX5plpGqj1yznAcBUKpRdhUvUIsaNQQMUwAGzaVTUtFAglmoiWLu0DJTDgkJ4nqh5a14VW68b5ehXQzRpVdxmXRxOT7hVHl+j6LVN+UntH56fPq99l0z8U/1TB8BHpgjTjv6dJ4rwdi8+bfZubwNZzWtl8bBWfrk+NRpn7AfJ016nN50hehHhZrn0iuD2NM9waeLL1KzhGms+cKfWy4NQaN/HsfU5opc6EUI6tVVm5apUnS6YyVTUgQVwKaKAwKsCFdUAOio1Y60zK21EGttAq5GXqygn3t3mvU5dOjoZ2R0a349U2ykKpbdXkHE9nicjnuO4zhddx6vby8HH3bOD5ceri7LOSrSfT7fEGq9r2vnv02L4/nkcOs2LjNcY7PoljMumkM1CnlKhpP6vK9DU4W6CHs8f6jy2Wh0NtFEmO2KtGgYE3ZqFy6KJioSqiqsWiGUyyGCowpqDDBcIWrtcBtVSJLjWgVlEhYFQdiyWIuzgMArC6HM6o50uWsPTt8nonT1+zyD89PU4MT7QTXpa4qfRZkZ5eSa8mr1lXlxmdOw5R6il5Po3z/3+XR884fZ4umF9PnbprK1JtdDEFyCRopaCSQO9BwZS7sQ7WL857Ly+WuOjtCZpoamtOazg6BnHUupTZLC1sFzQHdJNmsV1IwZYiuiAChA1a2CF1VAUXAaUigDkG8JJVDINVyUTVIGnNIGiSTVKkii7Em0vySNdPtSRqTJI0bgkTx8qTfmx9SSam+Sa5vlZJKZI42Jki1IkubkjI2ROykmvQ45NI+hqkV8LjSI5q5E6dIq15ZEJqSpWEjV3JSCpHNSQKGQVDIymyBaZAjJBMzyAEkZ//8QAKxAAAgIBAwMFAAICAwEAAAAAAAECAxEEEiEFEBMUICIxQTAyFSMkM0JA/9oACAEBAAEFAsHkr8zWO2O2PduihSizH/xuSiWdQ08CzqxLqOpkSuss7qWCGt1ECvq8ivX6ewXP8uTJntkz7c+3PtwYMGDHajUx2xucb3r7fUx6lqJE+qaimNfW9V5P8vclLrGoZHquqQusXlnU9TMlbdMwbURk069bqqSPVdTF19XF1XTNLX6VilFpyiiWopiS6hREl1Z5/wApeR6ndmPVIC19EhXVuMrqoF3VME+oaiY8y/hx2rslU4dTtiV9QpscLIWd84HdCJLX0xI9Sqbr1FVv8WPZkyZMm+LNyN6N8TPbPsZ9p7k9m0c8KUnMreJS1HjjHUQxC1NWXqMqrVaJJvCR/UxFp7kKRIk+312VjR5zz1j1FaXrcHrp59Xdl2ymeWUSM5Y8rPUYPURFbF9sd8e3gTSPIkeuvR6qxtzUzC75I6i2AtfcR12SNu4We09xNNjgcxPJNHqbEetmPWWi10yWtsZKbsNiNhtNokOzB6+cBdWmiXV7mT1+omeaWExvJGTwyPJt4ik485W4lDeq8wI2yhL1T3q+LhRc7O243GTJu7Z9yURuImN90kNCFZNNXoVkZGTJuZn+DJvPIeREbIshyKSRCSK54JWkryWpSHqa2eSEngY8HA2ZOTdg8rPNMdkmN+5mMGTOBlOHK/HkVpZPJuKdrUv9iUpRldGuSx5YLiS1GF6j4UsjJS/gwRcR8HHuyxcmMduSLPIZ75Mme2ec98HBF9oohLBGY5kpkrCXJI8jQtRYLVvHq6zz1yW8fI/djvgkiXyMdvs/qSe+KjLdbVKAiMjL7RKdqlKcI3eOt2TgvJGMozhZsfmWPKu2BLjjt9DixSaFhEuDjOO20xjvuOD93I8p5h3s8sjczLFJis53itY7hWSFceRsVh5SM8EJm/myQ5ZHLBvyNJjXbJkTPNPHnZ5hTixuKXDlO+MLHq+ZaqOLNU5P1mYvV5I8xkcMX232WUPkwJcEUJ87xS+UbGheKU5YgSeFL/WTswo6polLyqMthKUkR+SjGA9sRjyjajabMnKS2yHLabojsNzHbJmWZM+3PbPaM3F78rg3ZNuO0RyIPhy5m8pyGxmezMowbo5c4peRsndkjcyd248h6iZKfkODbl4H9KXxlyZMmRI5E3EfyGtrPrtkRBlq2ifmI283f9PkG98N55h6hsWqWfLFTlOzfThLeeVo3yRuZn3Z/mXIvitxGRuMilw5G7iRu53ZW/ny8yeU5pnlRvjgc012ffDxycJZM8IY44ImOcHJuNwpGEfv2P7RW0nJeUg3ElTHc1sj4dqllXDlwiFbsi2fZVLYrSOVGN6zGeX+c9s/xZ7Lsz6EfXZ8KEuGxSQ5vHkwRsJTwSkiVzHNvsstNmHIyL+zcB/bWDCy8ZbwnI+u2T/ynxkf1kybsGRCrFDBJ8PIoSa4fZE7Eo1/E3ZhC1QjTbGwu0+J11OE7qtpHgpt8ZfYnGKTLItUxm4jbdcGmbVuyxWOs8nORbGfhtkeKw8NotPcLS6g9JqD0epYtBqT0OpH0/UM9DcejuPS2HpZninnwNjhheMjWShw6xRwTXG02o2Q2uEUnJm48mFJ59m5oUsDlzvWBRyNRRg27kI3Gec9sikJuRLdGSk4nk5rsYpR3SoYlh3w8ipgvJf5IVlXKvg3CMJWU3Jng2qektZ6HVNLpmpF0y5x/wALYLo72x6PDK6Vp4uWl0MR19MiRn06JHUac9QeouFfqzya0d2qQ9RaeoY9TDD1FDFZpGZomWaZOT02D0cB6OA1p4HkpMwxHYyXxHcQ1FYp0zVrhUnfl53DXP0bzdkeTPfJkyZ7M/OTOBMUsDeUISyeLK2yj3SI4Q0rS3TKBtaMEfg4tMr0eqZVoNXh9Kcx9OjhdHozDplECGhrRDTRg1BIldTBS1WmPUI895v1bNurmektZ6Cs6lpqa6qqKa4qqAoLE7qtOpdXozPqd0iet1DHY2ZN2DytGTcYjInVJOHlgU6m6T1V708ZTnaPYjfHMpZFa4DsbPJ8VgdhKx2GDOCUjIzJkfbJ9n02fYjInwM/Ex/UobRI5I8Gcrau+CMtorCHSrpyjoNHFxhp6xXTFK2ZtRwiv/bJ+Kkv6jXQrOsXSHrNXaaaqd9tOmrjXFJK/qWnqLetWD6xqmR6vq0R67aiPWKbTWYnplD4ajVV6Yn1Ky4k8v8AfK93mFyLLZlGTPFbzPYeMqj8+sVeGnJuaS+sn6ZF7HgyPgb4EfvbPb7R+9smTOezP7R+uyOE2kZwZNw5NKmbrt9V5SucHHJk3ZN/Nm5rN1Fj1TlG6vWTjt1cCN90TQ6q31E9XZAthPWVqbNwq9w62hpirZXFxNkfH1CClrkYyeMhByb08hfdbY9PKT27HOKj2p/7dpgivn1qe6tfWM+1ezJntL6H3+/Znu/ruvoedqfEvvtnIuZOv5SM9sjlKAr8leoaUdZNL1kWVXqyK4GkyeljYelcTZbAnNkJ0xslfCSU4bZae6B+1MayeJM8eHjhf06m8a8TwV6rBJYIXyUY002N1uCxPa57lCHkJVTqKYf7JSjE4Yv7dVXwkfndfSH7P3J9mOz/AIM9/wAfdviLJdkbeeEftn33/NhtN04kL5EbY4he0R1VotXEWqrFLJiMiWnhIloES000eO2I2JUZdMJD0+T09hKucTOK+qP/AJjRHg825KOBfW6VbjfI82Hlbt4rWn5N0Jy8tdGVVn5a2mVsbK5wMRMRNkMeNHjSPGOB4ZjokOmR4pmGmPttyYNrTwY7/i9mDPZvhez/AM9pfXaSw08ybwZ+SJcL7jZ8TT2zlLfLdNLH9HotRZZO34EBPMr64pbUyyESyuKI2zjJLMd0oqnVXSl1WivdHmJH7XyJpIs9sFmU1tF/1ad5qcn6vR826muObKKyVNeJwinjDZXFM8ccMyzdIc5M3yM5GSXtyZMmWRkyf2fr+3FH7hH/xAAnEQACAgIABQQDAQEAAAAAAAAAAQIREBIDEyExUQQgMEEUIkJAYf/aAAgBAwEBPwHYsUkzeJvE5iNyzZHQo6FotYbSNzZ+6sUUUVlLNFFFFFFFFjfgROC7mhodhyocjY2LLL+HY2LwhHLTOJwq7EIMoeLLLLLN2ObLLwpKqLdEZUbil1NbNB8PwatZWKKxeehZeFhSEdzsSkSGWWXiimUa+yy8wdCf0XasUmWiomtDhiy8X7rLLEyMjYeehQyzYb+JF9TojTpcRxdEO/Ufccvp41NTUrFM1fg0l4NJeDSRri6Iy6GxKY5FlljfxLKj4OW+5PgtkYdKNOhykfjo5C8HJXgSjbRqhuMfslx4ryfk/wDD8g57HxWxtiTZVCaHJZbL+ZEJw/sUl9I2s3ojx4/0T9Q/5Iybf7HN8EvVTZzp+RceZwnbZObs6itlGuLLG1f6+6/8NinI5r+zaL7mq+jVm8l39np33J9yEqLLWLJRwsUJDWX87F7YdhHEXUYhMl7Vj7F2yh/L/8QAJREAAgIBBAIDAQADAAAAAAAAAAECERIDEBMhMUEgQlEwBCJA/9oACAECAQE/AaK7GqOORxyONnGYmLOyzsxZT2SbMGYIrdoossssyMjIcjIssssssssssoS/RkNR+Dka8nIJ2JWYmJiV8rLL3oxK2ZIc6IavfZPUiIQomIolFFHGhacSt2u7KVk42YD6RyV2cnsWr+maZZY3tZf8WyxxJIcRRIxIiKK3tGSMjP4NF7UTjY/0xp0OKMWXMysUxFFbV8mitmiUTEVFostmTFZRihL52hMsZXR2zk7qQppsnddC8Ch9ltn2ZGRe1oyRnH9OSP6ZoctqbHEwIwFErdL5+N2xNPscUJ/pn9TT1K8kn3Z7M2cwtavZyjbqzNn+z9EdNs4DgOIjpiRKSRlY0xJ+90UV/FP4NHE/qcf6OCQok9CX1I6C+xKKS6OJ+xf48ELSh+D0Ymp0kRii0PFF0ZrZFFP38aK/nWzF8JJCiipIyfstGEWUUezWXgiaisasSa2ojLZ+f+dkj3vLyMg+tmMQxeRbM9D8D8/Bbr+X/8QAOBAAAQMBBQYEBAYCAgMAAAAAAQACESEDEBIiMSAyQVFxkTAzYYEEE3KhI0BCgpKxBVBSwWKD0f/aAAgBAQAGPwLgvk4h8yJhR4VXN7rfb3/KS4gdVv4/pX4dl/Jb+H6Qs1o4+92ipTostqfdfiWc/St7CeTlT/TgWjZAWIDsg8PLSBArosXzoWJ1oIPoiXYI6KtlZlZW2bfuq4HdQh+HZqjgz6Qs1q8z6qt2W1c33VLTG0cHLNhd1C/EsvdpVS5h5ELz2KQ5p91Vze6M2rKeqoS7oFlsaepW5ZqtkwrNZPC1c3qFi+Y2OqOK0bTVfhMn1cvMwjk1S4k9fDlji0rOA8KDLOqyPa7pfVVe0e61Luiq14WV4nl4Oo8HUd1wWoUYh38AVqqGfVTiqvVDkqCEJbKzUWYdk1rCDzRUTW6QqgdVrKrVUN3C/ULQKsqlVuKjWwjn1WZ8qjlGLSq1aszVxWvg6LktZVAqPKlz391JdPXZyvcv09lUQqOm/VVN1CQvMct9cD7LUD2VWtK4D2WZ5PXY0u8wz9S84n7r/l7KjWBVeVwvil1UCiPssJMEIFpCmIOqxWbhUcUXPBTn8XfZF8+yIPjVKoVvU6bfGFUL1/I6bOgW6VvFQHjZ02qu8Ct+qr2WIGJrCrogbqoNMSOKc2hamkCDoQOKGHebw5qgKngvVEEqng4cA6rTsue3XYp4McdnRaBa7VVS6hIW/wB1VoWjlr3XDxQdjmFErCqkHakypArzRltHaIta6AOag0lGFKEX6i/W6i0WkhVCF3A7FQqLgte6oL9djRSb9Fp+R3iq1Wl0kogEU1WA8k3CMvFHDrwlDDRaQ5OpAi+uzVa3Qtb9VlgoksM9VrTkhEOxcFlbQ6rDDUAVR5bHBRKdNLs0oZ+kqsStFx7qpjqqELRVctb+V2viQWhSCuB8TXZopFAqUUzCrdrPVV4cvFla7NVRNdEkqHd+SqqHdNbsR1F3M+qwmIuyviVmIoiTUarL/aoVqbqn89ClVFF6Kjh7LiqSoqqqvDQeLKnarVRxug36SsLMv/iiIqm4paTph4p4mWuCa9rg7/pO/q6LiAPW6VUo2g92rKVmukflpU7Gt9FrfS44RdVbuzERfr4dQuZWIe60qidI43cbsJ15LSVFpoNFAMdVhc0H1WR+o4qHN9FTQmLtUfw2yTqFVae90rA7gomHKH/ZcpVQuC1hayuPZbruyox/ZeU/svJf2Xkv7LyXqli5eSV5f3W4P5KIZ/NV+WP3LWz/AJqrrKPrXmWQ/cvNsv5KBaWY/cvNs+682z7rzbPuvNZ3XmM7rzGd15rFvtW/Vb03wFO1KhUWqi48PBgKDRcFK9E71NAsQqOI5IwQeisnQZ0MBFuNp/7WCZZNw4LQ5UIfBbz4puJrH9ELSzxQ7hCDmWT/AFACj5LvdbrR+5YS6zHuvMb2WE2rvZqxE2pKlxf7uWYivN6ibLuqNYejCVk+Hcelksvwdp2AVPgu7gqfDWY/9i3LBvVxVbf4VvdV+PsB0aq/5Ls1V/yVr7NVf8h8T2Vfjrfuob8Q73tFlc+PqQqded/PoqWf3U/Lat1vZU+WeVF5bVWy7Ll1UkLdA/I0v9Vy2Naqo2WgmDzQzj3XNCZu1qslg8+yrZmz6uTsbrFvLiUJ+JqOLWKcVqfstxx6vVLP7lUbZ9lwHRoCl1tH7lRxf0krL8Lan9qgfCx9TwtLBvcqtsxv0sWb4u29qLM+2d1eh8tvGpTcNkwacFRje134lo1vUqGAnrRH5bWALNaPH2WYk9TfquV1JC5qWktTWvDTXVAwMxhCXSqVRJbcYNwF9T+XF0LVEHZkCiDT+rRC0e5tl/azPfankFk+FYPqWXC3o1Vc4qpWiwtWd1V5T/SkLLZtHUyvNw/SIRFo57shNShFm0GOSKjF8w8mr8OxaOplbzR0avMH8Vns2O+yzYrProsTSHCdQm9AvxHV/wCPFObZn5f9lSTXY1VBOy3re3qFZ1rjuib+e3oqeF6eDotKqNg7EJj8UEcUPmyOmiizcDzVbhHZVWqDgXUEZeChjhZu4lq875laTRZmPHstW9k3crl0UBrITw+2cwb0NFL5ham85iEOg4q1Ay6f1dlqq0IUBcFxVHwVOJtVFo0Khpczre3qmfUf9Adqi9FOxlKzBZbV3TVVa13QwtHjqEM46KoWvdbs9FRxHVUg9KLOw+7ZQcGtkeygh49YlOAtW1aRWirZP7XRdrF7egVr7f1fBbiHqpBlq0pKxkmDwCcdQDC+YAcPNVWEFYd6Riy6JjvVZjFw6pn1f6A+PQqoQDoAWV7h7r9D/b/4s1m4dKqBagejqKcIPqFoV+lSAR0VHdwt0exhZ2u9xK3bOey0eOhlUtP5BUh30lZmuHUJvQK09v6uqoVRCgI0uoKclNxKky7CIHogZzDVNlDqm4GYoMrM0j2WpW8t9b4VCtdquxp+UHiEKlFBKiUFLZafRYXuxD1VLoKoFotFQQoDqKVRxCwl8j1RtYznjKM3wdAhCG0Yuah1Tui3QtwLdC0v0Wl2pWpWpWp/Jlf/xAAoEAEAAgICAgMAAgIDAQEAAAABABEhMUFRYXEQgZGhscHR4fDxIED/2gAIAQEAAT8hrRnLWTMKOc+n/uWDC3RzAhFfCvipUrxFAAXVjMoqW9UMzwz6lSv/AMJdFOVU09nRv+YnF7f+Jxoeifz1xR0THT8i7n2VKUomKymoeW1UrTP4aiBaE8fFy5cuX/8AV/8AwL+RZcuX8Lly5ctLZczKf/oCS9nWL16gkADYcfuWXSqt/KBnA1RLcC0Yv5GB3lB/eGWLvJHDC8VlKWwD7YjRre8zFnjcL4K2HFh1s21fsJb/ADQpWlY7cRzUluqK8ESyhOf8CXfnEDKGJrLUZBDCmkFsXuMKjsbQ/L9SA6m2HPLNB+zSR4UlD8RGbiXSYPbwg1Veheb6lpKXHN9RtyTwVGth7Vw+T/4CHSe56DQxrZt6ZnD+OP2EWB5RxPqI2B7Zd47dw/R6uyUAHtLlQPpfBjNwGV8sZdtfyS0qYlkpKdSkQf8AMNBYpxd/cR2f3G61vUZaT9mfhcuGYjs/ZnXDmCmY6YIuiK9NY/YFDcafhilxMBY6IYkvgp17jLC3Rm5f6HPoeZncFrx1NKCniNSabOY2rz5vUcrZVgHpAgg9JQIT24i5JOol5mOLQw1XiZM5+ma77yOefqZicEFNr8HEoGs7xbG1Q4DAV+iteoFm8GGdSsEA6W05fo7hdkPUu0Q3WHuBcaSpXwqVBecyy+UC/Mf6Yjat1V3UoUK/uZNGqsjOpecNxT8X8NWvF2TEsf8Aach9S5siJdtY6iphk24+34f8SM1f5J3H5ETfshTiQb/JEAafXCn76WGAj4yvRE9JTnVeYzyUBdHsEb8Pas/rJuYin7/1Gxj8y0JQ/wC1EKyOo71olDy8MGkbKpSXt2bGvMK2/A4hIOTzxBQVi1OGWiwyHbqKkc2RA3RnhMUCGeVxWhYXiaikyzwnrN4p5uWy0v4+/ioKlvQSxkD1PCpxAL1LmTncS5KfEoyZInjEDWocLKme/EIOFxK38PJFPMuDLly5cuoVcYgu/wBlOpjzZGazEC7HwTXVwcIAYnlI9n6Yw2FdkrEV0XGATyR9vhL6jD258SvS/se8/JVKY6ivLnzFiLEbmYxYZgAU+Yd4cBuK8olLa0z5QFCp+zmo1ZPgQjg1UMd1G0dqZHgicgFA1DKlxnmVAM4EdwQz/WTLzOvMv0YYrzE8M9PEVyHMuFXWInxV/HMN5jLVdYlK1D2zLBuhwq6gWq/pKqY5h8XXuVGHEZTCvEbtkK4lA2xL2slXj4X8YfGl1eeop3K7DlUylylgO49f0zpL6gruG3dzSmXcv5ls4IJkphsmWW2MMHiz6XNkXsxNlhj9hcBPCqU4/lG7MpGPlj4IlyvglMr4LTMWAXzDCO8wFVA4VBdJm55p7gNgdjMM8xDNzY3iX9SimQJpwcPUY9vnKhYHLmD0At9QEaNHuWkPWZsRTs4jtLV18EA2NlShzcxeMy1URTvMLYvW7cwPMEvy/UpYTR9xrzULliHuN2RIbhfELVQy1tT0xqHC4faVOyJo093LLTv+Iq3CubZqy+J2o2VFeZk3Z8S45u8l8QLxR1c6J5xL2BG5hzGzglSboyob+IyjqfiF4jZLRtFM3NCBxiM/+U7wleIaguw1cpXy9lO+oayvb/U9YPJOIM1e2Xp9irIdlkwpyTUJd3iuIkmzMwS721LnfmDHZ1carhLFbMm1yxyB6eZQscwfEtsiOVf3mZspunGBStFj49QUgFlEOSBoXZGTEciE3pOkjpYe0gci80FVDwSuo9zT1CYRfUQ1R4Nx3pZ3zOaYNmtLsitbHhh+5/M45SyuZabDzXMwuXGYYn+pY4KI1ZoeZaF4fEeSAe5my4MIOevgAblyXRLAV9yt8nqFUQPmUpgOcTkBqW/HhlfyQUMtIvjYwqjZVlszmhx3Hwreo6gO1movpLVhQqqu5T2a0GCZbWVf8iVbFcI0q37mocbZUXMOXdSsNVFS+SYTN8xtOZ3L7EwkQrbqtRw2O4l5vcbw1C6uodJ5KIt5o99S6lBd8f8AsUG6mhGuGtYgD7I8zpxBrB/pmBRgYVRooq4uU5dalHYe6hkhb3qMKg0RxGn2bMrVYe7fxGxqetStoPMLty/I+JfBGX7l9R38Ny4PxxPucS/MGDc/r5HCf7karWniW1lI0JvKprYX+GhkBlaV16lhYKSzxF5muXbCVt3jMXKpe7lO5nuKGUfTC3DQiFXcY6lzZRKKVUFFQaG3uLq6irepgHMzMQBt9wV0uMbbqaaSCmXiCpWK8Sju3cQxnIH6m0suLHmZQPaMLAubNi+OpeljYUxGWrh/THbwpvYxJqXk5UwE3nCBXJK7ONMYvcvl1tU4mmuGK5pQ6Uqu2UdOpK7deQjrBzuoy3g6liksN+IYS6mcHzMvggFfBD8l48wzMT+U2a+5piCcwUXdku0y4mXWoLNp+QMVsrvR4WGTXmaRu/4jQlnzLOW5WcZ7lI1Xcb0glLFiqBqL1DKDRmMVpZCWR/gzgM3qoQP7IZS34h7/AF8Abm4rG6uhOlwW2aJUJkZlMzXmbww+Aa6YS8FvmW6TqmWbPoiaC6HUKHIDmGaxkqII8nMp8IqTbK4OV0wn3BSrWyl0SiqdHDfiI7hbUWxKr80rEHlG8osvDljiU7upFzujqxnOIFI2g4tkkMZJeOnueTvuVwGzXEeoK0xmL0ZFeGIDo7/yjH0XK4hV5TmVVrF4iw2r93K2B/aBZrxpS/X74NtfeFf+XF8s1MRf+FA0Fvh9k9P6zZj5RKcMPYzM5YvW5e5r4KRJMNxSIZSGIfjIhVwhc4/CCJxE4RIf9su5vUfd+sVLjZXx1K3JGueWHVpab5ZvUZdZz8Uz1NSAwag9rti5rL1AwEPNxhD9spXnxLOsFbYBRc9iWruojL4jLjuJbHsizCSoK5V8Rs87eILLtsdRIYT0EyrRzyCJgJpURxduxrhhqGNZ/EO+VtZPEeXglQI2d9w/anXg/wCIiMyv98romsmw9zei0tdJUyXCv7NH82YEdX7zKKJRSzF20jw340EnMy6CZJV3hJz3hOEtZ3Ypn4H/AEqfcHi1epsjd9GI/kP9CWn85QrHelNj/q/cp/xsNZPqj2R+J/bNkxLOOSDvZuGFwjaWDh33A5Rr3GqW/WUf9jDSojGRuXRodxjxJ5UWU7jYxRglLwqEQeAI2A3qXGa/PiXlTiYktu1EGruYsxVxdZmMZWYzUeLBLueDCv8AKZMNCXcbQXLOCHQXCao+CWBIZH0RIKFzExUJ5xA9ZzMORj0la3F4bi3R6ZhdFFzJMfcNKpSipb03cuKgckRbLW1dH5FHlb2GLdEt0AJZV4EtD+7ouRXRz1FbgH8UCQW284m3zNT+5k+3B/UWY9pmC/715jVE3wiH+4GUiDyF4i4hWW2oFsHoQeBzLADWsn5BWnw4ptJsNWzB+EINy/kZU4PyEFNmUvRn9Qd7uXwsLUSGBHoZ0wmyjow6WqHdRdeaLg+pnIc/omAFuuiYFusSsIXFLW2bfVSvNTJiiFBdWpWrumFVX8DedoK5my+4P7OkzwgujJGOfgqjt1KfDqXwEFBZFTWiWN/zGL9T1CRWbYQuYLlolhR/5DogVzbLH8BLjBcAbuHD/OaeTU/6371P2Czf8wWDKBoj3RETZ6zL1fqK2qzK8E4w9HL+S1mVrkfsVxfmjGXHRQL9K77jSkOawEMRPMPl/nURacc3PyJYlORPYn8FdqLg1qqN/ojFqklkS6v/AAJw6tDK+phEuufs4iMhXK2wQDLE8dRsA5ruIbdHiFwyC2iKdzxRtMITLhj0lOP/ANoFmzX1iXvG2NSVdSmTMba9RTJ/U04J0mkWD7lkW0X0CC0sEWbTcKXiGZtiLe2K6CAPN9y+Ucy4cuY1IPDbMW4/IUF6RqlwcMS2FpEDM03iH+iy1lXRGyk+FkqDAtbqGS0s2pjfoSuX4gFFbQcvWIU0qW4wSh6Cv+Mddj3EoEY4/uYHFO2nrmXjPStfpz/cbCWWssHpjngd5k5q9iBxY1ZaZV1IocwqdHAujnmI11D9RypZMPwAI2yxth1BOw5iGFfM6I5xlT8Rgu4YyycVORYVokoJbAHbiUc0BDOylb8ur2+IuorMXwRQbl/Eu7awTP1YiU1iEJ0f7ih838QVZ5+B1gnMXM8zJmzEfM1DL4HuO8twfMFOotsW7h4REYsu42hbzUDhCUwDMpOPhcTCLpxPwJd9IsjFvwMShrJE8j3Eqjab9SioX75+DmOEzWLqcblUIdsf5n3AbkpNp6sP0mVVeTz9zsD01C/8E4h+kcfx2R/MNJ7C5pu9Rli/YB/zie29FPyXqWgsnHkh2p2W/qBWWHpjZ4BieNDZPtqOFY+TUaKXf+1gmIvP9EWmMsWeoQv0VeTXuA0/8nqpUaqBkiEP2gwI7KkHwL9SUFtQcQc28RENHIyRKbtAcQSwF1mUiwmHpLPa/qA0Zhjz/qOoGZx8RozEVUbc3uVmmG5dfClEhSXBTLhFniFfGKxxO0rHE4ie3wuLkn40QCaXxLleYKtpTnEG2oNWqr7iL18rBEepRI1Z2j3D88W1rCz6naVM5APmj+xW+/RL/wBIf2xGOD/66iPR+Mx+XvH9z9RFOWfunc4HWqXiMNYvdW5ovQhDFEe0/qW6+tf4gD9ukrpN/wBUvGjeX0jiJphMvwRT0LqjFSk2PzLNA9cShWxAafruFqkZXWZgCWxQXFo5SnydTxim9ZlC4RCFm1AfShcLZXxHXy8KvF6hdQDyzoFg+qOWOMD5ueqLw3EjJiA3ubYRHjMcdSVUsZlKXLGzSZYqNAjFbzDsOY4YuYwLjXiDD6jT4LUzvUbiLDctRYOCc/GSvj4utQgqMF+CJpFO8zJumGIMaicHgOoQW/3AM5POZrGyBY/YdQO3wBf2C3H+Zn49Yj4BPJAzRDaE62NLa8YgFng5gXgufxdMMq1UBmQuG7OutRPURwkwM8+mDqOgUMb+qjqXCDAoS4VGJUe/NhcSw3ibFokANLP941QffwxYRCEogg2YraU+4aMX+xL/AGR/5qbjFrPwQhluoYGIGPhivcV2y3cV3PNNDH5Hd6NcFRww/tBVZ0CPHialT//aAAwDAQACAAMAAAAQZwrEWzTJtHvTaajry77Yc+2wRQWeZHa1KNwYQL7nYNeNUQUEjIumRRpnb1Mi4YFJg3RVCkZUsx7BgPD8+UZx173B48K9Xs0j8EUDjmGkG0w20ejMudFjkphtnb/cY/Z8ZXZHApAzhNLK0JGRrAIhQSovNyL0z/8AbgKVWa16zAfq7EBXwF5TXirTdrSl9gknS3BbX3bX6iHu35Cahtj6rinARtkfbQgk6lnqWjVzlOkS5jIOfZ4s/XAK7aoxgUWpBNbFfANIP59eEFdDIcIml4R1SH7oqQW7B4amca/Q9RBiZP8AR5k15v6FqrqxS4pfuG7OWLbzYsAdTP5BAbH90F7/AMc9giffBBd/difAd+++eifjcjBeg9+fc8A9/B//xAAnEQEBAQACAgECBgMBAAAAAAABABEhMRBBUZGhIGFxgdHwMLHh8f/aAAgBAwEBPxBQ9Rx3PAfneJ9BCfUfMiDXvwce78+E9wDdhI9FtaxELHNizw3MYhAQQFh5MWLNnxDcu7CbXZDw7sPITzWT0NvYIXy/ptWo323GWjBBB4EImrlD4HeGO8WSPdyUGJYlD1NaxE5sumX7t2PUpEraa9vnE8vcDhsdzJPaeYkDZDJRnwckfKMht+ViBCMN9wBfFM7bjg3A4g9y3qSdzmTMVlTS7b7IuYcLfhsSqyX2nYJmowpzD8DI6TGModln147a8ENsMIhwDli7tHbmpNke5FkTyyPUg6uPq0dNr3M+G5ttsjSaO3Qncv7lygLVjh0hmBswpNwGTmQU7hPUo7sYb1D+30j5X0j530j4mGd2SRngGXnxL443m7WtpceHxkBZ4BInDCncnYtMzJaf7s9E/v7XPH9+8vxuQvy/39JbNV8H3f8AtxKcfvG/GfT/ALJY/wCl8m+kn0vr/Bb+Pu/zPwH3/m9QSHbmCDwWE8zHghMtbQmLLbM/g2W3xkpn6Ov+sU0j7/eH2Zw3LrcG08sP2jKtkhh1+l0zh+V+b+t7DttP0to6IJ6UBebZ3IjPK7TPgltiXi3wW3wszb5zxlxd2XUY64he49Semt+9nycw7hOeObHl+Vpf63yIw6SnZOBwwLREveQMshSySMQs/wAAeGY8dPH1HXlrymxHAu0uJh4u3h6nvx2juO/iPHbx3wvP4SfK3//EACYRAQEBAAICAQQCAgMAAAAAAAEAESExEEFRIGFxkdHwofGBseH/2gAIAQIBAT8QA+70bP7X2Jg9zIOdn4s249eALoj45PslT1dAR7mAsHRMgw+pRa+niikn6fk1b86rg8WsIGQTl1GwUcQ9wduIujGfJw92WEpvBc7cngxmybNRZJPDHc3Rt7U4Mx6hvgDCdRCG7XsgdFmHe4J06sR82LLpnqLxc5CwhOLfGoTgQrBkSLS1IubRk+Jm5+LJGdJD1KbbuToL3TLzNDO4HqIQIAj5vEGyemO4Msy05uXE8zqAR0PSMC9xsEkerLlIXbiN0gvu37j77LFllnhIGTIvBN1YGXDGOI6IJZdERt3c+207ITqOfCRqXPh8ADciJl3j1/fcZfj+93D3bAWWu090mWypDmqQuVserMBtJL3Pyn7n4H7vsP3ff8OrDNnWdnhA4nXVjnFmlhA5O8WhGNpJadox6uLF64isXISdEcZHXH79xHB+iZBP+v5hzTn9+5Bc9yzjg/v5uVkX3v8Aj/Vh8+Zx539/+QDpPhz9/wAw/afr+W/L/B/EA9v+P4gPbAGXAtrkEk4YxyndtIcx8ogec8e/AWhLsOeFZHt+f9Snuv8AftdAWto3pYdGv/MpDjc2rj93eGyDg/ovRI5PzMPvIcM0NlDi0OIRNhp4AHzsskguXgEec+g8HKb7JO4+CfvY/iV0x1Gw6W/Zk9BtxgyB7WvCIAQ8c2AY83TOkC9lrkZzRvW2/DZYjwR9RZ5Yjub149COkeCEBzM8mOo8xE83ouvjqx0unwMz14H0jyfR/8QAJhABAAICAgIDAAIDAQEAAAAAAQARITFBUWFxgZGhscHR4fAQ8f/aAAgBAQABPxCi0w2sXpnMohKIVy1evTctShKlWDaHMB3Uw3RPUh4fkK8EA6IeEPGLBWgcpR9xxKoAWNhmH73yWG6zC/Bb0f4mDSU+o0leIB1MQ/8AMTEq+JUKgXMHExLlSo/FVoAHzC6TC7AfpiHaGea76eI6g+rQUHi+aloBoFLWCtHiZLW9lwT/AIUolsbLMu8QOhlKDXzCXZxWNK6dsrVsAyL4dMFIxYsRO8S56SkP/LKCQZd9QTklhKnBD0h4f+NYwjqDExEaxt/5fGWdFxRxPJLuZbuNuJdxLvBL+IvxPNIg5IAcQAAKd3d5Xg7jvSorRKxa78yycBRF3ntzMn6g0wfXcpuhcxfSUmSzRRrB33Kt1h/FEcC1hj3uqqZ2YXCnpRiaLKwCD149x8RgFTrSt3CNjh/IEpSwOctp5m1hBeD9Qy3sKZxq86JsOiquWr3L0NnAOw4hx03Mb2Lx5hDlh1M1sw9wPFKzBXpdnmLDKgouluVQKhYmXURAhYW+Abl0vVWvu3EKRuQCPIGGOu1rVLHB/uAtRzDvluIFtykkrMw4uB82YgFejCCzRfzHROq3FLwM3XEAvFLSA57HzC+yiACvTuJUttSv2BCigl+ZXMXRKiQIC5MeIhmjBtoUcjDpoBeJDhNV4leXWaVnQmIURNVuPpg+YLYBbFwNMWiJBXSj4LugC/uNB3UNnxGroLu88XAytsIPqIpLJaTyMScJBY7B9wRyQGVcL2S5tA8yiCw2UuCZM+m4s2P1F8mAcfsq0Rb/AGlXH7BraDtURhHhpoYiwRLRW2LgstAkuEIbLELqFuVeqGY14Yo3cE8xpE6Cyh/WgpOtFqnYzQEit+S+IgDeX8O0FpQ4xdPcTpUdO+27wwlqzQlrGGGQAeEJ3DrA9X/MGpRSiwovJVWif5GEoTUiwmc+IpgN2xh9HTIeSXyPrNlefEQSSltWeezMfsGhC0Xx1FIRvrbuCvBFqE+JZgDupSNyvmVUwLnQ+peEj5CJFwDVf8SgWzn+mF4FC9Xf1LpcDRXyvnxEHbs0leTuXt5yFD3zCKw3or0cSs+CcP1CXTK7fdvMOSaA4VM32eJVmteZ9oSB/C7Iiy2rqueoYBTwKh5WN9MTh/4vBVCfAhsCnkllkjrTBhsl5dSxz/CLIl2C1PiX59DlEV0uo9dYMr0VKM6xaKfcTj8xTFphIsXmtRkrTl+BuPAubVHhzAJZKDQA7uU0Y3WKiC4A5C/ccgDxH9PqFOaz3N3zySpQQ4znc/ZZRvcy/jD1UcBz9sCB7uB1dc3J9sObiwwHxqN4h7IN3S++YkZZ8kdy/EVgVaIioFBxZaEPuYHgcUPWpW+RC/VzQ9SbJvTnSS3snAz+kVYzTm3+Y6DgMyjLCshyhVB2tX1FFjJTeybOCq4X15giASF2jiyKVOK0HuuWWBigXjfzHL+ibPkOyD7XDJHD0zlupUnKjvxKg2vBXPPUQ0xi10fzqUFWHIy1nJKm1TpR0zklU8nMCllaXZ8wRdg49xKvLww8lkx9qa8RNvUGPEW4ghYgPcw1t54ljdCxLVFe2EVty6HzDZ54vj/UHVGhZQYC+CS92OvES0Kcn+5kSn/cRRZnq6yRmFljeIbglZBCV/BQjGhvKqYvqLOJRqk26fmW7Yl3HlHvphl4hhvEUsOP5iWeysXHgUU45fMBumt98QtUQNbuBwhezUAZLVxylH1A1fIQQtjq4qoXGpBnuo6AGM0fcGxRduD6qJB+uyk537gtpByEYMCgDhfcUNH7jWXUFVZ6QpHFcjtHDVT2MRWwqwVV9Q9FxWiqXudNMBv+5gK1B0dyzlaCVN4YJEALBSShsinLGTQdLwxFVVxmXmyARQjt/qFGalaHwMD4l2WO2wvmEAdZFtlIcF6giUTQ+zLB6wKhRxX5uOVBdsf8uBeS1A1bhgl8od3rtJit2c7ys7gOV1r3y14gLXy1fuNC3xb+2B1ZQiualA1qvMAsisq8UqdQEs/UFJy6I8YIK7PIIo8ohUe74hHe3Sf/ALiACEstT8we2HzFCHDnqVVHjUzV/sFmKfwhQUWuorSAVwYq5qLay/REwsZ3mg9ywpA7yHzxBF5RB/zAhSvkcTIEHOdQz2S+bH1ERRd5lhQsWWywCWC9W7lNbA2Zrv8A8C+Ah1A7Wc5Pr/cpDb3ZECifEaQPdxGgeGAgbmMRnEXEumbqEl78KFuE+5QABYcKgtQXeBfbA0s+xH13DiZYwNuv9wA7d2A+YopY1eLQDIk7LfBH0BK/0EqbPaxOhGum43d5j0DZFruW7lSOmIIqEtVFcSxIq3Q8MtgKTuVFle5VLE+xgVk4Of8AviWqpOb0p5lAHoO94c/MGKDpfEscAc3N4BcDj1My08IiEjb18QvwRoaV3MgYZch8GtYlQbzkwuN4d+pcXjy/Oq2QmxtbYHkfiVlLcMwC54oKOF03qPQNcLCHbAUocOk5i6LL4IoqBbcxMq10YD5g1BU6OIO5junURQIeSByC8a16hBebD1nPM+a8JxMyhMsqqGoHEgr7gAWlYbBqKvTBR+mMGU7J1EYLsPjEBBvtKfuBy/mzXLBY07a/YVgKF1gPA7inIdhqorCpwUswUDQo+kFXiFY1FVspS3s6iRbFpcxnU7zUMjly7F+ojGLYG48VKXQvAryPUqcZ2e/N8EuJq4Iv4LgZhXXmCHGtBiYDm+oBFXogWq29y1VzXuLU5hltzMCZ3CWCNQEZWyo88qNmeoiBCaRgL2OWl+JbUbgMVMGWN8YRelTzUyPks9uiAFMFKB1nmGkUTV1sU/uGjTaGXw9RpFBkGO2OKiKkEo9hfHiDABJhY1xeLzHqUwhaGUfMLgKoW9XLAJ4+ERLI1sl6mgc9wKpinUSr8flgC0dQ5IDZSMmyIFBGqeYbHKweIIqCvFQLrAf7HEUKLNhlMH83MhBrnEFpog4vx59RAk5YZbvyMOhFcvLfn3FqYDNBdnmExGoLBnFPEURGD7DeGJLvKRVXCf5jmNLQtDkTMaE6Rty6tdR2MAF2tux5IYYHCHfkgnpYUwcshHU9gYgrwgH+DMRrauqP8RXEP/gnnxGgLTgxHYJRNhrnV/7nEMZOCPJAWUAdKiIVbUCwwFKrt4S0T0Bz7lQ+Q2+oWKUFaW1/EFig5Lgsq9C4YAV5uZ+PnMy4+4s7+oPby3C1229zMZ9EMQwdBB2Vtm26qoWJKwcVEol7pICK9GX6cRAi3BuR8wu8BbEgXCe5QyyjBqXjc78G2M0zWLjjLZO/yVHl1UtZpgyw0HcMjXzHJX+MIbS1wv3Fkak1V6lMx/t+wZGAvsc6YoDFr+wqLF0jpqWi6AqgWPcCnvE4BfjmZgGuL/tCowUtNQtl+q5iA3sx8biVDAHpYeVxU8y73BJeYTzjjR4XxBLycbmsb8/9mXTLWH9alcBCwYgqovYhxjL9juuoaWKZT1X9SwqXQS4HIgtiDtxzDTlOYZobBKVnXjxGqgmgsjnUAN9qbCcJfXIbLLp8QWh91V9PiDs7ltOfuIpmDIV1FrFCiWxwQoorCCZevESOrmVvTqKDe8Y9HEUtf5HrxniY9geSwgpcI7L1LQUeNIcIhNVxGz7BFtWvcWLo+8yzj5NxqcDoisXbNkHBBHXBmu5tgYwVzfzCzRl8wOTDDpUcX4gAQASlunHMM4ZmqPaAVYfMGgaz3GVBfUJ3X9oSNSlalClQpNj5gajPJiDbizm9xLLh1wXaZI2hnhY5yPWVsWKjYXZDi0oHI8rGUMM2lqYjgpYV5mczKVf8iQLMrwt/xLVk4LkhHWqsK3lZcA+o2qvPUBUNFRuN5b+4lQqm3uOaOTfLENedwOFpy2FsVXuWxLFZ+IxIUwg8RNXPFsLBSJZyhpeWBL7GMW1E7FCtLliCz7kyb0buFxS9IPYOK78SsMsW5Oq6jMWmreZboLI8CWEINUVcWw50h6tNmJ8xg0q7c7bTK8kCsz7OI+AWF9OA4bSF6YuUFwp2VuUFAKKHmk68y8E1VgGzqJVcmC2ApFryHiUu1soGj3LOL78SzGKGjNnmPWXm7dE3tULeQrzM43OZrfJ/c0JWdmufmIbEVyeKvUwgps8IVAC+w8wGzYOdxOgV1wxSw7gtUr5eJymDmZQumI3dIagpMZ8uojKIOglHkCZKFazVRXVD6Z0vLxqXideEDZC+omtHsj4D2QQCPqWNCpgPeZhzzMOlbwV3G2oe2WUVAtUGb6lBKlWZHqZQVaVdwhzrVZUIK+7bYJTdjdsCkLYW5rqPsNlfPqJNIaojNLe1dwbvceP7KG5ccsbxGqBY7oD3EdjMRuLW06lMVwiOB0+YcIRbJTpWwlDSHLlgthbdNeiKjfwqIWXmBUmVuuolqELU0NYq9kFcGGh5xF0D3NYWc1zHmVGw5Jc7D3AbKq/BGzBNkl5j0MmzSDZwVrCfEv3C0cIDuiGfKKjVATcrCexoIoCg05PEdgAauo9QZ4q7i2t1BcqrYBAgqP8A7Il47jGQtzRzDnoWXc8y+0GiqXkrkj7K4j04RhbB2NgXPhjHfgGkD+fcKmlGpVhKI0vhqAu5XFOfmWQThNLNOarduhLh22cl/wBQSEpDhk8e5QkSqfzf9cLGuUDKaTpeo1CVpLI8HaGXKBgvqCE0DTdJd6E3cBcvLGlV499RZSuCgQfEW6zFpFv1Cuo9f44yi3jF+QQvBjEkMK9oCn/P7lFrenJ/zCmX2gRiUlwwA1XwU1ELbdw1WB8yu2FWU23fCOqPYHz7j2oQNqMFIEKODoleYDGsrSQV/wAENl8v+srLiJhCNJ9MWuenWtxsvvxzk11mvz6mmCHaK1MY7ggJq6UdPmAooBRWAIqU3t8xqcLW429s0QS0rDC1Yy7bmBdWc1xFPDLTEYDVxVVJzdXcCngjXshVSmV37fEYPmCNEHGDp/I3XWAvMTycfe5giFeTjiEsXjZxFYkq72clkvwFOjqKStzuFeIPAoDgXcHgvQRqEeL/ALlPAqO2sy3yxeWPXqUCDg4aVsAUaHUDfwY9hOycdYwXd/X7FPkaccg55lJMNlBty0w2QiUvVpchK8nZ56ls8YsseaL4uVJhbRtOnyjzaWVYdpc1mOrlWJU8ELkmxK15hN+NJCcTgeojLAKhOzLF7eUdPiL8ygFOMGo1TnVUeIy2liJ2J1bKiAiA79QXyFy19S5vYHIuuD4hIhUF946hmQgQVXCQfcBwTZ4nfuOMaVml/ImetvqB9g6L8I6QW0ofsxhxkyfzC6wB6h8SkHumxX0TGN8f0EPyHr+pjYElFZxxiKq8GV13YwOOrupc8x3DEbTAkNq6lyh8uHzqaxJ3/igmoqLW1lkBXEPYsxiKFBC+oQuhdXTX3GAB5Q/jHo6+C1GIlwBaz5TGzBq9OgEERXtialbXBABc4wLwm5rQdI4lkHcG5XbqZtn9Qs01L2gxepwhyuWNFhxE5GzRMBop4eJRTPa7gh6FLdR7hYoTj3NMDk4I+wtRfELig4CjUtN12XE5cFdxYhjKstQaXhm/UNEmxeZ7P1B7LiNqOSxAEIq1q4JYXAXXlHyBUDG+xMHzHiA7VIQtHR49kJV1GmlwRdMOtLZSVk8yoHLG2ndJcDfRVWq+N0x8HoS2MNKTn3FeKTuBVN7xRH+6Usu8ZhPhGAb0BCrPYird7uMoygqgKKHBElF3f7iShYtc76CHetNP1LFGsBlt1lwaqVXQT3RlBF7UPwjGtVErQvtM4olQvwiynOap81UpMDbK8C1jJ+SSqxbbcRo1tRZ+pcgMzHaf/IbKgbCslbO5oDeE7jvP5FKkAa4tLRE7J3lPoj5QFf5RmGDvGGJQAQd44gZQMU5KmaHfKWBlQ4zd6ZZwNg2EpoBw1CRosDn5r8hoB8KM7xuI5IAbau65nc2UXtHETHZ6eruXKeSjXwy2sIp/ojAIK1LF9mWASsMhMKt3AeNepoETirjFzdSal1C+wYabDqWF24IDLyku6J0wQYujiLI6fuKA22jS1kTXUDAJTkj0KflBK2PPmWgLANKfkt1zdSijldwumn0g1HeiahnNO/mXDwEjPfRVoi3eWvURIVsF7PEu0qjlY0oQ9VuLUK+YpS6c3Kdi15hzkZYKDuIKAcjREqVQpbQTbyxs1iuYXcF0begYellW3F0PsDj5gNo8MN8RXDeiK+YoCN2A9pBCC1Qf04nIWuUf0RqRFUclVZt8EY0h5rfRzDL9yJLPMJDjyifBRCLf/QJlhHVSZUw1fDL3/BsWuWoYABWhoMfhKB2KgidvD7l9BVcD4UfssYnAGPtZWNM4ZHymMZ/2iZtEbF/1yRKFFGmOyUWnPqF/SSy0/HA8uIoEK6fa1w6+5t6JcPa5ZSiwbruWSGgdA0RCgdvDxKYuBWGUoaFiHbKgCHljdQKOXLKVsGRVJle2BikRRLm63EV23F5RL7itC+oYA8EtZ1FmVFwjAxIXq5rghrDxbiEVFimkAPbxfE0tliraZVafiALt4GGLb2RiOg4xEKxGdXcFkRPDki2tyyi4tlwcdxUMWbvqZFLfDFfK3eYvDA4JfDAYf8RjsFBAFYfRFeQ3KJbteIJ2+moBgnDBHpu74jABgPtdYTmaRjWpw8gMKPuDY1DWpgDalV1LCo03jMqdNhg3GId9GJekE3jMUar5IOWo1qGFFaO414dZ4S3xEIuKbvPIfuW/YUerJU94qoDpPbEMAaNVFphXlyPfa/uEmkSg4PmXItALVjQ7Zl1fc0ZpYslvd7uKbUdi94z6YoAsscZwhbjTDEt2z9gMRK8L/UnLY3grdO8RFaBI06EuV+VAAlguxZy/EKtYyzgITkuKnDkzP9x+vuIiXCRBx+YJGWZR7mmIPSn+SgKbARRdEp4CWP8AculZoS240HdIN/zMpfw4CF7QroN21dX3FzUiznrxFFlQxZfzBNsKKvYYZvuFKtNFHYJuXL7Xaur5g7qcV1j1MO0WH4w7qZXYb7hidndwklaufOO+BhYvg26ho0B44hdAHc3u45oW+Y2rRF0C9QA4Nm5eVPwxLbZdPDxEBuLDWgjTWYVg/CZQVGSAFAZz5igXV6qB4L7lhSr6gUUlnNSoShtlBxglkxEClAeeYXQgcSmqoLSpZ3NSn5lbBSzL3NnkaZR7FnWJgHKipR2AowXNjLJcFoa5IDLWzYwQ5a0PPtDaJbdo0ioQKBoiIgoK8mvyBQsdpdfOyLKz2g/Fk/IZqwyr6Gz+IFqC0BHjJ/UYqGWZToGUWvtH8OIxFnZefZZFPgLP4R2v/wDQRdpXf4DH5NJXf2YBhRFhNX6FRu1pQ+iriyCe0FAaN+YKBALUX5sRhN7OB+mNFtxPAXDdJ7MojJlowzywGwbVlryRqpxxHa1XNIUckJC81lmYgd2pfmFRJumxswwSxCcI0DhbXATLh1Vk+YtILRBFZ85vECIX2HuupQgXly8fMstjgW6OvUNVKcEpyvUfYhlI82nHKypL4WfwwO2UKrMSUKazww1g/wB0ywiIZKc1KkLjbXH+0QgLvlmUuAIrpxNq8x8Kh1W4RUvp5JUPALjWBBqj1PgEs3eoD9jsiZtIckVscPEtnFTa8xpuviPdamMoFeuIAUK3OEvDFFQDlfLCz+CWu2ne4I5KLzKEZ5WanAr6mmBo1MglMQ8y/iANNJ/1RtAFMWGfmX7ZetqUw1YPmXunWVfx7lAvlwO4jujkrt7qDqodJUM5gE45ZFWj+I4IzOXR4RqLLWmq3+7ihd6Z/nP7GpjYbz3HKNzap902fZKdgOf0A/SLszpAfF0w30x/gv6jHyMwfLT8n7Qf6WL2v6yf89wJ9HX41L8r9D+8MG20OWX9xCbxuEVCBTat8IfkvLzv9Uf3MpY0fyNiJLF8n+h/IpGBsD+KiLqgP1gZWKOReBhEKOP8RYdxr+xg9DMAFcjRpgGwDBvHjGYxP1i5ge4+SYLZ8PU1xTumPaPlUCLv3UKMrbCsHogHyEKZT1pY0YNDjETaUOBAdV0T4aRA7MfsU5H88ECGP9sOlUKqVV+ZcFrlqHipUQuzsykD8i1+RoZj4D+4vSLZEK9G2Ud36KgzGXwifczQENUZj5rGvMDsHJM3/EolwcjTFLLLFZt/JWu2sgm3urOkiTAvxGpHmN+HknEEM6eo0ATsiwRQ5qINgBQ1uUtvXiI0CriMCsQGUCHmJFVY6gXSAMsYbEcZr7zFVWfLA8sc8QqrWl/EoZxkRVPM1e4szm91EAaq68wbV8xeI09GglmoBBkVS7hUKEthO7CjwVAEVZSZ4mx3MS87hHMDkhm2Mn/2UiAotWtQmLq0P1uelJ/zShVqxJTyOS/xlnJpqHsX+w6bitKj9nJt/wAam/GrCv2lwGqrtr6hLc+Imxe+yCk7G/wlPxVKafdxqpcLqoOOYClCvU6q5EMcpcIMrBANANuB1MaGwmKjpGo6R2Q23Yp4S4IAS96ilXm3w6ioJtikLeD/AMM5vNw8IVdMPBcLB8xBFo0G66jfcclh83BjoLMVBPA6Ei+U+IVZrOopOQvVkqZBjlhwBRiA4orEx+cptmQlWxH9wWUM1tBmiz2ghTGWZRoHZ7MXKxMXlgxbgviAIUZg7BsOYF3O3mc86uDW9dwRhZ8zB4tZ1F21MC2KzT1BnNviIRXN0l/qV6FRpH0RI1X1HhrTiEoAL1E5boQVDLUUEwp/if/Z" width="664" height="131"></figure>
+  </div></div>
+  <div class="db-sec"><div class="db-wrap db-grid2">
+    <div><h2>Who we are</h2></div>
+    <div>
+      <p>DeliveryBridge Partners is a project talent and PMO firm. We place experienced project and program managers, business analysts and change specialists with organizations that have critical work to deliver, and we build the PMO structure that helps them do it again and again.</p>
+      <p>The name describes the job: we bridge the gap between what an organization sets out to achieve and what it actually delivers, with the right people and the right structure on both sides.</p>
+    </div>
+  </div></div>
+  <div class="db-sec paper"><div class="db-wrap">
+    <div class="db-head"><h2>What we stand for</h2></div>
+    <ul class="db-pillars">
+      <li><h3>Project talent</h3><p>Exceptional people. Real impact.</p></li>
+      <li><h3>PMO expertise</h3><p>Structure that delivers.</p></li>
+      <li><h3>Better delivery</h3><p>From strategy to success.</p></li>
+      <li><h3>Together</h3><p>Stronger results through partnership.</p></li>
+    </ul>
+  </div></div>
+  <div class="db-sec"><div class="db-wrap db-grid2">
+    <div><h2>Why organizations choose DeliveryBridge <span class="db-flag">Draft, confirm</span></h2></div>
+    <ul class="db-why">
+      <li><b>Matched, not just placed</b><span>We match for delivery experience and culture, not only for keywords on a résumé.</span></li>
+      <li><b>Structure that fits</b><span>PMO practices sized to your organization, not a framework lifted from a textbook.</span></li>
+      <li><b>Accountable for outcomes</b><span>Your priorities become ours, and we check in to make sure the engagement is working.</span></li>
+      <li><b>A partnership mindset</b><span>We work alongside your team and leave it stronger than we found it.</span></li>
+    </ul>
+  </div></div>
+  <div class="db-sec mist"><div class="db-wrap db-grid2">
+    <div><h2>Leadership</h2></div>
+    <div class="db-person" data-person>
+      <div class="db-avatar db-headshot" data-cfg-photo role="img" aria-label="Alex Atkinson, PMP"></div>
+      <div>
+        <h3 data-cfg="founderName" data-type="text" data-ph="Founder name to supply"></h3>
+        <p class="role" data-cfg="founderTitle" data-type="text" data-ph="Title to supply"></p>
+        <p class="bio" data-cfg="founderBio" data-type="text" data-ph="Short bio pending your approval"></p>
+        <p style="margin-top:12px" data-cfg-wrap><a data-cfg="founderLinkedin" data-type="url" data-label="LinkedIn profile" data-ph="LinkedIn link to supply"></a></p>
+      </div>
+    </div>
+  </div></div>
+  <div class="db-sec db-band"><div class="db-wrap db-cta">
+    <div><h2>Let’s plan your project</h2><p class="db-lead" style="margin-top:12px">Start with the four-question plan, or book a free 30-minute consultation.</p></div>
+    <div class="db-actions"><a class="db-btn db-btn-iv" href="#plan" data-go="plan">Plan my project</a><a class="db-btn db-btn-ghost" href="#contact" data-go="contact" data-consult>Free consultation</a></div>
+  </div></div>
+</section>
+
+<!-- ============ TALENT ============ -->
+<section id="db-v-talent" class="db-hidden" data-title="Join our talent network">
+  <div class="db-phead"><div class="db-wrap">
+    <span class="db-crumb"><a href="#home" data-go="home">Home</a> / Join our talent network</span>
+    <h1>Join the DeliveryBridge talent network</h1>
+    <p class="db-lead">We’re always meeting experienced project professionals who want meaningful work on projects that matter.</p>
+  </div></div>
+  <div class="db-sec tight"><div class="db-wrap db-grid2">
+    <div>
+      <h2>Who we work with</h2>
+      <ul class="db-ticks" style="margin-top:12px"><li>Project and program managers</li><li>Business analysts, change specialists and scrum masters</li><li>PMO leads and portfolio analysts</li><li>Project recovery leads</li></ul>
+      <h2 style="margin-top:40px">What we look for</h2>
+      <ul class="db-ticks" style="margin-top:12px"><li>A track record of delivered projects</li><li>Recognized certification is a plus: PMP, PgMP, CBAP, PMI-ACP or similar</li><li>Clear communication with sponsors and teams</li><li>An approach that adapts to each client’s culture</li></ul>
+    </div>
+    <div class="db-planbox">
+      <h3>Introduce yourself</h3>
+      <p class="db-small" style="margin-top:6px">We’ll be in touch when a project fits your experience.</p>
+      <form class="db-form" data-form="talent" novalidate>
+        <div class="db-row2"><label class="db-fld">Full name<input name="name" required autocomplete="name"></label><label class="db-fld">Email<input name="email" type="email" required autocomplete="email"></label></div>
+        <div class="db-row2"><label class="db-fld">Phone <span class="opt">(optional)</span><input name="phone" type="tel" autocomplete="tel"></label>
+          <label class="db-fld">Primary role<select name="role" required><option value="">Choose one</option><option>Project manager</option><option>Program manager</option><option>Business analyst</option><option>Change management specialist</option><option>Scrum master or agile coach</option><option>PMO lead or analyst</option><option>Project recovery lead</option><option>Other</option></select></label></div>
+        <div class="db-row2"><label class="db-fld">LinkedIn or résumé link<input name="profile_link" placeholder="linkedin.com/in/your-name" required></label>
+          <label class="db-fld">Availability<select name="availability"><option>Available now</option><option>Within 30 days</option><option>Within 90 days</option><option>Just keeping in touch</option></select></label></div>
+        <label class="db-fld">Anything else? <span class="opt">(optional)</span><textarea name="message" rows="3" placeholder="Certifications, sectors, the kind of work you want next"></textarea></label>
+        <button class="db-btn db-btn-p" type="submit">Join the talent network</button>
+      </form>
+    </div>
+  </div></div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="db-v-contact" class="db-hidden" data-title="Contact">
+  <div class="db-phead"><div class="db-wrap">
+    <span class="db-crumb"><a href="#home" data-go="home">Home</a> / Contact</span>
+    <h1>Talk to DeliveryBridge Partners</h1>
+    <p class="db-lead">For the fastest answer on a project, use the four-question plan or book a free 30-minute consultation. For anything else, send us a message.</p>
+  </div></div>
+  <div class="db-sec tight"><div class="db-wrap db-contact">
+    <div>
+      <div class="db-ccard feat">
+        <h3>Have a project to plan?</h3>
+        <p>Answer four questions and your request reaches us already scoped.</p>
+        <a class="db-btn db-btn-iv" href="#plan" data-go="plan">Plan my project</a>
+      </div>
+      <h2 style="margin-top:48px">Or send a message</h2>
+      <form class="db-form" data-form="contact" novalidate>
+        <div class="db-row2"><label class="db-fld">Your name<input name="name" required autocomplete="name"></label><label class="db-fld">Email<input name="email" type="email" required autocomplete="email"></label></div>
+        <div class="db-row2"><label class="db-fld">Organization <span class="opt">(optional)</span><input name="organization" autocomplete="organization"></label><label class="db-fld">Phone<input name="phone" type="tel" required autocomplete="tel"></label></div>
+        <label class="db-fld">Message<textarea name="message" rows="5" required></textarea></label>
+        <button class="db-btn db-btn-p" type="submit">Send message</button>
+      </form>
+    </div>
+    <div class="db-cards">
+      <div class="db-ccard" data-cfg-wrap><h4>Call</h4><a data-cfg="phone" data-type="tel" data-ph="Phone to supply"></a></div>
+      <div class="db-ccard" data-cfg-wrap><h4>Email</h4><a data-cfg="email" data-type="mailto" data-ph="Email to supply"></a></div>
+      <div class="db-ccard" data-cfg-wrap><h4>Free 30-minute consultation</h4><a data-cfg="bookingUrl" data-type="url" data-label="Pick a time on our calendar" data-ph="Calendar link to supply"></a></div>
+      <div class="db-ccard" data-cfg-wrap><h4>Headquarters</h4><p data-cfg="location" data-type="text" data-ph="City and hours to supply"></p></div>
+      <div class="db-ccard" data-cfg-wrap><h4>LinkedIn</h4><a data-cfg="linkedin" data-type="url" data-label="DeliveryBridge Partners on LinkedIn" data-ph="Company LinkedIn to supply"></a></div>
+      <div class="db-ccard"><h4>Looking for project work?</h4><a href="#talent" data-go="talent">Join our talent network</a></div>
+    </div>
+  </div></div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="db-foot">
+  <div class="db-wrap">
+    <div class="db-foot-g">
+      <div>
+        <a class="db-logo" href="#home" data-go="home" aria-label="DeliveryBridge Partners home"><svg viewBox="0 0 976 166" aria-hidden="true"><use href="#dbp-logo"/></svg></a>
+        <p class="tagline">A stronger path to what’s next.</p>
+        <p style="margin-top:16px" data-cfg-wrap><a data-cfg="phone" data-type="tel" data-ph="Phone to supply"></a></p>
+        <p data-cfg-wrap><a data-cfg="email" data-type="mailto" data-ph="Email to supply"></a></p>
+        <p>Headquartered in Las Vegas, Nevada</p>
+      </div>
+      <div><h4>Services</h4><ul>
+        <li><a href="#services/svc-pm" data-go="services" data-anchor="svc-pm">Project and program managers</a></li>
+        <li><a href="#services/svc-ba" data-go="services" data-anchor="svc-ba">Business analysts and change</a></li>
+        <li><a href="#services/svc-pmo" data-go="services" data-anchor="svc-pmo">PMO setup</a></li>
+        <li><a href="#services/svc-pmoi" data-go="services" data-anchor="svc-pmoi">PMO Improvement Sprint</a></li>
+        <li><a href="#services/svc-health" data-go="services" data-anchor="svc-health">Project health checks</a></li>
+        <li><a href="#services/svc-recovery" data-go="services" data-anchor="svc-recovery">Project recovery</a></li>
+      </ul></div>
+      <div><h4>Company</h4><ul>
+        <li><a href="#company" data-go="company">About</a></li>
+        <li><a href="#industries" data-go="industries">Industries</a></li>
+        <li><a href="#talent" data-go="talent">Join our talent network</a></li>
+      </ul></div>
+      <div><h4>Get started</h4><ul>
+        <li><a href="#plan" data-go="plan">Plan my project</a></li>
+        <li><a href="#plan" data-go="plan" data-need="health">Request a health check</a></li>
+        <li><a href="#contact" data-go="contact">Contact</a></li>
+      </ul></div>
+    </div>
+    <div class="db-legal"><span>© <span data-year></span> DeliveryBridge Partners. All rights reserved.</span><span>Project talent. PMO expertise. Better delivery, together.</span></div>
+  </div>
+</footer>
+<div id="db-overlay"></div>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* =====================================================================
+   EDIT THESE. Leave a value as '' until you have it.
+   Anything still blank shows a dashed "to supply" placeholder while
+   showDraftFlags is true. Set showDraftFlags to false when you go live:
+   placeholders and draft tags disappear, and blank items are hidden.
+   ===================================================================== */
+var CONFIG = {
+  phone: '+1 702-766-5271',
+  email: 'contact@deliverybridgepartners.com',
+  location: 'Las Vegas, Nevada. Monday to Friday, standard business hours.',
+  linkedin: '',         // company LinkedIn URL
+  bookingUrl: '',       // your Automate2Scale calendar link for the free 30-minute consultation
+  webhookUrl: '',       // Automate2Scale workflow Inbound Webhook URL (all three forms post here)
+  founderName: 'Alex Atkinson, PMP',
+  founderTitle: 'Founder, CEO',
+  founderBio: 'Alex has spent years delivering complex enterprise projects across a range of industries, with a proven track record of successful delivery. He founded DeliveryBridge Partners to close two gaps the profession can’t ignore: too many projects still fall short of success, and demand for qualified project talent is outpacing supply as technology accelerates change.',
+  founderLinkedin: 'https://www.linkedin.com/in/alexatkinsonpmp/',
+  founderPhoto: '',     // leave blank to use the embedded headshot, or paste an image URL from your media library
+  showStories: false,   // set to true once your delivery stories are written into the page
+  showDraftFlags: true
+};
+/* ===================================================================== */
+
+var root = document.getElementById('dbp');
+if (!root) return;
+var $ = function(s, r){ return (r || root).querySelector(s); };
+var $$ = function(s, r){ return Array.prototype.slice.call((r || root).querySelectorAll(s)); };
+var esc = function(t){ return String(t == null ? '' : t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+var SITE = 'DeliveryBridge Partners';
+var baseTitle = document.title;
+var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------------- config into the page ---------------- */
+function applyConfig(){
+  root.classList.toggle('no-flags', !CONFIG.showDraftFlags);
+  $$('[data-cfg]').forEach(function(el){
+    var key = el.getAttribute('data-cfg'), v = (CONFIG[key] || '').trim(), type = el.getAttribute('data-type') || 'text';
+    var wrap = el.closest('[data-cfg-wrap]') || el;
+    var optional = el.hasAttribute('data-optional');
+    if (v){
+      var label = el.getAttribute('data-label') || v;
+      el.textContent = (el.getAttribute('data-prefix') || '') + label;
+      el.classList.remove('db-missing');
+      if (el.tagName === 'A'){
+        el.href = type === 'tel' ? 'tel:' + v.replace(/[^\d+]/g, '') : type === 'mailto' ? 'mailto:' + v : v;
+        if (type === 'url'){ el.target = '_blank'; el.rel = 'noopener'; }
+      }
+      wrap.classList.remove('db-hidden'); el.classList.remove('db-hidden');
+    } else if (CONFIG.showDraftFlags && !optional){
+      el.textContent = el.getAttribute('data-ph') || 'To supply';
+      el.classList.add('db-missing');
+      if (el.tagName === 'A') el.removeAttribute('href');
+    } else {
+      (optional ? el : wrap).classList.add('db-hidden');
+    }
+  });
+  if (CONFIG.founderPhoto){
+    $$('[data-cfg-photo]').forEach(function(a){ a.style.backgroundImage = 'url("' + CONFIG.founderPhoto.replace(/"/g, '') + '")'; });
+  }
+  $$('[data-stories]').forEach(function(s){ s.classList.toggle('db-hidden', !CONFIG.showStories); });
+  if (CONFIG.bookingUrl){
+    $$('[data-consult]').forEach(function(a){ a.removeAttribute('data-go'); a.href = CONFIG.bookingUrl; a.target = '_blank'; a.rel = 'noopener'; });
+  }
+  $$('[data-year]').forEach(function(e){ e.textContent = new Date().getFullYear(); });
+  var img = $('#dbp-imgdata');
+  if (img){ try { var d = JSON.parse(img.textContent); $$('img[data-img]').forEach(function(i){ var k = i.getAttribute('data-img'); if (d[k]) i.src = d[k]; }); } catch(e){} }
+}
+
+/* ---------------- planner data (sample timings) ---------------- */
+var NEEDS = [
+  {id:'pm', b:'Project or program manager', s:'Lead the work end to end'},
+  {id:'ba', b:'Business analyst or change specialist', s:'Requirements, testing, adoption'},
+  {id:'pmo', b:'Build or improve a PMO', s:'Setup, or an improvement sprint'},
+  {id:'health', b:'Check a project’s health', s:'An independent view of where it stands'},
+  {id:'recover', b:'Recover a project', s:'It’s behind or at risk'}
+];
+var ENG = [
+  {id:'part', b:'Part-time', s:'A few days a week'},
+  {id:'full', b:'Full-time contract', s:'For the life of the project'},
+  {id:'c2h', b:'Contract-to-hire', s:'Try first, then hire'},
+  {id:'direct', b:'Direct hire', s:'We find your permanent person'}
+];
+var PMO = [
+  {id:'new', b:'Set up a new PMO', s:'Nothing formal in place yet'},
+  {id:'improve', b:'PMO Improvement Sprint', s:'Measure how projects perform, then improve'}
+];
+var INDUSTRIES = ['Information technology','Energy and utilities','Hospitality','Construction','Financial services','Healthcare','Public sector','Private industry','Other or not listed'];
+var SCALE = [
+  {id:'one', b:'One project', s:'A single initiative'},
+  {id:'prog', b:'A program', s:'Several related projects'},
+  {id:'port', b:'The whole portfolio', s:'Everything in flight'}
+];
+var WHEN = [
+  {id:'asap', b:'As soon as possible', s:'The work is already moving'},
+  {id:'30', b:'Within 30 days', s:'Planning the start now'},
+  {id:'later', b:'Next quarter', s:'Budgeting ahead'}
+];
+function pick(list, id){ for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i]; return null; }
+function isStaffing(n){ return n === 'pm' || n === 'ba'; }
+
+function plan(st){
+  var who = st.need === 'ba' ? 'business analyst' : (st.scale === 'prog' || st.scale === 'port' ? 'program manager' : 'project manager');
+  var p;
+  // Rows are listed in the order they are numbered. open:1 = continues through project close (no end date).
+  // mk = where the numbered marker sits on the bridge. fixed:1 = not moved by a fast-tracked start.
+  if (st.need === 'health'){
+    p = {t:'Health check plan', span:20, rows:[
+      {l:'Kickoff call', ms:1, pre:1},
+      {l:'Stakeholder interviews', s:2, e:9, pre:1},
+      {l:'Plan, risk and financial review', s:4, e:13, pre:1},
+      {l:'Findings and likely outcome', sm:'Scope, schedule, budget', ms:15},
+      {l:'Recommendations briefing', sm:'With your sponsor and leadership', ms:18}]};
+  } else if (st.need === 'recover'){
+    p = {t:'Recovery plan', span:80, rows:[
+      {l:'Kickoff call', ms:1, pre:1},
+      {l:'Rapid assessment', sm:'What went wrong, and what can be saved', s:2, e:10, pre:1},
+      {l:'Recovery lead starts', ms:12, pre:1},
+      {l:'Reset the plan', sm:'New baseline agreed with your sponsor', s:12, e:24},
+      {l:'First check-in', sm:'30 days after your kickoff call', ms:31, fixed:1},
+      {l:'Steer to delivery', sm:'With regular check-ins', s:24, open:1, mk:56}]};
+  } else if (st.need === 'pmo' && st.pmo === 'improve'){
+    p = {t:'PMO Improvement Sprint', span:42, rows:[
+      {l:'Kickoff and data request', ms:1, pre:1},
+      {l:'Baseline and survey setup', sm:'Reports, data and stakeholder list', s:2, e:7, pre:1},
+      {l:'NPSS and delivery variance', sm:'Stakeholder ratings, schedule, budget, change orders', s:7, e:14},
+      {l:'Capability review and dashboard', sm:'Workload, roles and skills', s:14, e:21},
+      {l:'Delivery Improvement Plan', sm:'30, 60 and 90-day roadmap', s:21, e:28},
+      {l:'Executive readout', sm:'Weeks 5 and 6 are buffer if needed', ms:30}]};
+  } else if (st.need === 'pmo'){
+    p = {t:'PMO setup plan', span:80, rows:[
+      {l:'Discovery call', ms:1, pre:1},
+      {l:'Current-state assessment', s:3, e:15, pre:1},
+      {l:'Design the PMO', sm:'Intake, governance, reporting', s:15, e:35, pre:1},
+      {l:'PMO goes live', ms:40},
+      {l:'First portfolio review', ms:60},
+      {l:'Run and refine', sm:'Supporting your team, with regular check-ins', s:40, open:1, mk:70}]};
+  } else if (st.eng === 'direct'){
+    p = {t:'Direct-hire plan', span:100, rows:[
+      {l:'Scoping call', ms:1, pre:1},
+      {l:'Search and vet', s:2, e:18, pre:1},
+      {l:'You interview', s:18, e:28, pre:1},
+      {l:'Offer and acceptance', s:28, e:36, pre:1},
+      {l:'Your new ' + who + ' starts', sm:'After their notice period', ms:50},
+      {l:'30-day check-in', sm:'30 days after your new hire starts', ms:80}]};
+  } else if (st.eng === 'c2h'){
+    p = {t:'Contract-to-hire plan', span:120, rows:[
+      {l:'Scoping call', ms:1, pre:1},
+      {l:'Matched shortlist', s:1, e:5, pre:1},
+      {l:'You interview', s:5, e:10, pre:1},
+      {l:'Consultant starts', sm:'Your ' + who, ms:12, pre:1},
+      {l:'First check-in', sm:'30 days after your scoping call', ms:31, fixed:1},
+      {l:'Contract period', sm:'Full-time, with regular check-ins', s:12, e:96, long:1, mk:62},
+      {l:'Joins your staff', sm:'When you’re both ready, as set in your agreement', ms:96}]};
+  } else {
+    p = {t:'Staffing plan', span:80, rows:[
+      {l:'Scoping call', ms:1, pre:1},
+      {l:'Matched shortlist', s:1, e:5, pre:1},
+      {l:'You interview', s:5, e:10, pre:1},
+      {l:'Consultant starts', sm:'Your ' + who, ms:12, pre:1},
+      {l:'First check-in', sm:'30 days after your scoping call', ms:31, fixed:1},
+      {l:'Ongoing support', sm:(st.eng === 'part' ? 'Part-time on your project' : 'Full-time on your project') + ', with regular check-ins', s:12, open:1, mk:54}]};
+  }
+  if (st.when === 'asap'){
+    var lastBefore = 0, lastAfter = 0;
+    p.rows.forEach(function(r){
+      if (!r.pre) return;
+      lastBefore = Math.max(lastBefore, r.e || r.ms || 0);
+      if (r.s != null){ r.s = Math.max(1, Math.round(r.s * 0.6)); r.e = Math.max(r.s + 1, Math.round(r.e * 0.6)); }
+      if (r.ms != null) r.ms = Math.max(1, Math.round(r.ms * 0.6));
+      lastAfter = Math.max(lastAfter, r.e || r.ms || 0);
+    });
+    var d = lastBefore - lastAfter;
+    p.rows.forEach(function(r){
+      if (r.pre || r.fixed) return;
+      if (r.s != null){ r.s = Math.max(1, r.s - d); if (r.e != null && !r.long) r.e = Math.max(r.s + 1, r.e - d); }
+      if (r.ms != null) r.ms = Math.max(1, r.ms - d);
+    });
+  }
+  p.open = p.rows.some(function(r){ return r.open; });
+  p.sub = st.when === 'later' ? 'Timed from your planned start date' : (st.when === 'asap' ? 'Fast-tracked start' : 'Onboard within 30 days');
+  return p;
+}
+
+/* ---------------- the bridge timeline ---------------- */
+var NS = 'http://www.w3.org/2000/svg';
+function bridge(el, p, animate){
+  var W = Math.max(300, Math.round(el.clientWidth || 1000)), narrow = W < 560;
+  var H = narrow ? 200 : 250, x0 = 18, x3 = W - 18, w = x3 - x0;
+  var y0 = H - 66, y3 = narrow ? 34 : 44, rise = y0 - y3, deck = H - 34;
+  var P = [[x0, y0], [x0 + 0.30 * w, y0 - 0.66 * rise], [x0 + 0.62 * w, y3 + 0.02 * rise], [x3, y3]];
+  var pts = [];
+  for (var i = 0; i <= 240; i++){
+    var t = i / 240, u = 1 - t;
+    pts.push([u*u*u*P[0][0] + 3*u*u*t*P[1][0] + 3*u*t*t*P[2][0] + t*t*t*P[3][0], u*u*u*P[0][1] + 3*u*u*t*P[1][1] + 3*u*t*t*P[2][1] + t*t*t*P[3][1]]);
+  }
+  function yAt(x){
+    for (var k = 1; k < pts.length; k++){
+      if (pts[k][0] >= x){ var a = pts[k-1], b = pts[k], f = (x - a[0]) / ((b[0] - a[0]) || 1); return a[1] + f * (b[1] - a[1]); }
+    }
+    return pts[pts.length-1][1];
+  }
+  function X(day){ return x0 + Math.min(1, Math.max(0, day / p.span)) * w; }
+  function seg(xa, xb){
+    var d = 'M' + xa.toFixed(1) + ' ' + yAt(xa).toFixed(1);
+    for (var x = xa + 4; x < xb; x += 4) d += 'L' + x.toFixed(1) + ' ' + yAt(x).toFixed(1);
+    return d + 'L' + xb.toFixed(1) + ' ' + yAt(xb).toFixed(1);
+  }
+  var rows = p.rows;
+  var gid = 'dbfade-' + (el.id || 'b');
+  var fadeFrom = X(p.span * 0.72);
+  var svg = '<defs><linearGradient id="' + gid + '" gradientUnits="userSpaceOnUse" x1="' + fadeFrom.toFixed(1) + '" y1="0" x2="' + x3 + '" y2="0"><stop offset="0" stop-color="#2F8069"/><stop offset="1" stop-color="#2F8069" stop-opacity="0"/></linearGradient>' +
+    '<linearGradient id="' + gid + '-t" gradientUnits="userSpaceOnUse" x1="' + fadeFrom.toFixed(1) + '" y1="0" x2="' + x3 + '" y2="0"><stop offset="0" stop-color="#173F36" stop-opacity=".12"/><stop offset="1" stop-color="#173F36" stop-opacity="0"/></linearGradient></defs>';
+  svg += '<line class="deck" x1="' + x0 + '" y1="' + deck + '" x2="' + x3 + '" y2="' + deck + '"' + (p.open ? ' stroke="url(#' + gid + '-t)" style="stroke:url(#' + gid + '-t)"' : '') + '/>';
+  // Axis: round steps, and no label crowds the end label.
+  var want = narrow ? 3 : 4, steps = [5, 10, 15, 20, 25, 30, 40, 50, 60], step = steps[steps.length - 1];
+  for (var si = 0; si < steps.length; si++){ if (steps[si] >= p.span / want){ step = steps[si]; break; } }
+  var endLabel = p.open ? (narrow ? 'Project close' : 'Through project close') : 'Day ' + p.span;
+  var endW = endLabel.length * 7.6 + 24;
+  var tickHtml = '<text class="tick" x="' + x0 + '" y="' + (deck + 24) + '" text-anchor="start">Day 0</text>';
+  for (var dd = step; dd < p.span; dd += step){
+    var tx = X(dd);
+    if (tx > x3 - endW - 24 || tx < x0 + 70) continue;
+    tickHtml += '<text class="tick" x="' + tx.toFixed(1) + '" y="' + (deck + 24) + '" text-anchor="middle">Day ' + dd + '</text>';
+  }
+  tickHtml += '<text class="tick" x="' + x3 + '" y="' + (deck + 24) + '" text-anchor="end">' + endLabel + '</text>';
+  svg += tickHtml;
+  svg += '<path class="span" d="' + seg(x0, x3) + '"' + (p.open ? ' style="stroke:url(#' + gid + '-t)"' : '') + '/>';
+  var marks = '', lastX = -99, lift = 0, delay = 0.55;
+  rows.forEach(function(r, idx){
+    var num = idx + 1, isMs = r.ms != null;
+    var isLong = r.long || r.open;
+    if (!isMs){
+      var xe = r.open ? x3 : Math.max(X(r.s) + 2, X(r.e));
+      svg += '<path class="ph' + (isLong ? ' long' : '') + '" style="animation-delay:' + (delay + idx * 0.1).toFixed(2) + 's' + (r.open ? ';stroke:url(#' + gid + ')' : '') + '"' + (r.open ? ' stroke-linecap="butt"' : '') + ' d="' + seg(X(r.s), xe) + '"/>';
+    }
+    var mx = isMs ? X(r.ms) : (r.mk != null ? X(r.mk) : (X(r.s) + X(r.e)) / 2);
+    var my = yAt(mx);
+    lift = (mx - lastX < 30) ? (lift ? 0 : 30) : 0;
+    lastX = mx;
+    var cy = my - lift;
+    var g = '<g class="mk" style="animation-delay:' + (delay + idx * 0.1).toFixed(2) + 's">';
+    if (isMs) g += '<line class="pier" x1="' + mx.toFixed(1) + '" y1="' + (my + 13) + '" x2="' + mx.toFixed(1) + '" y2="' + deck + '"/>';
+    if (lift) g += '<line class="pier" x1="' + mx.toFixed(1) + '" y1="' + (cy + 12) + '" x2="' + mx.toFixed(1) + '" y2="' + my.toFixed(1) + '"/>';
+    g += '<circle class="dot' + (isMs ? '' : ' ph-dot' + (isLong ? ' long' : '')) + '" cx="' + mx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="13"/>';
+    g += '<text class="num' + (isMs ? '' : ' ph-num') + '" x="' + mx.toFixed(1) + '" y="' + cy.toFixed(1) + '">' + num + '</text></g>';
+    marks += g;
+  });
+  var list = rows.map(function(r, idx){
+    var isMs = r.ms != null;
+    var when = isMs ? 'Day ' + r.ms : (r.open ? 'From day ' + r.s + ' through project close' : 'Days ' + r.s + ' to ' + r.e);
+    return '<li><span class="n' + (isMs ? '' : ' ph' + ((r.long || r.open) ? ' long' : '')) + '">' + (idx + 1) + '</span><span><b>' + esc(r.l) + '</b><small>' + (r.sm ? esc(r.sm) + '. ' : '') + '<em>' + when + '</em></small></span></li>';
+  }).join('');
+  var title = el.getAttribute('data-title') || p.t;
+  el.innerHTML = '<div class="db-bridge-top"><b>' + esc(title) + '</b><span>' + esc(p.sub) + '</span></div>' +
+    '<svg class="db-bsvg" viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" role="img" aria-label="' + esc(title) + ': ' + rows.length + ' steps over about ' + p.span + ' days, listed below">' + svg + marks + '</svg>' +
+    '<ol class="db-steps">' + list + '</ol>' +
+    '<div class="db-bfoot"><span><span class="db-key"><i class="ms"></i>Milestone</span><span class="db-key"><i></i>Getting started</span><span class="db-key"><i class="long"></i>Ongoing work</span></span><span>Sample timing, confirmed on your first call</span></div>';
+  var sp = $('.span', el);
+  if (sp && sp.getTotalLength){ el.style.setProperty('--len', Math.ceil(sp.getTotalLength())); }
+  el.classList.remove('play');
+  if (animate && !reduceMotion){ void el.offsetWidth; el.classList.add('play'); }
+}
+
+/* ---------------- planner state ---------------- */
+var S = {need:'pm', eng:'full', pmo:'new', scale:'one', when:'30', ind:'', view:'home'};
+try { var saved = JSON.parse(localStorage.getItem('dbp-plan') || 'null'); if (saved) ['need','eng','pmo','scale','when','ind'].forEach(function(k){ if (saved[k] != null) S[k] = saved[k]; }); } catch(e){}
+if (!pick(PMO, S.pmo)) S.pmo = 'new';
+if (S.need === 'rescue') S.need = 'recover';
+if (!pick(NEEDS, S.need)) S.need = 'pm';
+function save(){ try { localStorage.setItem('dbp-plan', JSON.stringify({need:S.need, eng:S.eng, pmo:S.pmo, scale:S.scale, when:S.when, ind:S.ind})); } catch(e){} }
+
+function opts(list, key, label){
+  return '<div class="db-opts" role="group" aria-label="' + esc(label) + '">' + list.map(function(o){
+    return '<button type="button" class="db-opt" data-act="pick" data-k="' + key + '" data-v="' + o.id + '" aria-pressed="' + (S[key] === o.id) + '"><b>' + esc(o.b) + '</b>' + (o.s ? '<span>' + esc(o.s) + '</span>' : '') + '</button>';
+  }).join('') + '</div>';
+}
+function summary(){
+  var parts = [pick(NEEDS, S.need).b];
+  if (isStaffing(S.need)) parts.push(pick(ENG, S.eng).b);
+  if (S.need === 'pmo') parts.push(pick(PMO, S.pmo).b);
+  parts.push(pick(SCALE, S.scale).b, pick(WHEN, S.when).b);
+  return parts.map(function(t, i){ return i ? t.charAt(0).toLowerCase() + t.slice(1) : t; }).join(', ');
+}
+function renderPlan(animate){
+  var h = '<div class="db-q"><h3><em>1</em>What do you need?</h3>' + opts(NEEDS, 'need', 'What do you need?') + '</div>';
+  if (isStaffing(S.need)) h += '<div class="db-q"><h3><em>2</em>How do you want to engage?</h3>' + opts(ENG, 'eng', 'How do you want to engage?') + '</div>';
+  else if (S.need === 'pmo') h += '<div class="db-q"><h3><em>2</em>Where is your PMO today?</h3>' + opts(PMO, 'pmo', 'Where is your PMO today?') + '</div>';
+  else h += '<div class="db-q"><h3><em>2</em>How it’s delivered</h3><p class="note">' + (S.need === 'health'
+    ? 'A health check is a fixed, independent engagement: interviews, a review of the plan, risks and financials, then findings and recommendations for your sponsor and leadership.'
+    : 'We start with a rapid assessment, then an experienced recovery lead resets the plan with your sponsor and steers the project to delivery.') + '</p></div>';
+  h += '<div class="db-q"><h3><em>3</em>How big is the work?</h3>' + opts(SCALE, 'scale', 'How big is the work?') + '</div>';
+  h += '<div class="db-q"><h3><em>4</em>How soon?</h3>' + opts(WHEN, 'when', 'How soon?') + '</div>';
+  $('#db-qs').innerHTML = h;
+  bridge($('#db-planBridge'), plan(S), animate);
+  var get = $('#db-planGet');
+  var keep = {};
+  $$('input,textarea,select', get).forEach(function(i){ keep[i.name] = i.value; });
+  get.innerHTML = '<h3>Send this plan to us</h3><p class="db-small" style="margin-top:6px">' + esc(summary()) + '. Your answers come with your request, so the first call starts with the details, not the basics.</p>' +
+    '<form class="db-form" data-form="plan" novalidate>' +
+    '<div class="db-row2"><label class="db-fld">Name<input name="name" required autocomplete="name"></label><label class="db-fld">Organization<input name="organization" required autocomplete="organization"></label></div>' +
+    '<div class="db-row2"><label class="db-fld">Work email<input name="email" type="email" required autocomplete="email"></label><label class="db-fld">Phone<input name="phone" type="tel" required autocomplete="tel"></label></div>' +
+    '<label class="db-fld">Your industry <span class="opt">(optional)</span><select name="industry"><option value="">Choose one</option>' + INDUSTRIES.map(function(n){ return '<option' + (S.ind === n ? ' selected' : '') + '>' + esc(n) + '</option>'; }).join('') + '</select></label>' +
+    '<label class="db-fld">Anything we should know? <span class="opt">(optional)</span><textarea name="message" rows="3" placeholder="The system, the deadline, what is at risk"></textarea></label>' +
+    '<button class="db-btn db-btn-p" type="submit">Send my plan</button></form>';
+  $$('input,textarea', get).forEach(function(i){ if (keep[i.name]) i.value = keep[i.name]; });
+  var sel = $('select[name="industry"]', get); if (sel) sel.value = S.ind || '';
+}
+
+/* ---------------- views and navigation ---------------- */
+var VIEWS = ['home','plan','services','industries','company','talent','contact'];
+function parseHash(){
+  var h = (location.hash || '').replace(/^#/, '').split('/');
+  return VIEWS.indexOf(h[0]) >= 0 ? {v:h[0], a:h[1] || ''} : null;
+}
+function show(v, anchor, animate){
+  S.view = v;
+  VIEWS.forEach(function(k){ var el = $('#db-v-' + k); if (el) el.classList.toggle('db-hidden', k !== v); });
+  $$('.db-nav [data-view]').forEach(function(b){
+    var on = b.getAttribute('data-view').split(' ').indexOf(v) >= 0;
+    if (on) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
+  });
+  closeMenu(); closeMega();
+  var sec = $('#db-v-' + v);
+  document.title = v === 'home' ? (baseTitle || SITE) : (sec.getAttribute('data-title') + ' | ' + SITE);
+  if (v === 'home') bridge($('#db-heroBridge'), plan({need:'pm', eng:'full', scale:'one', when:'30'}), animate);
+  if (v === 'plan') renderPlan(animate);
+  var target = anchor ? document.getElementById(anchor) : null;
+  var top = target ? target.getBoundingClientRect().top + window.pageYOffset - 96 : root.getBoundingClientRect().top + window.pageYOffset;
+  window.scrollTo(0, Math.max(0, top));
+}
+function go(v, anchor){
+  var h = '#' + v + (anchor ? '/' + anchor : '');
+  if (location.hash === h) show(v, anchor, true);
+  else location.hash = h;
+}
+window.addEventListener('hashchange', function(){ var r = parseHash(); if (r) show(r.v, r.a, true); });
+
+function openMega(id){
+  var panel = $('#db-mm-' + id), willOpen = panel && panel.hidden;
+  closeMega();
+  if (willOpen){ panel.hidden = false; var t = $('[data-mm="' + id + '"]'); if (t) t.setAttribute('aria-expanded', 'true'); }
+}
+function closeMega(){ $$('.db-mega').forEach(function(m){ m.hidden = true; }); $$('[data-mm]').forEach(function(b){ b.setAttribute('aria-expanded', 'false'); }); }
+function closeMenu(){ var m = $('#db-mnav'); if (m) m.classList.add('db-hidden'); var t = $('.db-menu-t'); if (t) t.setAttribute('aria-expanded', 'false'); }
+function modal(html){
+  $('#db-overlay').innerHTML = '<div class="db-overlay" data-act="close"><div class="db-modal" role="dialog" aria-modal="true">' + html + '</div></div>';
+  var b = $('#db-overlay .db-modal .db-btn'); if (b) b.focus();
+}
+
+document.addEventListener('click', function(e){
+  if (!root.contains(e.target)) { closeMega(); return; }
+  var mm = e.target.closest('[data-mm]');
+  if (mm){ e.preventDefault(); openMega(mm.getAttribute('data-mm')); return; }
+  if (!e.target.closest('.db-mega')) closeMega();
+  var g = e.target.closest('[data-go]');
+  if (g){
+    e.preventDefault();
+    if (g.getAttribute('data-need')) S.need = g.getAttribute('data-need');
+    if (g.getAttribute('data-pmo')) S.pmo = g.getAttribute('data-pmo');
+    if (g.getAttribute('data-ind')) S.ind = g.getAttribute('data-ind');
+    save();
+    go(g.getAttribute('data-go'), g.getAttribute('data-anchor'));
+    return;
+  }
+  var b = e.target.closest('[data-act]');
+  if (!b) return;
+  var a = b.getAttribute('data-act');
+  if (a === 'menu'){
+    var m = $('#db-mnav'); m.classList.toggle('db-hidden');
+    b.setAttribute('aria-expanded', String(!m.classList.contains('db-hidden')));
+  } else if (a === 'pick'){
+    var k = b.getAttribute('data-k');
+    S[k] = b.getAttribute('data-v'); save();
+    var y = window.pageYOffset;
+    renderPlan(k !== 'scale');
+    window.scrollTo(0, y);
+    var again = $('.db-opt[data-k="' + k + '"][data-v="' + S[k] + '"]'); if (again) again.focus({preventScroll:true});
+  } else if (a === 'close'){
+    if (e.target === b || e.target.closest('[data-x]')) $('#db-overlay').innerHTML = '';
+  }
+});
+root.addEventListener('input', function(e){ if (e.target.type === 'tel') e.target.setCustomValidity(''); });
+root.addEventListener('change', function(e){ if (e.target.name === 'industry' && e.target.closest('[data-form="plan"]')){ S.ind = e.target.value; save(); } });
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape'){ closeMega(); closeMenu(); $('#db-overlay').innerHTML = ''; } });
+
+/* ---------------- forms ---------------- */
+function send(data){
+  var url = CONFIG.webhookUrl;
+  return fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)})
+    .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return true; })
+    .catch(function(){
+      var body = new URLSearchParams();
+      Object.keys(data).forEach(function(k){ body.append(k, data[k]); });
+      return fetch(url, {method:'POST', mode:'no-cors', body:body}).then(function(){ return true; });
+    });
+}
+var DONE = {
+  plan: ['Plan sent', 'Your plan and answers are with us. We’ll be in touch to set up your free 30-minute consultation.'],
+  contact: ['Message sent', 'Thanks for getting in touch. We’ll reply as soon as we can.'],
+  talent: ['Thanks for introducing yourself', 'You’re in our talent network. We’ll be in touch when a project fits your experience.']
+};
+root.addEventListener('submit', function(e){
+  var f = e.target, type = f.getAttribute('data-form');
+  if (!type) return;
+  e.preventDefault();
+  $$('input[type="tel"][required]', f).forEach(function(t){ t.setCustomValidity((t.value.replace(/\D/g, '').length >= 10) ? '' : 'Please enter a phone number, including area code.'); });
+  if (!f.checkValidity()){ f.reportValidity(); return; }
+  var data = {form_type: type, page: S.view, submitted_at: new Date().toISOString(), source_url: location.href};
+  $$('input,textarea,select', f).forEach(function(i){ if (i.name) data[i.name] = i.value.trim(); });
+  if (type === 'plan'){
+    data.need = pick(NEEDS, S.need).b;
+    data.engagement = isStaffing(S.need) ? pick(ENG, S.eng).b : (S.need === 'pmo' ? pick(PMO, S.pmo).b : '');
+    data.scale = pick(SCALE, S.scale).b;
+    data.timing = pick(WHEN, S.when).b;
+    data.plan_summary = summary();
+  }
+  if (!CONFIG.webhookUrl){
+    modal('<h3>This form isn’t connected yet</h3><p>Add your Automate2Scale webhook URL to <b>webhookUrl</b> in the CONFIG block, and submissions will reach your CRM.</p><div class="db-actions"><button class="db-btn db-btn-p" type="button" data-x="1">Close</button></div>');
+    return;
+  }
+  var btn = $('button[type="submit"]', f), label = btn.textContent;
+  btn.disabled = true; btn.textContent = 'Sending…';
+  send(data).then(function(){
+    var t = DONE[type];
+    var book = (type !== 'talent' && CONFIG.bookingUrl) ? '<a class="db-btn db-btn-p" href="' + esc(CONFIG.bookingUrl) + '" target="_blank" rel="noopener">Book your free consultation</a>' : '';
+    modal('<h3>' + t[0] + '</h3><p>' + t[1] + '</p><div class="db-actions">' + book + '<button class="db-btn ' + (book ? 'db-btn-s' : 'db-btn-p') + '" type="button" data-x="1">Done</button></div>');
+    f.reset();
+  }).catch(function(){
+    var alt = CONFIG.email ? ' email <a href="mailto:' + esc(CONFIG.email) + '">' + esc(CONFIG.email) + '</a>' : '';
+    var ph = CONFIG.phone ? (alt ? ' or' : '') + ' call ' + esc(CONFIG.phone) : '';
+    modal('<h3>We couldn’t send that</h3><p>Check your connection and try again' + (alt || ph ? ', or' + alt + ph : '') + '.</p><div class="db-actions"><button class="db-btn db-btn-p" type="button" data-x="1">Close</button></div>');
+  }).then(function(){ btn.disabled = false; btn.textContent = label; });
+});
+
+/* ---------------- start ---------------- */
+var rt;
+window.addEventListener('resize', function(){
+  clearTimeout(rt);
+  rt = setTimeout(function(){
+    if (S.view === 'home') bridge($('#db-heroBridge'), plan({need:'pm', eng:'full', scale:'one', when:'30'}), false);
+    if (S.view === 'plan') bridge($('#db-planBridge'), plan(S), false);
+  }, 150);
+});
+applyConfig();
+var start = parseHash();
+if (start) show(start.v, start.a, true);
+else { S.view = 'home'; bridge($('#db-heroBridge'), plan({need:'pm', eng:'full', scale:'one', when:'30'}), true); }
+})();
+</script>
