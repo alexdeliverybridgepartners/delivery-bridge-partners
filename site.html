@@ -847,7 +847,11 @@ var CONFIG = {
   location: 'Las Vegas, Nevada. Monday to Friday, standard business hours.',
   linkedin: '',         // company LinkedIn URL
   bookingUrl: '',       // your Automate2Scale calendar link for the free 30-minute consultation
-  webhookUrl: '',       // Automate2Scale workflow Inbound Webhook URL (all three forms post here)
+  webhooks: {          // Automate2Scale (GHL) Inbound Webhook URL for each form's workflow
+    talent:  'https://services.leadconnectorhq.com/hooks/ox8R23lspUJccNtFH1z8/webhook-trigger/00b0ca2a-a96f-4f51-84d3-de96fde52569', // Talent Network -> Candidate Pipeline
+    plan:    'https://services.leadconnectorhq.com/hooks/ox8R23lspUJccNtFH1z8/webhook-trigger/f00fa219-cf89-4dfa-860f-51293fc42d0d', // Plan My Project -> Client Pipeline
+    contact: 'https://services.leadconnectorhq.com/hooks/ox8R23lspUJccNtFH1z8/webhook-trigger/01bd18f0-c06f-439c-bce8-27286503cebb'  // Contact -> General Inquiry Pipeline
+  },
   founderName: 'Alex Atkinson, PMP',
   founderTitle: 'Founder, CEO',
   founderBio: 'Alex has spent years delivering complex enterprise projects across a range of industries, with a proven track record of successful delivery. He founded DeliveryBridge Partners to close two gaps the profession can’t ignore: too many projects still fall short of success, and demand for qualified project talent is outpacing supply as technology accelerates change.',
@@ -1221,8 +1225,9 @@ root.addEventListener('change', function(e){ if (e.target.name === 'industry' &&
 document.addEventListener('keydown', function(e){ if (e.key === 'Escape'){ closeMega(); closeMenu(); $('#db-overlay').innerHTML = ''; } });
 
 /* ---------------- forms ---------------- */
+function hookFor(type){ return (CONFIG.webhooks && CONFIG.webhooks[type]) || ''; }
 function send(data){
-  var url = CONFIG.webhookUrl;
+  var url = hookFor(data.form_type);
   return fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)})
     .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return true; })
     .catch(function(){
@@ -1251,8 +1256,8 @@ root.addEventListener('submit', function(e){
     data.timing = pick(WHEN, S.when).b;
     data.plan_summary = summary();
   }
-  if (!CONFIG.webhookUrl){
-    modal('<h3>This form isn’t connected yet</h3><p>Add your Automate2Scale webhook URL to <b>webhookUrl</b> in the CONFIG block, and submissions will reach your CRM.</p><div class="db-actions"><button class="db-btn db-btn-p" type="button" data-x="1">Close</button></div>');
+  if (!hookFor(type)){
+    modal('<h3>This form isn’t connected yet</h3><p>Add this form’s Automate2Scale webhook URL to <b>webhooks.' + type + '</b> in the CONFIG block, and submissions will reach your CRM.</p><div class="db-actions"><button class="db-btn db-btn-p" type="button" data-x="1">Close</button></div>');
     return;
   }
   var btn = $('button[type="submit"]', f), label = btn.textContent;
