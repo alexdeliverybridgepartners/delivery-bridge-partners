@@ -277,6 +277,12 @@
 #dbp .db-fld select::-ms-expand{display:none}
 #dbp .db-fld input:focus,#dbp .db-fld textarea:focus,#dbp .db-fld select:focus{outline:none;border-color:var(--eg);box-shadow:0 0 0 3px rgba(196,123,82,.35)}
 #dbp .db-fld .opt{font-weight:400;color:var(--ink3)}
+#dbp .db-consent{display:grid;gap:10px;font-size:14.5px;line-height:1.5;color:var(--ink3)}
+#dbp .db-consent p{margin:0}
+#dbp .db-check{display:flex;gap:10px;align-items:flex-start;color:var(--ch);cursor:pointer}
+#dbp .db-check input{flex:none;width:20px;height:20px;margin:1px 0 0;accent-color:var(--eg);cursor:pointer}
+#dbp .db-consent a{color:var(--eg);text-decoration:underline}
+#dbp .db-legal-links{display:flex;gap:16px}
 #dbp .db-form .db-btn{justify-self:start}
 #dbp .db-formnote{font-size:15px;color:var(--ink3)}
 
@@ -397,7 +403,7 @@
       <div class="db-mgroup">
         <h4>PMO expertise</h4>
         <a class="db-mlink" href="#services/svc-pmo" data-go="services" data-anchor="svc-pmo"><b>PMO setup</b><span>Governance, intake and reporting from day one</span></a>
-        <a class="db-mlink" href="#services/svc-pmoi" data-go="services" data-anchor="svc-pmoi"><b>PMO Improvement Sprint</b><span>Measure, then sharpen how you deliver</span></a>
+        <a class="db-mlink" href="#services/svc-pmoi" data-go="services" data-anchor="svc-pmoi"><b>Portfolio Intelligence Sprint</b><span>Measure, then sharpen how you deliver</span></a>
       </div>
       <div class="db-mgroup">
         <h4>Better delivery</h4>
@@ -439,7 +445,7 @@
         <a class="db-mlink" href="#services/svc-pm" data-go="services" data-anchor="svc-pm"><b>Project and program managers</b></a>
         <a class="db-mlink" href="#services/svc-ba" data-go="services" data-anchor="svc-ba"><b>Business analysts and change specialists</b></a>
         <a class="db-mlink" href="#services/svc-pmo" data-go="services" data-anchor="svc-pmo"><b>PMO setup</b></a>
-        <a class="db-mlink" href="#services/svc-pmoi" data-go="services" data-anchor="svc-pmoi"><b>PMO Improvement Sprint</b></a>
+        <a class="db-mlink" href="#services/svc-pmoi" data-go="services" data-anchor="svc-pmoi"><b>Portfolio Intelligence Sprint</b></a>
         <a class="db-mlink" href="#services/svc-health" data-go="services" data-anchor="svc-health"><b>Project health checks</b></a>
         <a class="db-mlink" href="#services/svc-recovery" data-go="services" data-anchor="svc-recovery"><b>Project recovery</b></a>
       </details>
@@ -480,7 +486,7 @@
       </div>
       <div class="db-paths">
         <div class="db-path"><h3>Staff a project</h3><p>An experienced project manager, program manager, business analyst or change specialist, on contract, contract-to-hire or as a direct hire.</p><a class="db-btn db-btn-s" href="#plan" data-go="plan" data-need="pm">Plan a staffing engagement</a></div>
-        <div class="db-path"><h3>Build or improve a PMO</h3><p>Set up a PMO from scratch, or run a PMO Improvement Sprint to see how your projects really perform and where delivery needs to tighten.</p><a class="db-btn db-btn-s" href="#plan" data-go="plan" data-need="pmo">Plan a PMO engagement</a></div>
+        <div class="db-path"><h3>Build or improve a PMO</h3><p>Set up a PMO from scratch, or run a Portfolio Intelligence Sprint to see how your projects really perform and where delivery needs to tighten.</p><a class="db-btn db-btn-s" href="#plan" data-go="plan" data-need="pmo">Plan a PMO engagement</a></div>
         <div class="db-path"><h3>Check a project’s health</h3><p>An independent view of where a project really stands, before a phase gate, a funding decision or a small problem becomes a big one.</p><a class="db-btn db-btn-s" href="#plan" data-go="plan" data-need="health">Request a health check</a></div>
         <div class="db-path"><h3>Recover a project</h3><p>Behind schedule, over budget or losing sponsor confidence. An experienced recovery lead to reset the plan and get it back on track.</p><a class="db-btn db-btn-s" href="#plan" data-go="plan" data-need="recover">Plan a recovery</a></div>
       </div>
@@ -620,11 +626,11 @@
         <aside><h4>Best for</h4><ul class="db-ticks"><li>No PMO yet, or one that exists only on paper</li><li>Several major initiatives starting at once</li><li>Leadership that can’t see across projects</li></ul><a class="db-btn db-btn-p" href="#plan" data-go="plan" data-need="pmo" data-pmo="new">Plan a PMO setup</a></aside>
       </div>
       <div class="db-svc" id="svc-pmoi">
-        <div><h2>PMO Improvement Sprint</h2>
+        <div><h2>Portfolio Intelligence Sprint</h2>
           <p class="db-muted" style="margin-top:14px">A focused four-to-six-week sprint, usually about a month. We measure how stakeholders rate your completed projects using PMI’s Net Project Success Score, compare estimated against actual schedule and budget, review open change orders, and assess whether your team has the capacity, roles and skills to deliver the portfolio you’ve approved.</p>
           <p class="db-muted">PMI’s research found that projects with a measurement system in place averaged a Net Project Success Score of 45, against 6 for projects without one.</p>
-          <p class="db-get"><b>You get</b> an NPSS Baseline, a PMO Intelligence Dashboard and a Delivery Improvement Plan, so leadership can make intake, prioritization and resourcing decisions with confidence.</p></div>
-        <aside><h4>Best for</h4><ul class="db-ticks"><li>Projects that finish on paper but disappoint stakeholders</li><li>Estimates that keep drifting from approved schedules and budgets</li><li>Project managers stretched across too many projects or roles</li></ul><a class="db-btn db-btn-p" href="#plan" data-go="plan" data-need="pmo" data-pmo="improve">Plan a PMO Improvement Sprint</a></aside>
+          <p class="db-get"><b>You get</b> an NPSS Baseline, a Portfolio Intelligence Dashboard and a Delivery Improvement Plan, so leadership can make intake, prioritization and resourcing decisions with confidence.</p></div>
+        <aside><h4>Best for</h4><ul class="db-ticks"><li>Projects that finish on paper but disappoint stakeholders</li><li>Estimates that keep drifting from approved schedules and budgets</li><li>Project managers stretched across too many projects or roles</li></ul><a class="db-btn db-btn-p" href="#plan" data-go="plan" data-need="pmo" data-pmo="improve">Plan a Portfolio Intelligence Sprint</a></aside>
       </div>
     </div>
     <div class="db-group">
@@ -652,7 +658,7 @@
           <tr><td>Contract</td><td>A professional on your project for its duration, full-time or part-time.</td><td>Defined projects with a clear end date</td></tr>
           <tr><td>Contract-to-hire</td><td>Start on contract, then join your staff once both sides are sure.</td><td>Roles you expect to keep</td></tr>
           <tr><td>Direct hire</td><td>We find, vet and present candidates for a permanent role.</td><td>Permanent PM, BA or PMO roles</td></tr>
-          <tr><td>Fixed scope</td><td>A defined deliverable, such as a health check or a PMO Improvement Sprint.</td><td>Clear questions that need clear answers</td></tr>
+          <tr><td>Fixed scope</td><td>A defined deliverable, such as a health check or a Portfolio Intelligence Sprint.</td><td>Clear questions that need clear answers</td></tr>
         </tbody>
       </table></div>
     </div>
@@ -805,12 +811,13 @@
         <p style="margin-top:16px" data-cfg-wrap><a data-cfg="phone" data-type="tel" data-ph="Phone to supply"></a></p>
         <p data-cfg-wrap><a data-cfg="email" data-type="mailto" data-ph="Email to supply"></a></p>
         <p>Headquartered in Las Vegas, Nevada</p>
+        <p data-cfg-wrap><a data-cfg="linkedin" data-type="url" data-label="DeliveryBridge Partners on LinkedIn" data-ph="Company LinkedIn to supply"></a></p>
       </div>
       <div><h4>Services</h4><ul>
         <li><a href="#services/svc-pm" data-go="services" data-anchor="svc-pm">Project and program managers</a></li>
         <li><a href="#services/svc-ba" data-go="services" data-anchor="svc-ba">Business analysts and change</a></li>
         <li><a href="#services/svc-pmo" data-go="services" data-anchor="svc-pmo">PMO setup</a></li>
-        <li><a href="#services/svc-pmoi" data-go="services" data-anchor="svc-pmoi">PMO Improvement Sprint</a></li>
+        <li><a href="#services/svc-pmoi" data-go="services" data-anchor="svc-pmoi">Portfolio Intelligence Sprint</a></li>
         <li><a href="#services/svc-health" data-go="services" data-anchor="svc-health">Project health checks</a></li>
         <li><a href="#services/svc-recovery" data-go="services" data-anchor="svc-recovery">Project recovery</a></li>
       </ul></div>
@@ -825,7 +832,7 @@
         <li><a href="#contact" data-go="contact">Contact</a></li>
       </ul></div>
     </div>
-    <div class="db-legal"><span>© <span data-year></span> DeliveryBridge Partners. All rights reserved.</span><span>Project talent. PMO expertise. Better delivery, together.</span></div>
+    <div class="db-legal"><span>© <span data-year></span> DeliveryBridge Partners. All rights reserved.</span><span class="db-legal-links"><a href="/privacy-policy">Privacy Policy</a><a href="/terms">Terms</a></span><span>Project talent. PMO expertise. Better delivery, together.</span></div>
   </div>
 </footer>
 <div id="db-overlay"></div>
@@ -845,7 +852,7 @@ var CONFIG = {
   phone: '+1 702-766-5271',
   email: 'contact@deliverybridgepartners.com',
   location: 'Las Vegas, Nevada. Monday to Friday, standard business hours.',
-  linkedin: '',         // company LinkedIn URL
+  linkedin: 'https://www.linkedin.com/company/deliverybridge-partners/', // company LinkedIn URL
   bookingUrl: '',       // your Automate2Scale calendar link for the free 30-minute consultation
   webhooks: {          // Automate2Scale (GHL) Inbound Webhook URL for each form's workflow
     talent:  'https://services.leadconnectorhq.com/hooks/ox8R23lspUJccNtFH1z8/webhook-trigger/00b0ca2a-a96f-4f51-84d3-de96fde52569', // Talent Network -> Candidate Pipeline
@@ -911,7 +918,7 @@ function applyConfig(){
 var NEEDS = [
   {id:'pm', b:'Project or program manager', s:'Lead the work end to end'},
   {id:'ba', b:'Business analyst or change specialist', s:'Requirements, testing, adoption'},
-  {id:'pmo', b:'Build or improve a PMO', s:'Setup, or an improvement sprint'},
+  {id:'pmo', b:'Build or improve a PMO', s:'Setup, or a Portfolio Intelligence Sprint'},
   {id:'health', b:'Check a project’s health', s:'An independent view of where it stands'},
   {id:'recover', b:'Recover a project', s:'It’s behind or at risk'}
 ];
@@ -923,7 +930,7 @@ var ENG = [
 ];
 var PMO = [
   {id:'new', b:'Set up a new PMO', s:'Nothing formal in place yet'},
-  {id:'improve', b:'PMO Improvement Sprint', s:'Measure how projects perform, then improve'}
+  {id:'improve', b:'Portfolio Intelligence Sprint', s:'Measure how projects perform, then improve'}
 ];
 var INDUSTRIES = ['Information technology','Energy and utilities','Hospitality','Construction','Financial services','Healthcare','Public sector','Private industry','Other or not listed'];
 var SCALE = [
@@ -960,7 +967,7 @@ function plan(st){
       {l:'First check-in', sm:'30 days after your kickoff call', ms:31, fixed:1},
       {l:'Steer to delivery', sm:'With regular check-ins', s:24, open:1, mk:56}]};
   } else if (st.need === 'pmo' && st.pmo === 'improve'){
-    p = {t:'PMO Improvement Sprint', span:42, rows:[
+    p = {t:'Portfolio Intelligence Sprint', span:42, rows:[
       {l:'Kickoff and data request', ms:1, pre:1},
       {l:'Baseline and survey setup', sm:'Reports, data and stakeholder list', s:2, e:7, pre:1},
       {l:'NPSS and delivery variance', sm:'Stakeholder ratings, schedule, budget, change orders', s:7, e:14},
@@ -1135,7 +1142,7 @@ function renderPlan(animate){
   bridge($('#db-planBridge'), plan(S), animate);
   var get = $('#db-planGet');
   var keep = {};
-  $$('input,textarea,select', get).forEach(function(i){ keep[i.name] = i.value; });
+  $$('input,textarea,select', get).forEach(function(i){ keep[i.name] = i.type === 'checkbox' ? i.checked : i.value; });
   get.innerHTML = '<h3>Send this plan to us</h3><p class="db-small" style="margin-top:6px">' + esc(summary()) + '. Your answers come with your request, so the first call starts with the details, not the basics.</p>' +
     '<form class="db-form" data-form="plan" novalidate>' +
     '<div class="db-row2"><label class="db-fld">Name<input name="name" required autocomplete="name"></label><label class="db-fld">Organization<input name="organization" required autocomplete="organization"></label></div>' +
@@ -1143,7 +1150,8 @@ function renderPlan(animate){
     '<label class="db-fld">Your industry <span class="opt">(optional)</span><select name="industry"><option value="">Choose one</option>' + INDUSTRIES.map(function(n){ return '<option' + (S.ind === n ? ' selected' : '') + '>' + esc(n) + '</option>'; }).join('') + '</select></label>' +
     '<label class="db-fld">Anything we should know? <span class="opt">(optional)</span><textarea name="message" rows="3" placeholder="The system, the deadline, what is at risk"></textarea></label>' +
     '<button class="db-btn db-btn-p" type="submit">Send my plan</button></form>';
-  $$('input,textarea', get).forEach(function(i){ if (keep[i.name]) i.value = keep[i.name]; });
+  addConsent(get);
+  $$('input,textarea', get).forEach(function(i){ if (!keep[i.name]) return; if (i.type === 'checkbox') i.checked = true; else i.value = keep[i.name]; });
   var sel = $('select[name="industry"]', get); if (sel) sel.value = S.ind || '';
 }
 
@@ -1225,6 +1233,26 @@ root.addEventListener('change', function(e){ if (e.target.name === 'industry' &&
 document.addEventListener('keydown', function(e){ if (e.key === 'Escape'){ closeMega(); closeMenu(); $('#db-overlay').innerHTML = ''; } });
 
 /* ---------------- forms ---------------- */
+var CONSENT_VERSION = '2026-11-v1';   // change whenever the consent wording changes
+function consentHTML(type){
+  var upd = type === 'talent'
+    ? 'I agree to receive text messages from DeliveryBridge Partners about my application and opportunities, including interview scheduling and reminders. Message frequency varies.'
+    : 'I agree to receive text messages from DeliveryBridge Partners about my request, including appointment reminders and follow-up. Message frequency varies.';
+  var mkt =
+    '<label class="db-check"><input type="checkbox" name="sms_marketing_consent"><span>I agree to receive marketing text messages from DeliveryBridge Partners, such as news, events and offers. Message frequency varies.</span></label>';
+  return '<div class="db-consent">' +
+    '<p>By submitting, you agree DeliveryBridge Partners may contact you by email or phone about your ' + (type === 'talent' ? 'application' : 'request') + '. You can unsubscribe from emails at any time.</p>' +
+    '<label class="db-check"><input type="checkbox" name="sms_updates_consent"><span>' + upd + '</span></label>' + mkt +
+    '<p>Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent to texts is not a condition of any purchase. <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a> | <a href="/terms" target="_blank" rel="noopener">Terms</a></p>' +
+    '</div>';
+}
+function addConsent(scope){
+  $$('form.db-form[data-form]', scope || root).forEach(function(f){
+    if ($('.db-consent', f)) return;
+    var btn = $('button[type="submit"]', f);
+    if (btn) btn.insertAdjacentHTML('beforebegin', consentHTML(f.getAttribute('data-form')));
+  });
+}
 function hookFor(type){ return (CONFIG.webhooks && CONFIG.webhooks[type]) || ''; }
 function send(data){
   var url = hookFor(data.form_type);
@@ -1248,7 +1276,11 @@ root.addEventListener('submit', function(e){
   $$('input[type="tel"][required]', f).forEach(function(t){ t.setCustomValidity((t.value.replace(/\D/g, '').length >= 10) ? '' : 'Please enter a phone number, including area code.'); });
   if (!f.checkValidity()){ f.reportValidity(); return; }
   var data = {form_type: type, page: S.view, submitted_at: new Date().toISOString(), source_url: location.href};
-  $$('input,textarea,select', f).forEach(function(i){ if (i.name) data[i.name] = i.value.trim(); });
+  $$('input,textarea,select', f).forEach(function(i){ if (i.name) data[i.name] = i.type === 'checkbox' ? i.checked : i.value.trim(); });
+  if (!('sms_marketing_consent' in data)) data.sms_marketing_consent = false;
+  data.consent_timestamp = data.submitted_at;
+  data.consent_version = CONSENT_VERSION;
+  data.consent_source = type + ' form, ' + location.href;
   if (type === 'plan'){
     data.need = pick(NEEDS, S.need).b;
     data.engagement = isStaffing(S.need) ? pick(ENG, S.eng).b : (S.need === 'pmo' ? pick(PMO, S.pmo).b : '');
@@ -1284,6 +1316,7 @@ window.addEventListener('resize', function(){
   }, 150);
 });
 applyConfig();
+addConsent();
 var start = parseHash();
 if (start) show(start.v, start.a, true);
 else { S.view = 'home'; bridge($('#db-heroBridge'), plan({need:'pm', eng:'full', scale:'one', when:'30'}), true); }
