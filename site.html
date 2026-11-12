@@ -8,7 +8,7 @@
   --eg:#173F36; --jade:#2F8069; --cu:#C47B52; --iv:#F7F3EA; --ch:#222B28;
   --paper:#FFFDF8; --mist:#ECF1EC; --eg2:#1E4D42;
   --ink2:#47524E; --ink3:#5F6A66; --cu-ink:#9A5734;
-  --line:rgba(23,63,54,.14); --line2:rgba(23,63,54,.24);
+  --line:rgba(23,63,54,.14); --line2:rgba(23,63,54,.55);
   --fh:'Manrope',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
   --fb:'Source Sans 3','Source Sans Pro',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
   --r-lg:18px; --r-md:12px; --r-sm:8px;
@@ -213,6 +213,10 @@
 #dbp .db-svc h2{font-size:clamp(26px,2.6vw,34px)}
 #dbp .db-svc .db-get{margin-top:18px;padding:16px 20px;background:var(--mist);border-radius:var(--r-md);color:var(--eg);font-size:17px}
 #dbp .db-svc .db-get b{font-family:var(--fh);font-weight:600}
+#dbp .db-svc-open{margin-top:14px;font-size:19px;line-height:1.5;color:var(--ch);font-weight:600}
+#dbp .db-guard{margin-top:14px;font-style:italic;color:var(--ink2)}
+#dbp .db-why-h{margin-top:24px;font-size:16px;color:var(--ink3)}
+#dbp .db-why-s{margin-top:10px}
 #dbp .db-svc aside h4{font-size:16px;color:var(--ink3);margin-bottom:10px;font-weight:600}
 #dbp .db-ticks li{position:relative;padding-left:26px;margin-top:8px;font-size:17px}
 #dbp .db-ticks li::before{content:"";position:absolute;left:2px;top:.55em;width:12px;height:7px;border-left:2.5px solid var(--jade);border-bottom:2.5px solid var(--jade);transform:rotate(-45deg)}
@@ -627,9 +631,13 @@
       </div>
       <div class="db-svc" id="svc-pmoi">
         <div><h2>Portfolio Intelligence Sprint</h2>
-          <p class="db-muted" style="margin-top:14px">A focused four-to-six-week sprint, usually about a month. We measure how stakeholders rate your completed projects using PMI’s Net Project Success Score, compare estimated against actual schedule and budget, review open change orders, and assess whether your team has the capacity, roles and skills to deliver the portfolio you’ve approved.</p>
+          <p class="db-svc-open">DeliveryBridge helps PMO leaders see where project value, delivery performance, and team capacity are drifting before those issues become executive surprises.</p>
+          <p class="db-muted">A focused four-to-six-week sprint, usually about a month. We measure how stakeholders rate your completed projects using PMI’s Net Project Success Score, compare estimated against actual schedule and budget, review open change orders, and assess whether your team has the capacity, roles and skills to deliver the portfolio you’ve approved.</p>
           <p class="db-muted">PMI’s research found that projects with a measurement system in place averaged a Net Project Success Score of 45, against 6 for projects without one.</p>
-          <p class="db-get"><b>You get</b> an NPSS Baseline, a Portfolio Intelligence Dashboard and a Delivery Improvement Plan, so leadership can make intake, prioritization and resourcing decisions with confidence.</p></div>
+          <p class="db-get"><b>You get</b> an NPSS Baseline, a Portfolio Intelligence Dashboard and a Delivery Improvement Plan, so leadership can make intake, prioritization and resourcing decisions with confidence.</p>
+          <p class="db-guard">We do not promise perfect decisions. We improve the intelligence leaders use to make them.</p>
+          <h4 class="db-why-h">Why DeliveryBridge for this sprint</h4>
+          <ul class="db-ticks db-why-s"><li><b>Measured, not assumed.</b> Findings rest on stakeholder ratings, delivery against approved estimates, and team capacity.</li><li><b>Clear about what we promise.</b> We improve the information leaders use. Your leadership makes the decisions.</li><li><b>Fixed scope, clear outputs.</b> You know what you’ll get, and by when, before work starts.</li></ul></div>
         <aside><h4>Best for</h4><ul class="db-ticks"><li>Projects that finish on paper but disappoint stakeholders</li><li>Estimates that keep drifting from approved schedules and budgets</li><li>Project managers stretched across too many projects or roles</li></ul><a class="db-btn db-btn-p" href="#plan" data-go="plan" data-need="pmo" data-pmo="improve">Plan a Portfolio Intelligence Sprint</a></aside>
       </div>
     </div>
@@ -711,12 +719,13 @@
     </ul>
   </div></div>
   <div class="db-sec"><div class="db-wrap db-grid2">
-    <div><h2>Why organizations choose DeliveryBridge <span class="db-flag">Draft, confirm</span></h2></div>
+    <div><h2>Why organizations choose DeliveryBridge</h2></div>
     <ul class="db-why">
-      <li><b>Matched, not just placed</b><span>We match for delivery experience and culture, not only for keywords on a résumé.</span></li>
-      <li><b>Structure that fits</b><span>PMO practices sized to your organization, not a framework lifted from a textbook.</span></li>
-      <li><b>Accountable for outcomes</b><span>Your priorities become ours, and we check in to make sure the engagement is working.</span></li>
-      <li><b>A partnership mindset</b><span>We work alongside your team and leave it stronger than we found it.</span></li>
+      <li><b>Delivery experts, not recruiters</b><span>A PMP-led firm. You talk to someone who has run complex projects, not someone reading a job description.</span></li>
+      <li><b>Matched for delivery, not keywords</b><span>We place people for their experience delivering similar work and how well they fit your culture.</span></li>
+      <li><b>Measured, not assumed</b><span>We look at how stakeholders rated completed projects, delivery against approved estimates, and team capacity, so findings rest on evidence.</span></li>
+      <li><b>Clear about what we promise</b><span>We improve the information leaders use. Your leadership makes the decisions.</span></li>
+      <li><b>Fixed scope, clear outputs</b><span>You know what you’ll get, and by when, before work starts.</span></li>
     </ul>
   </div></div>
   <div class="db-sec mist"><div class="db-wrap db-grid2">
